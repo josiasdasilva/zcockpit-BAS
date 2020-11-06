@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Somatório por loja">
+		<Table id="idLojaSumTabela" mode="Delete" delete=".onDeleteLojaSum" items="{/POLojasSum}" noDataText="Sem dados"
+			selectionChange=".onItemPressed">
+			<headerToolbar></headerToolbar>
+			<columns>
+				<Column width="8em" hAlign="Center">
+					<Text text="Loja"/>
+				</Column>
+				<Column width="8em" hAlign="Right">
+					<Text text="CX"/>
+				</Column>
+				<Column width="8em" hAlign="Right">
+					<Text text="KG"/>
+				</Column>
+				<Column width="8em" hAlign="Right">
+					<Text text="FD"/>
+				</Column>
+				<Column width="8em" hAlign="Right">
+					<Text text="Total"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem id="listItemLojaSum" type="Active" press=".onObjectListItemPress">
+					<cells>
+						<Text text="{Werks}"/>
+						<Text text="{path: 'CX', formatter: '.formatter.zeroToEmpty'}"/>
+						<Text text="{path: 'KG', formatter: '.formatter.zeroToEmpty'}"/>
+						<Text text="{path: 'FD', formatter: '.formatter.zeroToEmpty'}"/>
+						<Text text="{path: 'Total', formatter: '.formatter.zeroToEmpty'}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<endButton>
+			<Button text="Fechar" press="closeLojaSumDialog"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

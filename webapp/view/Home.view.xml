@@ -1,0 +1,68 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:unified="sap.ui.unified" controllerName="dma.zcockpit.controller.Home">
+	<App id="homeId">
+		<pages>
+			<Page title="Cockpit Comercial" enableScrolling="false">
+				<FlexBox width="100%" direction="Column" fitContainer="true">
+					<items>
+						<FlexBox width="100%" direction="Column" fitContainer="true">
+							<items>
+								<FlexBox width="100%" justifyContent="Center" height="auto" fitContainer="true" alignContent="Center">
+									<items>
+										<Image width="auto" height="470px" id="img_epa" src="img/background_cockpit.png" densityAware="false"/>
+									</items>
+								</FlexBox>
+							</items>
+						</FlexBox>
+						<FlexBox width="100%" direction="Column" fitContainer="true" alignContent="Center" alignItems="Center" justifyContent="End" height="15em">
+							<items>
+								<MessageStrip id="idAppntOverSeven" visible="false" text="{i18n>msg_appointment_over_sevenpm}" type="Warning" showIcon="true"
+									showCloseButton="true" class="sapUiMediumMarginBottom"/>
+								<PlanningCalendar id="MyCalendar" width="100%" startDate="{path: '/startDate'}" rows="{path: '/AgendaItem'}" startDateChange="handleNavDate"
+									appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" intervalSelect="handleAppointmentAddWithContext">
+									<toolbarContent>
+										<Toolbar width="100%" id="__toolbar1">
+											<content>
+												<Title text="Agenda" titleStyle="H4" id="__title1"/>
+												<Button id="addButton" icon="sap-icon://add" press="handleAppointmentCreate" tooltip="Add"/>
+												<ToolbarSpacer id="__spacer0"/>
+											</content>
+										</Toolbar>
+									</toolbarContent>
+									<rows>
+										<PlanningCalendarRow icon="{pic}" title="{name}" text="{role}" appointments="{path : 'appointments', templateShareable: true}"
+											intervalHeaders="{path: 'headers', templateShareable: true}">
+											<appointments>
+												<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" text="{info}" type="{type}"
+													tentative="{tentative}"/>
+											</appointments>
+											<intervalHeaders>
+												<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" type="{type}"/>
+											</intervalHeaders>
+										</PlanningCalendarRow>
+									</rows>
+								</PlanningCalendar>
+							</items>
+						</FlexBox>
+					</items>
+				</FlexBox>
+				<content/>
+				<customHeader>
+					<Bar>
+						<contentRight>
+							<!--<Button icon="sap-icon://factory" type="Accept" width="auto" press="onBtnCommodPress" tooltip="Commodites"/>-->
+							<Button icon="sap-icon://cart" type="Accept" width="auto" press="onBtnPedidoPress" tooltip="Pedido"/>
+						</contentRight>
+						<contentLeft>
+							<Button icon="sap-icon://history" type="Accept" width="auto" press="onBtnHistoricoPress" tooltip="Histórico"/>
+							<Button icon="sap-icon://write-new-document" type="Accept" width="auto" press="onPressChangeContract" tooltip="{i18n>editContract}"/>
+							<Button icon="sap-icon://inspection" type="Accept" width="auto" press="onPressDisplayContract" tooltip="{i18n>displayContract}"/>
+						</contentLeft>
+						<contentMiddle>
+							<Text text="Cockpit Comercial" id="text0"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
