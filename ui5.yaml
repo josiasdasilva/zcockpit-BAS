@@ -8,23 +8,11 @@ resources:
 builder:
   customTasks:
     - name: webide-extension-task-updateManifestJson
-      beforeTask: generateManifestBundle
-      configuration:
-        appFolder: webapp
-        destDir: dist
-    - name: webide-extension-task-updateNeoApp
       afterTask: generateVersionInfo
       configuration:
-        destDir: dist
         appFolder: webapp
-        nameSpace: dma
-    - name: webide-extension-task-lint
-      afterTask: webide-extension-task-updateNeoApp
-      configuration:
         destDir: dist
-        appFolder: webapp
-        nameSpace: dma 
     - name: webide-extension-task-resources
-      afterTask: webide-extension-task-lint
+      afterTask: webide-extension-task-updateManifestJson
       configuration:
         nameSpace: dma
