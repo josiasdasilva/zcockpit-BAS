@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 	<SelectDialog 
-		title="UF" 
+		title="{i18n>uf}" 
 		class="sapUiPopupWithPadding" 
 		items="{ path : '/UF', sorter : { path : 'Bland', descending : false } }"
 		showClearButton="true" 

@@ -693,148 +693,6 @@
 						</content>
 					</IconTabFilter>
 					<!--FAFN End-->
-					<!--Tabela Histórico  
-					<IconTabFilter text="Histórico" icon="sap-icon://history" id="__filter3" visible="false">
-						<content>
-							<Table noDataText="Sem dados para exibir" id="historicoTable" items="{/POHistorico}" class="tableTelaPedido" growingThreshold="200"
-								growingScrollToLoad="true" growing="true">
-								<items>
-									<ColumnListItem>
-										<cells>
-											<Text text="{Werks}" width="2.5em"/>
-											<ObjectNumber number="{path: 'QtdTransS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'VlrVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'MrgVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdTransS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'VlrVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'MrgVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdTransS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'VlrVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'MrgVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdTransS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'VlrVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'MrgVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdTransS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'QtdVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'VlrVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-											<ObjectNumber number="{path: 'MrgVendaS1', formatter: '.formatter.fullNumberStr'}" emphasized="false"/>
-										</cells>
-									</ColumnListItem>
-								</items>
-								<columns>
-									<Column>
-										<header>
-											<Text text="Loja" id="_det_hist_loja"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s1qtdtransf}" id="_det_hist_s1qtetransf"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s1qtevenda}" id="_det_hist_s1qtevenda"/>
-										</header>
-									</Column>
-									<Column id="__column_hist_S1Vlrvdtotal">
-										<header>
-											<Text text="{i18n>tbl_hist.s1vlrvdtotal}" id="_det_hist_s1vlrvdtotal"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s1qtemdvloja}" id="_det_hist_s1qtemdvloja"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s2qtdtransf}" id="_det_hist_s2qtetransf"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s2qtevenda}" id="_det_hist_s2qtevenda"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s2vlrvdtotal}" id="_det_hist_s2vlrvdtotal"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s2qtemdvloja}" id="_det_hist_s2qtemdvloja"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s3qtdtransf}" id="_det_hist_s3qtetransf"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s3qtevenda}" id="_det_hist_s3qtevenda"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s3vlrvdtotal}"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s3qtemdvloja}"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s4qtdtransf}"/>
-										</header>
-									</Column>
-									<Column id="__column_hist_S4Qtevenda">
-										<header>
-											<Text text="{i18n>tbl_hist.s4qtevenda}" id="_det_hist_s4qtevenda"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s4vlrvdtotal}"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s4qtemdvloja}"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s5qtdtransf}"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s5qtevenda}"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s5vlrvdtotal}"/>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Text text="{i18n>tbl_hist.s5qtemdvloja}"/>
-										</header>
-									</Column>
-								</columns>
-							</Table>
-						</content>
-					</IconTabFilter> -->
 					<!-- Tabela Faceamento  ***********************************************-->
 					<IconTabFilter text="Faceamento" icon="sap-icon://retail-store" id="__filter4">
 						<content>
@@ -993,21 +851,10 @@
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
-			<!--	</semantic:content>-->
-			<!--	<semantic:positiveAction>-->
-			<!--		<semantic:PositiveAction text="Gravar Sugestão" id="botaoGravarSugestao" press="gravaValores"/>-->
-			<!--	</semantic:positiveAction>-->
-			<!--	<semantic:negativeAction>-->
-			<!--		<semantic:NegativeAction text="Reiniciar" id="negativeButton" press="reiniciaValores" visible="false"/>-->
-			<!--	</semantic:negativeAction>-->
-			<!--	<semantic:printAction>-->
-			<!--		<semantic:PrintAction press="toPrint"/>-->
-			<!--	</semantic:printAction>-->
-			<!--</semantic:DetailPage>-->
 		</content>
 		<headerContent>
-			<Button text="Gravar Sugestão" id="botaoGravarSugestao" press="gravaValores" type="Accept"/>
-			<Button text="Reiniciar" type="Reject" id="negativeButton" press="reiniciaValores" visible="false"/>
+			<Button text="{i18n>gravar_sugestao}" id="botaoGravarSugestao" press="gravaValores" type="Accept"/>
+			<Button text="{i18n>reiniciar}" type="Reject" id="negativeButton" press="reiniciaValores" visible="false"/>
 			<Button icon="sap-icon://print" press="toPrint"/>
 		</headerContent>
 	</Page>

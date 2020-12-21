@@ -79,7 +79,7 @@
 									<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween" id="hbox22">
 										<items>
 											<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>xped.mdv}" app:binding="Mvd"
-												app:filter="false" tooltip="Média de Venda" id="text24"/>
+												app:filter="false" tooltip="{i18n>med_venda}" id="text24"/>
 											<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="_i_pedido_3" src="sap-icon://sort-ascending" size="0.96em" useIconTooltip="false"
 												color="#808080" visible="true" width="30%"/>
 										</items>
@@ -91,7 +91,7 @@
 									<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween" id="hbox23">
 										<items>
 											<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>xped.preco_compra}" app:binding="Prultcp"
-												app:filter="false" tooltip="Preço de Compra" id="text25"/>
+												app:filter="false" tooltip="{i18n>pr_compra}" id="text25"/>
 											<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="_i_pedido_4" src="sap-icon://sort-ascending" size="0.96em" useIconTooltip="false"
 												color="#808080" visible="true" width="30%"/>
 										</items>
@@ -103,7 +103,7 @@
 									<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween" id="hbox24">
 										<items>
 											<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>xped.requis}" app:binding="Sugestao"
-												tooltip="Requisição" id="text26"/>
+												tooltip="{i18n>requisicao}" id="text26"/>
 											<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="_i_pedido_5" src="sap-icon://sort-ascending" size="0.96em" useIconTooltip="false"
 												color="#808080" visible="true" width="30%"/>
 										</items>
@@ -139,7 +139,7 @@
 									<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween" id="hbox27">
 										<items>
 											<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>xped.preco_venda}" app:binding="Prultvd"
-												app:filter="false" tooltip="Preço de Venda" id="text29"/>
+												app:filter="false" tooltip="{i18n>pr_venda}" id="text29"/>
 											<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="_i_pedido_8" src="sap-icon://sort-ascending" size="0.96em" useIconTooltip="false"
 												color="#808080" visible="true" width="30%"/>
 										</items>
