@@ -94,11 +94,10 @@ sap.ui.define([
 		},
 		onDeleteLojaSum: function (oEvent) {
 			let sBindContext = oEvent.getParameter("listItem").getBindingContext();
-			let oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 			let oTable = sap.ui.getCore().byId('idLojasSum--idLojaSumTabela');
 
-			MessageBox.confirm(oBundle.getText("eliminaLoja"), {
-				title: oBundle.getText(sBindContext.getProperty("Werks")),
+			MessageBox.confirm(this.getText("eliminaLoja"), {
+				title: this.getText(sBindContext.getProperty("Werks")),
 				actions: [
 					MessageBox.Action.YES,
 					MessageBox.Action.NO
@@ -111,11 +110,11 @@ sap.ui.define([
 						this.getView().getModel().remove(sBindContext.sPath, {
 							success: (res) => {
 								oTable.setBusy(false);
-								MessageToast.show(oBundle.getText("msg_loja_removida_success"), {});
+								MessageToast.show(this.getText("msg_loja_removida_success"), {});
 							},
 							error: (err) => {
 								oTable.setBusy(false);
-								MessageToast.show(oBundle.getText("msg_loja_removida_error"), {});
+								MessageToast.show(this.getText("msg_loja_removida_error"), {});
 							}
 						});
 					}
@@ -318,8 +317,8 @@ sap.ui.define([
 			
 			delete this.indexPressedItem;
 			
-			MessageBox.confirm(this.getView().getModel("i18n").getResourceBundle().getText("sairPedido"), {
-				title: this.getView().getModel("i18n").getResourceBundle().getText("sairPedidoTitulo"),
+			MessageBox.confirm(this.getText("sairPedido"), {
+				title: this.getText("sairPedidoTitulo"),
 				actions: [
 					MessageBox.Action.YES,
 					MessageBox.Action.NO
@@ -448,9 +447,9 @@ sap.ui.define([
 						// 		styleClass: sResponsivePaddingClasses
 						// 	});
 					} else {
-						sap.m.MessageBox.error("Erro na criação do Pedido.\n" +
+						sap.m.MessageBox.error(this.getText("erro_criacao_pedido") + "\n" +
 							oData2.Mensagem, {
-								title: "Pedido não Criado. ",
+								title: this.getText("pedido_nao_criado"),
 								actions: [MessageBox.Action.OK],
 								initialFocus: MessageBox.Action.OK,
 								//details: oData2.Mensagem,
@@ -461,7 +460,7 @@ sap.ui.define([
 				error: (oError) => {
 					sap.ui.core.BusyIndicator.hide();
 					sap.m.MessageBox.error("Erro", {
-						title: "Pedido não Criado",
+						title: this.getText("pedido_nao_criado"),
 						initialFocus: null,
 						styleClass: sResponsivePaddingClasses
 					});
@@ -544,7 +543,7 @@ sap.ui.define([
 				filters: aFilters,
 				success: function (oData2, oResponse) {
 					sap.ui.core.BusyIndicator.hide();
-					sap.m.MessageBox.success("Email(s) enviado(s) com sucesso", {
+					sap.m.MessageBox.success(this.getText("email_sucesso"), {
 						title: "Email",
 						actions: [MessageBox.Action.OK],
 						initialFocus: MessageBox.Action.OK,
@@ -594,17 +593,17 @@ sap.ui.define([
 			var sEkgrp = globalModel.getProperty("/Ekgrp");
 			var sLifnr = globalModel.getProperty("/Lifnr");
 
-			MessageBox.confirm("Deseja imprimir o espelho do pedido?", {
-				title: "Espelho do Pedido",
+			MessageBox.confirm(this.getText("deseja_espelho"), {
+				title: this.getText("espelho_pedido"),
 				actions: [
-					"Analítico",
-					"Sintético",
+					this.getText("analitico"),
+					this.getText("sintetico"),
 					MessageBox.Action.CANCEL
 				],
-				emphasizedAction: "Analítico",
-				initialFocus: "Analítico",
+				emphasizedAction: this.getText("analitico"),
+				initialFocus: this.getText("analitico"),
 				onClose: (oAction) => {
-					if (oAction === "Analítico") {
+					if (oAction === this.getText("analitico")) {
 						var sObjectPath = localModel.createKey("/PrnMateriaisLojas", {
 							Ekgrp: sEkgrp,
 							Lifnr: sLifnr
@@ -612,7 +611,7 @@ sap.ui.define([
 						var sURL = localModel.sServiceUrl + sObjectPath + "/$value";
 						window.open(sURL, '_blank');
 					}
-					if (oAction === "Sintético") {
+					if (oAction === this.getText("sintetico")) {
 						var sObjectPath = localModel.createKey("/PrnMaterial", {
 							Ekgrp: sEkgrp,
 							Lifnr: sLifnr
