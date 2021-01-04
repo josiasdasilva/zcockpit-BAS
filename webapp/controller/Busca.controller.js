@@ -3,13 +3,18 @@ sap.ui.define([
 	"sap/ui/Device",
 	"sap/ui/core/routing/History",
 	"sap/ui/core/Fragment",
-	'sap/m/Token',
+    'sap/m/Token',
+    "dma/zcockpit/model/formatter",
+    "sap/m/MessageBox",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/json/JSONModel"
-], function (BaseController, Device, History, Fragment, Token, JSONModel, Filter, FilterOperator) {
+], function (BaseController, Device, History, Fragment, Token, formatter, MessageBox, JSONModel, Filter, FilterOperator) {
 	"use strict";
 	return BaseController.extend("dma.zcockpit.controller.Busca", {
+        formatter: formatter,
+        _recupera_valor: null,
+        _recupera_qtde: null,
 		onInit: function () {
 			this.getRouter().getRoute("busca").attachPatternMatched(this._onMasterMatched, this);
 			//this.habilitaBotaoPedido();
@@ -66,24 +71,120 @@ sap.ui.define([
 		habilitaBotaoPedido: function () {
 			this.filtraProdutos(true);
 
+            var localModel = this.getModel();
 			var globalModel = this.getModel("globalModel");
 			var btnPedido = this.byId("botaoPedido");
 			// Filtros
-			// var sWerks = this.byId("lojasInput").getValue() !== "";
-			var sEkgrp = this.byId("compradorInput").getValue() !== "";
-			var sLifnr = this.byId("fornecedorInput").getValue() !== "";
-			var sEbeln = this.byId("contratoInput").getValue() !== "";
+			// var sWerks = this.byId("lojasInput").getValue();
+			var sEkgrp = this.byId("compradorInput").getValue();
+			var sLifnr = this.byId("fornecedorInput").getValue();
+			var sEbeln = this.byId("contratoInput").getValue();
 			// Configurações
-			var sDtRemessa = globalModel.getProperty("/DtRemessa") !== "";
-			var sComboPedido = globalModel.getProperty("/TpPedido") !== "";
-			// var sTpEntrada = globalModel.getProperty("/TpEntrada") !== "";
+			var sDtRemessa = globalModel.getProperty("/DtRemessa");
+			var sComboPedido = globalModel.getProperty("/TpPedido");
+			// var sTpEntrada = globalModel.getProperty("/TpEntrada");
 
 			btnPedido.setEnabled(sDtRemessa &&
-				sComboPedido &&
-				// sTpEntrada &&
-				//sWerks && 
-				sEkgrp &&
-				(sLifnr || sEbeln));
+				(sComboPedido !== "") &&
+				// (sTpEntrada !== "") &&
+				//(sWerks !== "") && 
+				(sEkgrp !== "" ) &&
+				((sLifnr !== "") || (sEbeln !== "")));
+
+            // var aFilters = [];
+            this.byId("botaoRecupera").setEnabled(false);
+            // Habilita botão Recupera Pedido
+			if ((sEkgrp !== "") && (sLifnr !== "")) {
+                var sObjectPath = this.getModel().createKey("/RecuperaPedido", {
+                    Ekgrp: sEkgrp,
+                    Lifnr: sLifnr
+                });            
+                localModel.read(sObjectPath, {
+                    method: "GET",
+                    // filters: aFilters,
+                    success: (oData2, oResponse) => {
+                        // if (oData2.results)
+                        this.byId("botaoRecupera").setEnabled(true);
+                        this._recupera_valor = oData2.Valor;
+                        this._recupera_qtde = oData2.Requisicao;
+                    },
+                    error: function (oError) {
+                        this.byId("botaoRecupera").setEnabled(false);
+                    }
+                });          
+                // // Filtro Comprador
+                // if (sEkgrp !== "") {
+                //     var fEkgrp = new sap.ui.model.Filter({
+                //         path: "Ekgrp",
+                //         operator: sap.ui.model.FilterOperator.EQ,
+                //         value1: sEkgrp.toUpperCase()
+                //     });
+    			// 	aFilters.push(fEkgrp);
+                // }
+                // // Filtro Fornecedor
+                // if (sLifnr !== ""){
+                //     var fLifnr = new sap.ui.model.Filter({
+                //         path: "Lifnr",
+                //         operator: sap.ui.model.FilterOperator.EQ,
+                //         value1: sLifnr.toUpperCase()
+                //     });
+                //     aFilters.push(fLifnr);
+                // }
+            }
+
+  
+
+        },
+		onRecuperaPressed: function (oEvent) {
+			var localModel = this.getModel();
+			var globalModel = this.getModel("globalModel");
+
+			globalModel.setProperty("/DtRemessa", this.byId("idDtRemessa").getDateValue());
+			globalModel.setProperty("/TpPedido", this.byId("idComboPedido").getValue());
+			// globalModel.setProperty("/TpEntrada", this.byId("idTpEntrada").getValue());
+
+            var sEkgrp = this.byId("compradorInput").getValue();
+            var sLifnrName = this.byId("fornecedorInput").getDescription();
+            var sLifnr = this.byId("fornecedorInput").getValue();
+
+            MessageBox.confirm(this.getText("msg_recupera1") + " " + sLifnrName +
+                               " (" + sLifnr + ") " +
+                               this.getText("msg_recupera2") + " " + this._recupera_qtde + " " + 
+                               this.getText("msg_recupera3") + " " + formatter.fullNumberStr(this._recupera_valor) + " " + 
+                               this.getText("msg_recupera4") , {
+                title: this.getText("msg_recupera_title"),
+                actions: [
+                    MessageBox.Action.YES,
+                    MessageBox.Action.NO
+                ],
+                emphasizedAction: MessageBox.Action.YES,
+                initialFocus: MessageBox.Action.YES,
+                onClose: (oAction) => {
+                    if (oAction === MessageBox.Action.YES) {
+                        // agrupa todos os filtros da tela
+                        var aFilters = [];
+                        this.montaFiltros(aFilters, true);
+
+                        // executa busca dos produtos na ficha técnica
+                        sap.ui.core.BusyIndicator.show();
+                        localModel.read("/PORecupera", {
+                            method: "GET",
+                            filters: aFilters,
+                            success: (oData2, oResponse) => {
+                                sap.ui.core.BusyIndicator.hide();
+                                this.getRouter().navTo("pedido", {
+                                    Ekgrp: sEkgrp,
+                                    Lifnr: sLifnr
+                                }, true);
+                            },
+                            error: (oError) => {
+                                sap.ui.core.BusyIndicator.hide();
+                                // mensagem de erro !!!!!!!!!!!!!!!!!!!!!!!
+                            }
+                        });
+                    }
+                }
+            });            
 		},
 		onPedidoPressed: function (oEvent) {
 			var localModel = this.getModel();

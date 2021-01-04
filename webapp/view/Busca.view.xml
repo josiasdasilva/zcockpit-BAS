@@ -241,6 +241,7 @@
 		<!--	</Bar>-->
 		<!--</footer>-->
 		<headerContent>
+            <Button text="{i18n>recupera}" width="130px" id="botaoRecupera" icon="sap-icon://cart" type="Default" press="onRecuperaPressed" enabled="false"/>
 			<Button text="{i18n>pedido}" width="100px" id="botaoPedido" icon="sap-icon://cart" type="Accept" press="onPedidoPressed" enabled="false"/>
 			<Button width="4em" id="btnConfig" press="onConfig" icon="sap-icon://action-settings" visible="false"/>
 		</headerContent>

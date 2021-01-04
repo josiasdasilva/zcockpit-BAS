@@ -16,9 +16,9 @@
         "--standalone",
         "/dmazcockpit/index.html",
         "--ui5",
-        "{\"version\":\"1.38.47\"}"
+        "{\"version\":\"1.38.48\"}"
       ],
-      "envFile": "${workspaceFolder}/.env4",
+      "envFile": "${workspaceFolder}/.env6",
       "preLaunchTask": "Build zcockpit-bas"
     }
   ]

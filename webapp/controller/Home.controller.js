@@ -103,7 +103,6 @@ sap.ui.define([
 				var localModel = this.getModel();
 				var sUname = window.location.href.includes("localhost") || window.location.href.includes("trial") ? "9067001" : sap.ushell.Container
 					.getUser().getId();
-				debugger;
 				var sObjectPath = localModel.createKey("/Usuario", {
 					Uname: sUname
 				});
