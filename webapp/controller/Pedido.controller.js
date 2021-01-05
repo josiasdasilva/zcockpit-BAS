@@ -367,7 +367,9 @@ sap.ui.define([
 				const element = oEvt.getSource().getItems()[index];
 				element.removeStyleClass('selecetMaterial');
 				if (this.indexPressedItem >= 0 && this.indexPressedItem === index) {
-					element.addStyleClass('selecetMaterial');
+                    element.addStyleClass('selecetMaterial');
+                    // oEvt.getSource().setFirstVisibleRow(index);
+                    element.getDomRef().scrollIntoView();
 				}
 
 			}
