@@ -40,6 +40,10 @@ html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
     background: #acbcde;
 }
 
+.campoObrigatorio {
+    background: #ff5d5d;
+}
+
 .sapMListTbl .sapMLIBSelectD>.sapUiIcon {
     font-size: 1rem;
     padding: 0.3rem 0;

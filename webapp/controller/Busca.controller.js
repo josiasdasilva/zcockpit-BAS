@@ -22,8 +22,8 @@ sap.ui.define([
 		_onMasterMatched: function (oEvent) {
 			var globalModel = this.getModel("globalModel");
 
-			this.byId("idDtRemessa").setDateValue(globalModel.getProperty("/DtRemessa"));
-			this.byId("idComboPedido").setValue(globalModel.getProperty("/TpPedido"));
+			// this.byId("idDtRemessa").setDateValue(globalModel.getProperty("/DtRemessa"));
+			// this.byId("idComboPedido").setValue(globalModel.getProperty("/TpPedido"));
 			// this.byId("idTpEntrada").setValue(globalModel.getProperty("/TpEntrada"));
 
 			var sEkgrp = oEvent.getParameter("arguments").Ekgrp;
@@ -80,14 +80,24 @@ sap.ui.define([
 			var sLifnr = this.byId("fornecedorInput").getValue();
 			var sEbeln = this.byId("contratoInput").getValue();
 			// Configurações
-			var sDtRemessa = globalModel.getProperty("/DtRemessa");
-			var sComboPedido = globalModel.getProperty("/TpPedido");
-			// var sTpEntrada = globalModel.getProperty("/TpEntrada");
+            var sDtRemessa = this.byId("idDtRemessa").getDateValue();
+            // if (sDtRemessa === "") {
+            //     this.byId("idDtRemessa").addStyleClass("campoObrigatorio");
+            // } else {
+            //     this.byId("idDtRemessa").removeStyleClass("campoObrigatorio");
+            // }
+			var sComboPedido = this.byId("idComboPedido").getValue();
+            // if (sComboPedido === "") {
+            //     this.byId("idComboPedido").addStyleClass("campoObrigatorio");
+            // } else {
+            //     this.byId("idComboPedido").removeStyleClass("campoObrigatorio");
+            // }
+            // var sTpEntrada = globalModel.getProperty("/TpEntrada");
 
 			btnPedido.setEnabled(sDtRemessa &&
-				(sComboPedido !== "") &&
-				// (sTpEntrada !== "") &&
-				//(sWerks !== "") && 
+                (sComboPedido !== "") &&
+                (sDtRemessa !== null) &&
+                (sComboPedido !== "") &&
 				(sEkgrp !== "" ) &&
 				((sLifnr !== "") || (sEbeln !== "")));
 
@@ -104,7 +114,8 @@ sap.ui.define([
                     // filters: aFilters,
                     success: (oData2, oResponse) => {
                         // if (oData2.results)
-                        this.byId("botaoRecupera").setEnabled(true);
+                        this.byId("botaoRecupera").setEnabled((sDtRemessa !== null) &&
+                                                              (sComboPedido !== ""));
                         this._recupera_valor = oData2.Valor;
                         this._recupera_qtde = oData2.Requisicao;
                     },
@@ -131,9 +142,6 @@ sap.ui.define([
                 //     aFilters.push(fLifnr);
                 // }
             }
-
-  
-
         },
 		onRecuperaPressed: function (oEvent) {
 			var localModel = this.getModel();
@@ -223,15 +231,15 @@ sap.ui.define([
 		onExpand: function (oEvent) {
 			var globalModel = this.getModel("globalModel");
 			var sValue = oEvent.getParameter("expand");
-			if (sValue) {
-				this.byId("idDtRemessa").setDateValue(globalModel.getProperty("/DtRemessa"));
-				this.byId("idComboPedido").setValue(globalModel.getProperty("/TpPedido"));
-				// this.byId("idTpEntrada").setValue(globalModel.getProperty("/TpEntrada"));
-			} else {
-				globalModel.setProperty("/DtRemessa", this.byId("idDtRemessa").getDateValue());
-				globalModel.setProperty("/TpPedido", this.byId("idComboPedido").getValue());
-				// globalModel.setProperty("/TpEntrada", this.byId("idTpEntrada").getValue());
-			}
+			// if (sValue) {
+			// 	this.byId("idDtRemessa").setDateValue(globalModel.getProperty("/DtRemessa"));
+			// 	this.byId("idComboPedido").setValue(globalModel.getProperty("/TpPedido"));
+			// 	this.byId("idTpEntrada").setValue(globalModel.getProperty("/TpEntrada"));
+			// } else {
+			// 	globalModel.setProperty("/DtRemessa", this.byId("idDtRemessa").getDateValue());
+			// 	globalModel.setProperty("/TpPedido", this.byId("idComboPedido").getValue());
+			// 	globalModel.setProperty("/TpEntrada", this.byId("idTpEntrada").getValue());
+			// }
 		},
 		onNavBack: function (oEvent) {
 			this.getRouter().navTo("home", true); //}
