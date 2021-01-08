@@ -17,18 +17,14 @@
 										<items>
 											<FlexBox width="100%" class="flexBoxConfig" id="box6_copy" direction="Column">
 												<items>
-													<Label xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
-														text="{i18n>dtremessa}" width="100%" required="true" id="label0"/>
-													<DatePicker xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
-														id="idDtRemessa" value="" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy" required="true"/>
+													<Label text="{i18n>dtremessa}" width="100%" required="true" id="label0"/>
+													<DatePicker id="idDtRemessa" value="" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy" required="true" change="onDtRemessa"/>
 												</items>
 											</FlexBox>
 											<FlexBox width="100%" class="flexBoxConfig" id="box7_copy" direction="Column">
 												<items>
-													<Label xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
-														text="{i18n>tppedido}" width="100%" required="true" id="label1"/>
-													<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
-														showSecondaryValues="true" items="{path: '/TipoPedido', sorter: { path: 'Bsart' } }" width="100%" required="true" id="idComboPedido">
+													<Label text="{i18n>tppedido}" width="100%" required="true" id="label1"/>
+													<ComboBox showSecondaryValues="true" items="{path: '/TipoPedido', sorter: { path: 'Bsart' } }" width="100%" required="true" id="idComboPedido" selectionChange="onTipoPedido">
 														<items>
 															<core:ListItem xmlns:core="sap.ui.core" key="{Bsart}" text="{Bsart}" additionalText="{Batxt}"
 																id="idListPedido_copy_idComboPedido_0_idComboPedido_0_idComboPedido_0"/>

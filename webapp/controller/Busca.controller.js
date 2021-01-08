@@ -78,7 +78,7 @@ sap.ui.define([
 			// var sWerks = this.byId("lojasInput").getValue();
 			var sEkgrp = this.byId("compradorInput").getValue();
 			var sLifnr = this.byId("fornecedorInput").getValue();
-			var sEbeln = this.byId("contratoInput").getValue();
+			// var sEbeln = this.byId("contratoInput").getValue();
 			// Configurações
             var sDtRemessa = this.byId("idDtRemessa").getDateValue();
             // if (sDtRemessa === "") {
@@ -94,12 +94,12 @@ sap.ui.define([
             // }
             // var sTpEntrada = globalModel.getProperty("/TpEntrada");
 
-			btnPedido.setEnabled(sDtRemessa &&
-                (sComboPedido !== "") &&
+			btnPedido.setEnabled(
                 (sDtRemessa !== null) &&
                 (sComboPedido !== "") &&
 				(sEkgrp !== "" ) &&
-				((sLifnr !== "") || (sEbeln !== "")));
+                (sLifnr !== "")
+            );
 
             // var aFilters = [];
             this.byId("botaoRecupera").setEnabled(false);
@@ -246,7 +246,13 @@ sap.ui.define([
 		},
 		deletePressLojas: function (oEvent) {
 			this.clearUF(oEvent);
-		},
+        },
+        onTipoPedido: function (oEvent) {
+            this.habilitaBotaoPedido();
+        },
+        onDtRemessa: function (oEvent) {
+            this.habilitaBotaoPedido();
+        },
 		/* Value Help UF */
 		onF4UF: function (oEvent) {
 			if (!this._F4UFDialog) {
