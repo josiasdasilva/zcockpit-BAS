@@ -28,11 +28,11 @@
 								</items>
 							</SegmentedButton>
 						</contentRight>
-						<contentLeft>
+						<!-- <contentLeft>
 							<Input xmlns="sap.m" id="_input_filter_matnr" width="4.5em" maxLength="10"/>
 							<Input xmlns="sap.m" id="_input_filter_maktx" width="13em" maxLength="30"/>
 							<ToggleButton icon="sap-icon://filter" press="onFilterPress" id="button1"/>
-						</contentLeft>
+						</contentLeft> -->
 					</Bar>
 					<Table xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui" xmlns:semantic="sap.m.semantic"
 						xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:sap.ui.core="sap.ui.core" xmlns="sap.m"
