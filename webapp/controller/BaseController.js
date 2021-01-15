@@ -47,7 +47,9 @@ sap.ui.define([
 		getText: function(sText){
 			return this.getResourceBundle().getText(sText);
 		},
-
+		getTextWithParams: function(sText, aParams){
+			return this.getResourceBundle().getText(sText,aParams);
+		},
 		/**
 		 * Event handler for navigating back.
 		 * It there is a history entry we go one step back in the browser history

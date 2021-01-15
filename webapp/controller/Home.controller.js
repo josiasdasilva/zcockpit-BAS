@@ -30,7 +30,7 @@ sap.ui.define([
 			}];
 			this.getOwnerComponent().getModel().setSizeLimit(9999);
 
-			this.sUname = window.location.href.includes("localhost") || window.location.href.includes("trial") ? "9067001" : sap.ushell.Container //9067001
+			this.sUname = window.location.href.includes("localhost") || window.location.href.includes("studio") ? "9066004" : sap.ushell.Container //9067001
 				.getUser().getId();
 
 			this.getRouter().getRoute("home").attachPatternMatched(this._onMasterMatched, this);
@@ -101,7 +101,7 @@ sap.ui.define([
 			return new Promise((resolve, reject) => {
 				var globalModel = this.getModel("globalModel");
 				var localModel = this.getModel();
-				var sUname = window.location.href.includes("localhost") || window.location.href.includes("trial") ? "9067001" : sap.ushell.Container
+				var sUname = window.location.href.includes("localhost") || window.location.href.includes("studio") ? "9066004" : sap.ushell.Container
 					.getUser().getId();
 				var sObjectPath = localModel.createKey("/Usuario", {
 					Uname: sUname
