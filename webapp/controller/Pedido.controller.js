@@ -434,7 +434,7 @@ sap.ui.define([
                 this._pedidoBusyDialog.close();
             });*/
         },
-        setMessagePedidoPreogressDialog: function (sText) {
+        setMessagePedidoProgressDialog: function (sText) {
             this.getView().getModel("pedidoProgress").setProperty("/text", sText);
         },
         onPedidoProgressDialogClosed: function (oEvent) {
@@ -463,14 +463,27 @@ sap.ui.define([
 
                 //Create function for handling websocket messages
                 socket.onmessage = (oMsg) => {
-                    if(oMessage.idMessage !== this.idMessage){
+                    let oMessage = JSON.parse(oMsg.data);
+                    if (oMessage.idMessage !== this.idMessage) {
                         return;
                     }
-                    let oMessage = JSON.parse(oMsg.data);
+
+                    if (oMessage.message && oMessage.message.length > 0 && oMessage.failed) {
+                        sap.m.MessageBox.error(this.getText("erro_criacao_pedido") + "\n" +
+                            oMessage.message, {
+                            title: this.getText("pedido_nao_criado"),
+                            actions: [MessageBox.Action.OK],
+                            initialFocus: MessageBox.Action.OK,
+                            styleClass: sResponsivePaddingClasses
+                        });
+                        return;
+                    }
+
                     if (oMessage.complete) {
                         this._pedidoBusyDialog.close();
+                        this.dialogoCriaPedido(oMessage.list, null);
                     } else {
-                        this.setMessagePedidoPreogressDialog(this.getTextWithParams("pedido_status"[oMessage.createCount.toString(), oMessage.totalCount.toString()]));
+                        this.setMessagePedidoProgressDialog(this.getTextWithParams("pedido_status", [oMessage.createdCount.toString(), oMessage.totalCount.toString()]));
                     }
 
                 };
@@ -503,7 +516,7 @@ sap.ui.define([
                 success: (oData2, oResponse) => {
                     sap.ui.core.BusyIndicator.hide();
                     this.idMessage = oData2.Mensagem;
-
+                    return;
                     if (oData2.Nroseq > 0) {
                         this.dialogoCriaPedido(oData2, oData2.Nroseq);
                         // sap.m.MessageBox.success("Número de pedidos criados: " + oData2.Ebeln.toString() + "\n" +
@@ -542,17 +555,18 @@ sap.ui.define([
         },
         /* Diálogo Pedidos Criados */
         dialogoCriaPedido: function (oData2, pNroSeq) {
+            this.getView().setModel(new sap.ui.model.json.JSONModel(oData2), "PedCriado");
             var aFilters = [];
             if (!this._PedCriadoDialog) {
                 this._PedCriadoDialog = sap.ui.xmlfragment("dma.zcockpit.view.fragment.ped_criado", this);
                 this.getView().addDependent(this._PedCriadoDialog);
             }
-            aFilters.push(new sap.ui.model.Filter(
+            /*aFilters.push(new sap.ui.model.Filter(
                 "Nroseq",
                 sap.ui.model.FilterOperator.EQ,
                 pNroSeq
             ));
-            this._PedCriadoDialog.getContent()[0].getBinding("items").filter(aFilters);
+            this._PedCriadoDialog.getContent()[0].getBinding("items").filter(aFilters);*/
             this._PedCriadoDialog.open();
         },
         _handlePedCriadoPrint: function (oEvent) {

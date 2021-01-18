@@ -2,7 +2,7 @@
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 	<BusyDialog
-		title="Pedido(s) em criação"
+		title="{i18n>pedidoCriacao}"
 		text="{pedidoProgress>/text}"
 		close="onPedidoProgressDialogClosed" />
 </core:FragmentDefinition>

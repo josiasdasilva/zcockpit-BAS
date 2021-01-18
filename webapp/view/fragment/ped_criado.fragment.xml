@@ -1,6 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 	<Dialog title="Pedido(s) criado com sucesso">
-		<Table xmlns:core="sap.ui.core" xmlns="sap.m" noDataText="No Products Found" items="{path:'/PedCriado'}" mode="None" width="auto" id="table1">
+		<!--<Table xmlns:core="sap.ui.core" xmlns="sap.m" noDataText="No Products Found" items="{path:'/PedCriado'}" mode="None" width="auto" id="table1">-->
+        <Table xmlns:core="sap.ui.core" xmlns="sap.m" noDataText="No Products Found" items="{path:'PedCriado>/'}" mode="None" width="auto" id="table1">
 		    <columns>
 		        <Column hAlign="Center" width="10em" id="column2">
 		            <header>
@@ -20,8 +21,8 @@
 		    <items>
 		        <ColumnListItem type="Active" id="item1___table1_0_copy_table1_0">
 		            <cells>
-		                <Text text="{PedEbeln}" id="text7___table1_0_copy_table1_0"/>
-		                <Text text="{Werks}" id="text8___table1_0_copy_table1_0"/>
+		                <Text text="{PedCriado>PedEbeln}" id="text7___table1_0_copy_table1_0"/>
+		                <Text text="{PedCriado>Werks}" id="text8___table1_0_copy_table1_0"/>
 		                </cells>
 		            
 		        </ColumnListItem>
