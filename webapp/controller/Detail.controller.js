@@ -96,7 +96,7 @@ sap.ui.define([
                                     });
                                 });
 
-                                
+
                                 oTable._rowIndexOfInputFields = 0;
                                 oTable.getItems()[oTable._currentIndex].addStyleClass('selecetMaterial');
                                 for (let itemTable of oTable.getItems()) {
@@ -314,17 +314,47 @@ sap.ui.define([
             this.oPopoverContact.openBy(e.getSource());
             this.oPopoverContact.ebeln = oData.Ebeln;
         },
+        previousMaterial: function (oEvt) {
+            this.navDetail(false);
+        },
+        nextMaterial: function (oEvt) {
+            this.navDetail(true);
+        },
+        navDetail: function (isForward) {
+            let oModelDatapedidoNavList = this.getView().getModel('pedidoListNav').getData();
+            let indexNav = isForward ? oModelDatapedidoNavList.current + 1 : oModelDatapedidoNavList.current - 1;
+            let itemMaterial = this.pedidoNavList.list[indexNav - 1];
+
+            localStorage.removeItem("pedidoNavList");
+            localStorage.setItem("pedidoNavList", JSON.stringify({ ...this.pedidoNavList, current: indexNav }));
+
+            let globalModel = this.getModel("globalModel");
+            let sMatnr = itemMaterial.Matnr;
+            let sMaabc = itemMaterial.Maabc;
+            globalModel.setProperty("/Matnr", sMatnr);
+            globalModel.setProperty("/codABC", sMaabc);
+            this.getRouter().navTo("detail", {
+                Ekgrp: globalModel.getProperty("/Ekgrp"),
+                Lifnr: globalModel.getProperty("/Lifnr"),
+                Matnr: sMatnr,
+                Werks: globalModel.getProperty("/Werks")
+            }, true);
+        },
         onObjectMatched: function (oEvent) {
             //var oViewModel = this.getModel("detailView ");
+            this.pedidoNavList = JSON.parse(localStorage.getItem("pedidoNavList"));
+            this.getView().setModel(new JSONModel({ current: this.pedidoNavList.current, size: this.pedidoNavList.size }), "pedidoListNav");
+
             var globalModel = this.getModel("globalModel");
 
             globalModel.setProperty("/colVlrCompra", this._segCompra.getProperty("selectedKey") === "real")
 
             var sEkgrp = oEvent.getParameter("arguments").Ekgrp;
-            globalModel.setProperty("/Ekgrp", sEkgrp);
             var sLifnr = oEvent.getParameter("arguments").Lifnr;
-            globalModel.setProperty("/Lifnr", sLifnr);
             var sMatnr = oEvent.getParameter("arguments").Matnr;
+
+            globalModel.setProperty("/Ekgrp", sEkgrp);
+            globalModel.setProperty("/Lifnr", sLifnr);
             globalModel.setProperty("/Matnr", sMatnr);
             var sObjectPath = this.getModel().createKey("/PO", {
                 Ekgrp: sEkgrp,

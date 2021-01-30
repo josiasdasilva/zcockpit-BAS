@@ -23,7 +23,7 @@ sap.ui.define([
         formatter: formatter,
         onInit: function () {
 
-            this.initWSocket();
+            //this.initWSocket();
 
             this.getRouter().getRoute("pedido").attachPatternMatched(this.onObjectMatched, this);
 
@@ -48,6 +48,7 @@ sap.ui.define([
             }, this._oTablePedidoHeader);
             //FAFN - End
             this.getView().byId("_i_pedido_0").setColor("#f00000");
+
         },
         //FAFN - Begin
         onClickColumnHeader: function (oID) {
@@ -255,6 +256,13 @@ sap.ui.define([
         //			oSwipeContent.setText("Delete").setType("Reject");
         //		},
         onObjectMatched: function (oEvent) {
+
+            let oPedidoNav = JSON.parse(localStorage.getItem("pedidoNavList"));
+            if (oPedidoNav && oPedidoNav.current) {
+                this.indexPressedItem = oPedidoNav.current - 1;
+            }
+
+            localStorage.removeItem("pedidoNavList");
             var localModel = this.getModel();
             var globalModel = this.getModel("globalModel");
 
@@ -344,10 +352,23 @@ sap.ui.define([
             cabec.setCondensed(!cabec.getCondensed());
         },
         toDetail: function (oEvent) {
+
+            //Prepare list for the next screen navigate between materials
+            let pedidoList = [];
+            let index = 0;
+            for (let item of this._oTablePedido.getItems()) {
+                index++;
+                pedidoList.push({ index: index, ...this.getView().getModel().getProperty(item.getBindingContext().sPath) });
+
+            }
+
             //highlight kinha pressionada
             this.indexPressedItem = oEvent.getSource().getParent().getItems().findIndex((item) => {
                 return item.sId === oEvent.mParameters.id
             });
+
+            let pedidoNavList = { current: this.indexPressedItem + 1, list: pedidoList, size: pedidoList.length }
+            localStorage.setItem("pedidoNavList", JSON.stringify(pedidoNavList));
 
             var globalModel = this.getModel("globalModel");
             var sMatnr = oEvent.getSource().getAggregation("cells")[0].getTitle();

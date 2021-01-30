@@ -14,9 +14,21 @@
 					<ObjectAttribute text="{globalModel>/codABC}" id="__attribute4" title="{i18n>xmat.codabc}"/>
 				</attributes>
 			</ObjectHeader>
+            <Toolbar>
+				<Button text="{i18n>materialAnterior}" press="previousMaterial" icon="sap-icon://navigation-left-arrow" enabled="{= ${pedidoListNav>/current} > 1}"/>
+				<ToolbarSpacer/>
+				<Title text="{pedidoListNav>/current} {i18n>de} {pedidoListNav>/size} {i18n>materiais} " level="H4"/>
+				<ToolbarSpacer/>
+                <Button text="{i18n>proximoMaterial}" press="nextMaterial" icon="sap-icon://navigation-right-arrow"  enabled="{= ${pedidoListNav>/size} > ${pedidoListNav>/current}}"/>
+			</Toolbar>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" expandable="false">
 				<!--<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" stretchContentHeight="true" expanded="{device>/isNoPhone}">-->
 				<items>
+                <!--<IconTabFilter
+                count="1/3"
+					showAll="true"
+					text="materiais" />
+				<IconTabSeparator />-->
 					<!-- Tabela Compras   ***********************************************  -->
 					<IconTabFilter text="Compra" icon="sap-icon://cart-3" id="__filter1">
 						<content>
@@ -856,6 +868,9 @@
 			<Button text="{i18n>gravar_sugestao}" id="botaoGravarSugestao" press="gravaValores" type="Accept"/>
 			<Button text="{i18n>reiniciar}" type="Reject" id="negativeButton" press="reiniciaValores" visible="false"/>
 			<Button icon="sap-icon://print" press="toPrint"/>
-		</headerContent>
+        </headerContent>
+        <subHeader>
+		
+		</subHeader>
 	</Page>
 </mvc:View>
