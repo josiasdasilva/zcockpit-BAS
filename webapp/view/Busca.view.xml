@@ -88,11 +88,41 @@
 														width="100%" id="fornecedorInput" type="Text" placeholder="{i18n>esc_fornecedor}" showSuggestion="true" showValueHelp="true"
 														valueHelpRequest="onF4Fornecedor" valueHelpOnly="true" fieldWidth="120px"/>
 												</items>
-											</FlexBox>
+											</FlexBox>                                         
 											<FlexBox width="3rem" id="__box15" alignContent="End" alignItems="Center">
 												<items>
 													<Button xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
 														width="3rem" id="fornecedorDelete" icon="sap-icon://delete" press="clearFornecedor"/>
+												</items>
+											</FlexBox>
+										</items>
+									</FlexBox>
+								</content>
+							</Panel>
+                            							<Panel xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
+								id="__panel21" width="auto">
+								<content>
+									<FlexBox width="auto" id="__box121" fitContainer="true">
+										<items>
+											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+												width="8rem" id="__box131" alignItems="Center" alignContent="Start">
+												<items>
+													<Title xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
+														text="{i18n>esc_hierarquia}" width="8rem" titleStyle="H3"/>
+												</items>
+											</FlexBox>
+			                                <FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+												width="100%" alignItems="Center">
+												<items>
+													<MultiInput xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
+														width="240px" id="hieraquiaInput" type="Text" placeholder="{i18n>esc_hierarquia}" showSuggestion="true" showValueHelp="true"
+														valueHelpRequest="onF4Hierarquia" valueHelpOnly="true"/>
+												</items>
+											</FlexBox>                                            
+											<FlexBox width="3rem" id="__box151" alignContent="End" alignItems="Center">
+												<items>
+													<Button xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
+														width="3rem" id="HierarquiaDelete" icon="sap-icon://delete" press="clearFornecedor"/>
 												</items>
 											</FlexBox>
 										</items>

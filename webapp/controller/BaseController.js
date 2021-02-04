@@ -24,7 +24,27 @@ sap.ui.define([
 		getModel: function (sName) {
 			return this.getView().getModel(sName);
 		},
+		onValueHelpGenericCancelPress: function (oEvt) {
+			oEvt.oSource.close();
+		},
+		onValueHelpGenericAfterClose: function (oEvt) {
+			oEvt.oSource.destroy();
+        },
+		_createFilterForSelectionSet: function (aSelectionSet) {
+			let aFilters = [];
+			for (let itemFilter of aSelectionSet) {
 
+				if (itemFilter.getValue && itemFilter.getValue().length > 0) {
+					aFilters.push(new sap.ui.model.Filter({
+						path: itemFilter.mProperties.name,
+						operator: sap.ui.model.FilterOperator.Contains,
+						value1: itemFilter.getValue().toUpperCase()
+					}));
+				}
+
+			}
+			return aFilters;
+		},        
 		/**
 		 * Convenience method for setting the view model in every controller of the application.
 		 * @public
