@@ -32,23 +32,35 @@ sap.ui.define([
                 }]
             });
 
-            if (!this._oHierarquiaSearchHelpDialog) {
-                this._oHierarquiaSearchHelpDialog = sap.ui.xmlfragment("dma.zcockpit.view.fragment.HierarquiaSearchHelp", this);
-                this.getView().addDependent(this._oHierarquiaSearchHelpDialog);
-            }
+            //if (!this._oHierarquiaSearchHelpDialog) {
+            this._oHierarquiaSearchHelpDialog = sap.ui.xmlfragment("dma.zcockpit.view.fragment.HierarquiaSearchHelp", this);
+            this.getView().addDependent(this._oHierarquiaSearchHelpDialog);
+            //}
 
         },
         onValueHelpHierarquiaSearchOkPress: function (oEvent) {
             let aTokens = oEvent.getParameter("tokens");
             this._hieraquiaInput.setTokens(aTokens);
+            this.habilitaBotaoPedido();
             oEvent.oSource.close();
         },
         onF4Hierarquia: function () {
+
+            let sEkgrp = this.byId("compradorInput").getValue();
+            let sLifnr = this.byId("fornecedorInput").getValue();
+            let aFilters = [];
+            if (sEkgrp && sEkgrp.length > 0) {
+                aFilters.push(new sap.ui.model.Filter("Ekgrp", sap.ui.model.FilterOperator.EQ, sEkgrp));
+            }
+            if (sLifnr && sLifnr.length > 0) {
+                aFilters.push(new sap.ui.model.Filter("Lifnr", sap.ui.model.FilterOperator.EQ, sLifnr));
+            }
 
             this.initSearchHelHierarquia();
             this._oHierarquiaSearchHelpDialog.getTable().setModel(this.oColHierarquiaSearchModel, "columns");
             if (this._oHierarquiaSearchHelpDialog.getTable().bindRows) {
                 this._oHierarquiaSearchHelpDialog.getTable().bindAggregation("rows", "/Hierarquia");
+                this._oHierarquiaSearchHelpDialog.getTable().getBinding("rows").filter(aFilters);
             }
 
             if (this._oHierarquiaSearchHelpDialog.getTable().bindItems) {
@@ -65,36 +77,52 @@ sap.ui.define([
                         })
                     });
                 });
-                //var oFilter1 = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.StartsWith, "M");
-                //var oFilter1 = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.StartsWith, "M");
-                //this._oHierarquiaSearchHelpDialog.getTable().getBinding("items").filter([oFilter1,oFilter2,oFilter3]);
+
             }
 
-            let oToken = new Token();
+            //let oToken = new Token();
             //oToken.setKey(this._hieraquiaInput.getSelectedKey());
             //oToken.setText(this._hieraquiaInput.getValue());
 
             //this._oHierarquiaSearchHelpDialog.setTokens([oToken]);
-            if (this._hieraquiaInput.getTokens().length > 0) {
-                this._oHierarquiaSearchHelpDialog.setTokens(this._hieraquiaInput.getTokens());
-            }
 
+            //if (this._hieraquiaInput.getTokens().length > 0) {
+            //  this._oHierarquiaSearchHelpDialog.setTokens(this._hieraquiaInput.getTokens());
+            //}
+            this._oHierarquiaSearchHelpDialog.setTokens(this._hieraquiaInput.getTokens());
 
             this._oHierarquiaSearchHelpDialog.open();
+            this._oHierarquiaSearchHelpDialog.update();
 
             this._oHierarquiaSearchHelpDialog.getTable().addEventDelegate({
                 onAfterRendering: (oEvt) => {
-                    this._oHierarquiaSearchHelpDialog.update();
+                    if (this._oHierarquiaSearchHelpDialog.update) {
+                        this._oHierarquiaSearchHelpDialog.update();
+                    }
                 }
             });
 
             this._oHierarquiaSearchHelpDialog.getTable().getBinding("rows").attachDataReceived(function (oEvt) {
-                this._oHierarquiaSearchHelpDialog.update();
+                //this._oHierarquiaSearchHelpDialog.setTokens([]);
+                //this._oHierarquiaSearchHelpDialog.setTokens(this._hieraquiaInput.getTokens());
+                if (this._oHierarquiaSearchHelpDialog.update) {
+                    this._oHierarquiaSearchHelpDialog.update();
+                }
             }.bind(this));
 
         },
         onFilterSearchHierarquia: function (oEvent) {
-            this._oHierarquiaSearchHelpDialog.getTable().getBinding("rows").filter(this._createFilterForSelectionSet(oEvent.mParameters.selectionSet));
+
+            let sEkgrp = this.byId("compradorInput").getValue();
+            let sLifnr = this.byId("fornecedorInput").getValue();
+            let aFilters = this._createFilterForSelectionSet(oEvent.mParameters.selectionSet);
+            if (sEkgrp && sEkgrp.length > 0) {
+                aFilters.push(new sap.ui.model.Filter("Ekgrp", sap.ui.model.FilterOperator.EQ, sEkgrp));
+            }
+            if (sLifnr && sLifnr.length > 0) {
+                aFilters.push(new sap.ui.model.Filter("Lifnr", sap.ui.model.FilterOperator.EQ, sLifnr));
+            }
+            this._oHierarquiaSearchHelpDialog.getTable().getBinding("rows").filter(aFilters);
         },
         _onMasterMatched: function (oEvent) {
             var globalModel = this.getModel("globalModel");
@@ -139,6 +167,7 @@ sap.ui.define([
             }
             if (sLifnr == undefined) {
                 this.clearFornecedor(oEvent);
+                this.clearHierarquia();
                 this.clearUF(oEvent);
                 this.clearContrato(oEvent);
             }
@@ -687,6 +716,7 @@ sap.ui.define([
             compradorInput.setValue("");
             compradorInput.setDescription("");
             this.clearFornecedor(oEvent);
+            this.clearHierarquia();
             this.clearContrato(oEvent);
             this.habilitaBotaoPedido();
         },
@@ -714,6 +744,7 @@ sap.ui.define([
 
                 compradorInput.bindElement(sObjectPath);
                 this.clearFornecedor(oEvent);
+                this.clearHierarquia();
                 this.clearContrato(oEvent);
             }
             oEvent.getSource().getBinding("items").filter([]);
@@ -742,6 +773,19 @@ sap.ui.define([
             this.clearContrato(oEvent);
             this.habilitaBotaoPedido();
         },
+        clearHierarquia: function (oEvent) {
+            this._hieraquiaInput.removeAllTokens();
+            this.habilitaBotaoPedido();
+            console.log('Remove hierarquia tokens')
+            /*fornecedorInput.setValue("");
+            fornecedorInput.setDescription("");
+            this.clearContrato(oEvent);
+            this.habilitaBotaoPedido();*/
+        },
+        onUpdateTokenHierarquia: function(oEvt){
+            this.habilitaBotaoPedido();
+            console.log(this._hieraquiaInput.getTokens().length);
+        },
         _handleF4fornecedorSearch: function (oEvent) {
             var aFilters = [];
             var sValue = oEvent.getParameter("value");
@@ -762,7 +806,9 @@ sap.ui.define([
                 fornecedorInput.setValue(oSelectedItem.getTitle());
                 fornecedorInput.setDescription(oSelectedItem.getDescription());
                 this.clearContrato(oEvent);
+                this.clearHierarquia();
             }
+
             oEvent.getSource().getBinding("items").filter([]);
             this.habilitaBotaoPedido();
         },
@@ -829,6 +875,20 @@ sap.ui.define([
             if ((sEkgrp === "") || (sLifnr === "")) {
                 aFilters = null;
             } else {
+
+
+                let orNodes = [];
+                for (let item of this._hieraquiaInput.getTokens()) {
+                    orNodes.push(new sap.ui.model.Filter("Node6", sap.ui.model.FilterOperator.EQ, item.mProperties.key));
+                }
+                let orFilterNodes = new sap.ui.model.Filter({
+                    filters: orNodes,
+                    and: false
+                });
+                if (orNodes.length > 0) {
+                    aFilters.push(orFilterNodes);
+                }
+
                 // Filtro Comprador
                 var fEkgrp = new sap.ui.model.Filter({
                     path: "Ekgrp",

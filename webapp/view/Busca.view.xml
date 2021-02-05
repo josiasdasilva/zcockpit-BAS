@@ -114,7 +114,7 @@
 			                                <FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
 												width="100%" alignItems="Center">
 												<items>
-													<MultiInput xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
+													<MultiInput tokenChange="onUpdateTokenHierarquia" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
 														width="240px" id="hieraquiaInput" type="Text" placeholder="{i18n>esc_hierarquia}" showSuggestion="true" showValueHelp="true"
 														valueHelpRequest="onF4Hierarquia" valueHelpOnly="true"/>
 												</items>
@@ -122,7 +122,7 @@
 											<FlexBox width="3rem" id="__box151" alignContent="End" alignItems="Center">
 												<items>
 													<Button xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
-														width="3rem" id="HierarquiaDelete" icon="sap-icon://delete" press="clearFornecedor"/>
+														width="3rem" id="HierarquiaDelete" icon="sap-icon://delete" press="clearHierarquia"/>
 												</items>
 											</FlexBox>
 										</items>

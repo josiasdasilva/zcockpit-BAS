@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar">
-	<ValueHelpDialog title="{i18n>esc_hierarquia}" supportMultiselect="true"   ok=".onValueHelpHierarquiaSearchOkPress" cancel=".onValueHelpGenericCancelPress" afterClose=".onValueHelpGenericCancelPress"  key="Node6" descriptionKey="Ltext">
+	<ValueHelpDialog title="{i18n>esc_hierarquia}" supportMultiselect="true"   ok=".onValueHelpHierarquiaSearchOkPress" cancel=".onValueHelpGenericCancelPress" afterClose=".onValueHelpGenericAfterClose"  key="Node6" descriptionKey="Ltext">
 		<filterBar>
 			<fb:FilterBar filterContainerWidth="15rem" advancedMode="true" search="onFilterSearchHierarquia">
 				<fb:filterGroupItems>
