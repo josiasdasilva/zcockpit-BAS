@@ -805,8 +805,9 @@ sap.ui.define([
                 var fornecedorInput = this.getView().byId(this.inputId);
                 fornecedorInput.setValue(oSelectedItem.getTitle());
                 fornecedorInput.setDescription(oSelectedItem.getDescription());
-                this.clearContrato(oEvent);
                 this.clearHierarquia();
+                this.clearContrato(oEvent);
+
             }
 
             oEvent.getSource().getBinding("items").filter([]);
