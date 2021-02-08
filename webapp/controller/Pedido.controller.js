@@ -274,6 +274,16 @@ sap.ui.define([
             this.updateTotal();
             // this.reiniciaIconesSort();
             this.recoverSortConfig();
+            this.getFornecedorInfo();
+        },
+        getFornecedorInfo: function () {
+            var globalModel = this.getModel("globalModel");
+            this.getView().getModel().read(`/Titulos('${globalModel.getProperty("/Lifnr")}')`,
+                {
+                    success: (res) => {
+                        this.getView().setModel(new JSONModel(res),'fornecedorInfo');
+                    }
+                });
         },
         // _getDialog: function () {
         // 	// create a fragment with dialog, and pass the selected data
@@ -322,6 +332,17 @@ sap.ui.define([
                 },
                 error: function (oError) { }
             });
+        },
+        handleDialogFornecedorInfoCancelButton: function () {
+            this._oPopoverFornecedorInfo.close();
+        },
+        onShowSupplierAddtionalInfo: function (oEvent) {
+            let globalModel = this.getModel("globalModel");
+            if (!this._oPopoverFornecedorInfo) {
+                this._oPopoverFornecedorInfo = sap.ui.xmlfragment("dma.zcockpit.view.fragment.FornecedorInfo", this);
+                this.getView().addDependent(this._oPopoverFornecedorInfo);
+            }
+            this._oPopoverFornecedorInfo.openBy(oEvent.getSource());
         },
         onNavBack: function (oEvent) {
             var globalModel = this.getModel("globalModel");

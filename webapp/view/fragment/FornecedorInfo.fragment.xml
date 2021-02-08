@@ -1,0 +1,39 @@
+<core:FragmentDefinition 	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<ResponsivePopover
+    showHeader="false"
+		class="sapUiPopupWithPadding"
+		placement="Bottom" >
+		<endButton>
+			<Button text="{i18n>close}" press="handleDialogFornecedorInfoCancelButton"/>
+		</endButton>
+	<content>
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplay354"
+			minWidth="1024"
+			maxContainerCols="2"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			labelSpanL="3"
+			labelSpanM="3"
+			emptySpanL="4"
+			emptySpanM="4"
+			columnsL="1"
+			columnsM="1">
+			<f:content>
+				<Label text="{i18n>nf_devolucao}" />
+				<Text text="{path: 'fornecedorInfo>/NfDev', formatter: '.formatter.float2digStr'}" />
+				<Label text="{i18n>verbas}" />
+				<Text text="{path: 'fornecedorInfo>/Verbas', formatter: '.formatter.float2digStr'}" />
+				<Label text="{i18n>descarga}" />
+				<Text text="{path: 'fornecedorInfo>/Descarga', formatter: '.formatter.float2digStr'}" />
+				<Label text="{i18n>total_vencido}" />
+				<Text text="{path: 'fornecedorInfo>/Total', formatter: '.formatter.float2digStr'}" />
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+    </content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

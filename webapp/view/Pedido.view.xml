@@ -1,7 +1,7 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:table="sap.ui" xmlns:semantic="sap.m.semantic"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:sap.ui.core="sap.ui.core" xmlns:l="sap.ui.layout"
 	controllerName="dma.zcockpit.controller.Pedido" height="100%">
-	<Page id="fullPage" navButtonPress="onNavBack" title="{pedidoView>/Mcod1}" floatingFooter="false" showNavButton="true"
+	<Page id="fullPage" navButtonPress="onNavBack" title="{globalModel>/Lifnr} - {globalModel>/Fornecedor}" floatingFooter="false" showNavButton="true"
 		enableScrolling="false" showFooter="false" showSubHeader="false">
 		<content>
 			<l:FixFlex id="flex0" minFlexSize="500">
@@ -377,6 +377,7 @@
 			<Button text="{i18n>xped.finalizapedido}" press="onCriaPedido" type="Accept"/>
 			<Button text="{i18n>xped.limpasugestao}" press="onResetPedido" type="Reject" visible="false"/>
 			<Button icon="sap-icon://print" press="toPrint"/>
+            <Button icon="sap-icon://lead" press="onShowSupplierAddtionalInfo"/>
 		</headerContent>
 	</Page>
 </mvc:View>
