@@ -1,3 +1,4 @@
 {
-    "actions": []
+    "actions": [],
+    "ui5ts.manifestlocation": "webapp/manifest.json"
 }
