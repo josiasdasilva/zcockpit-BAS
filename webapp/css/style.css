@@ -36,9 +36,41 @@ html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
     padding: 0rem;
 }
 
+
+
+
+
+.sapUiTableColRowHdr{
+    background: #acbcde;
+}
+.sapUiTableColHdr {
+    background: #acbcde;
+}
+.sapUiTableColCell {
+    padding: 0rem; 
+}
 .sapUiTableColHdrCnt {
     background: #acbcde;
 }
+.sapMListTbl .sapMLIBSelectD>.sapUiIcon {
+    font-size: 1rem;
+    padding: 0.3rem 0;
+}
+.labelPedido {
+    color: black;
+    font-size: 0.8rem;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: normal;
+}
+.sapUiTableColCell {
+    vertical-align: middle;
+    padding: 0.3em;
+}
+
+
+
+
+
 
 .campoObrigatorio {
     background: #ff5d5d;

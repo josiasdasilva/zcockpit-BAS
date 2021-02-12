@@ -873,7 +873,8 @@ sap.ui.define(
                 //Prepare list for the next screen navigate between materials
                 let pedidoList = [];
                 let index = 0;
-                for (let item of this._oTablePedido.getItems()) {
+                //for (let item of this._oTablePedido.getItems()) {
+                for (let item of this._oTablePedido.getRows()) {    
                     index++;
                     pedidoList.push({
                         index: index,
@@ -882,12 +883,16 @@ sap.ui.define(
                         .getProperty(item.getBindingContext().sPath),
                     });
                 }
+                 
+                //TODO
+                //this.getView().getModel('pedidoListModel').getData().root.parentNode
 
                 //highlight kinha pressionada
                 this.indexPressedItem = oEvent
                     .getSource()
                     .getParent()
-                    .getItems()
+                    //.getItems()
+                    .getRows()
                     .findIndex((item) => {
                         return item.sId === oEvent.mParameters.id;
                     });

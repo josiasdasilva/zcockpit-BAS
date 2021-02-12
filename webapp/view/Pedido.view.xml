@@ -46,6 +46,7 @@
 						</contentLeft> -->
 					</Bar>
 					<Table xmlns:mvc="sap.ui.core.mvc"
+                    visible="false"
 						xmlns:table="sap.ui"
 						xmlns:semantic="sap.m.semantic"
 						xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
@@ -354,7 +355,7 @@
 						</Table>
 						</ScrollContainer> -->
 						<!--TreeTable Begin-->
-						<t:TreeTable selectionMode="MultiToggle" id="tablePedido" rows="{path:'pedidoListModel>/root/parentNode', parameters: {arrayNames:['POSet']}}" enableSelectAll="false" ariaLabelledBy="title">
+						<t:TreeTable visibleRowCount="14" rowHeight="25" columnHeaderHeight="25"  class="tableTelaPedido" selectionMode="MultiToggle" id="tablePedido" rows="{path:'pedidoListModel>/root/parentNode', parameters: {arrayNames:['POSet']}}" enableSelectAll="false" ariaLabelledBy="title">
 							<!--<t:toolbar>
                             <Toolbar>
                                 <Title id="title" text="Clothing"/>
@@ -365,77 +366,183 @@
                         </t:toolbar>-->
 							<t:columns>
 								<!-- Node -->
-								<t:Column width="5em" id="column411">
-									<Label text='Nó'></Label>
+								<t:Column width="7em" id="column411">
+									<Label class='labelPedido' text='{i18n>node3}'></Label>
 									<t:template>	
-									<Text text="{pedidoListModel>Node3}"/>								
+									<Text class="textoLinhaPedido"  text="{pedidoListModel>Node3} {pedidoListModel>Node3Text}"/>								
+									<!-- 	<ObjectIdentifier class="textoLinhaPedido" title="{Node}" id="_column_matnr_copy_tablePedido_00" /> -->
+									</t:template>
+								</t:Column>
+                                		<t:Column width="7em" id="column4111">
+									<Label class='labelPedido' text='{i18n>node6}'></Label>
+									<t:template>	
+									<Text class="textoLinhaPedido"  text="{pedidoListModel>Node6} {pedidoListModel>Node6Text}"/>								
 									<!-- 	<ObjectIdentifier class="textoLinhaPedido" title="{Node}" id="_column_matnr_copy_tablePedido_00" /> -->
 									</t:template>
 								</t:Column>
 								<!-- Matnr -->
-								<t:Column width="5em" id="column41">
-								<Label text='Material'></Label>
-									<t:template>
-									<Text text="{pedidoListModel>Matnr}"/>		
-										<!-- <ObjectIdentifier class="textoLinhaPedido" title="{pedidoListModel>Matnr}" id="_column_matnr_copy_tablePedido_0" /> -->
+								<t:Column width="4em" id="column41">
+								<Label class='labelPedido' text='{i18n>xped.codigo}'></Label>
+									<t:template>							
+										<ObjectIdentifier class="textoLinhaPedido" title="{pedidoListModel>Matnr}" id="_column_matnr_copy_tablePedido_0" />
 									</t:template>
 								</t:Column>
 								<!-- Maktx -->
 								<t:Column width="7em" id="column42">
+                                <Label class='labelPedido' text='{i18n>xped.material}'></Label>
+                                		<t:template>							
+										<Text class="textoLinhaPedido" text="{pedidoListModel>Maktx}" id="_column_maktx_copy_tablePedido_0" wrapping="false" tooltip="{pedidoListModel>Maktx}"/>
+									</t:template>
 								</t:Column>
 								<!-- EstTeor -->
-								<t:Column width="3em" hAlign="End" id="column43">
+								<t:Column width="4em" hAlign="End" id="column43">
+                                <Label class='labelPedido' text='{i18n>xped.estoque_teorico}'></Label>
+                                		<t:template>							
+										            <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstTeor', formatter: '.formatter.toIntegerStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>EstTeor', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number17_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- Mvd -->
 								<t:Column width="3em" hAlign="End" id="column44">
+                                <Label class='labelPedido' text='{i18n>xped.mdv}'></Label>
+                                	<t:template>							
+							                         <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Mvd', formatter: '.formatter.toIntegerStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>Mvd', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number18_tablePedido_0"/>			
+									</t:template>
 								</t:Column>
 								<!-- Prultcp -->
 								<t:Column width="3em" hAlign="End" id="column45">
+                                  <Label class='labelPedido' text='{i18n>xped.preco_compra}'></Label>
+                                	<t:template>							
+									 <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Prultcp', formatter: '.formatter.fullNumberStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>PrUltCp', formatter: '.formatter.fullNumberStr' }" textAlign="Right" id="number19_tablePedido_0"/>	
+									</t:template>
 								</t:Column>
 								<!-- Sugestao -->
-								<t:Column width="3.5em" hAlign="Center" id="column46">
+								<t:Column width="3em" hAlign="Center" id="column46">
+                                 <Label class='labelPedido' text='{i18n>xped.requis}'></Label>
+                                	<t:template>							
+										           <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Sugestao', formatter: '.formatter.toIntReqSugStr' }" emphasized="false"
+                                            textAlign="End" visible="{= ${pedidoListModel>Sugestao} &gt; 0 }" id="number20_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- Requisicao -->
-								<t:Column width="3.5em" hAlign="Center" id="column47">
+								<t:Column width="3em" hAlign="Center" id="column47">
+                                 <Label class='labelPedido' text='{i18n>xped.ajuste}'></Label>
+                                	<t:template>							
+										               <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Requisicao', formatter: '.formatter.toIntReqSugStr' }" emphasized="true"
+                                            textAlign="Right" visible="{= ${pedidoListModel>Requisicao} &gt;0}" id="number21_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- Valor -->
-								<t:Column width="4em" hAlign="End" id="column48">
+								<t:Column width="3em" hAlign="End" id="column48">
+                                 <Label class='labelPedido' text='{i18n>xped.valor}'></Label>
+                                	<t:template>							
+										     <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Valor', formatter: '.formatter.fullNumberStr' }" emphasized="false" textAlign="Right"
+                                            id="number22_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- Prultvd -->
 								<t:Column width="2.8em" hAlign="End" id="column49">
+                                    <Label class='labelPedido' text='{i18n>xped.preco_venda}'></Label>
+                                	<t:template>							
+									       <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Prultvd', formatter: '.formatter.fullNumberStr' }" emphasized="false"
+                                            tooltip="{pedidoListModel>PrUltVd}" textAlign="Right" id="number23_tablePedido_0"/>	
+									</t:template>
 								</t:Column>
 								<!-- MrgAta -->
 								<t:Column width="4em" hAlign="End" id="column50">
+                                 <Label class='labelPedido' text='{i18n>xped.margem_ata}'></Label>
+                                	<t:template>							
+										             <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>MrgAta', formatter: '.formatter.percentage1dig' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>MargemAta', formatter: '.formatter.fullNumberStr' }" textAlign="Right" id="number24_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- MrgVar -->
 								<t:Column width="4.5em" hAlign="End" id="column51">
+                                <Label class='labelPedido' text='{i18n>xped.margem_var}'></Label>
+                                	<t:template>							
+										           <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>MrgVar', formatter: '.formatter.percentage1dig' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>MargemVar', formatter: '.formatter.fullNumberStr' }" textAlign="Right" id="number25_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- EstCd -->
 								<t:Column width="3.7em" hAlign="End" id="column52">
+                                   <Label class='labelPedido' text='{i18n>xped.estoque_cd}'></Label>
+                                	<t:template>							
+									              <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstCd', formatter: '.formatter.fullNumberStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>EstCd', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number26_tablePedido_0"/>	
+									</t:template>
 								</t:Column>
 								<!-- EstLoja -->
 								<t:Column width="3.7em" hAlign="End" id="column53">
+                                <Label class='labelPedido' text='{i18n>xped.estoque_loj}'></Label>
+                                	<t:template>							
+										       <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstLoja', formatter: '.formatter.fullNumberStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>EstLoja', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number27_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- EstTroca -->
 								<t:Column width="3em" hAlign="End" id="column54">
+                                  <Label class='labelPedido' text='{i18n>xped.estoque_tra}'></Label>
+                                	<t:template>							
+										  <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstTroca', formatter: '.formatter.fullNumberStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>EstTroca', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number28_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- QtppendCent -->
 								<t:Column width="3.4em" hAlign="End" id="column55">
+                                 <Label class='labelPedido' text='{i18n>xped.estoque_ppc}'></Label>
+                                	<t:template>							
+										             <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>QtppendCent', formatter: '.formatter.toIntegerStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>QtppendCent', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number29_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- QtppendLoja -->
 								<t:Column width="3.5em" hAlign="End" id="column56">
+                                 <Label class='labelPedido' text='{i18n>xped.estoque_ppf}'></Label>
+                                	<t:template>							
+									                         <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>QtppendForn', formatter: '.formatter.toIntegerStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>QtppendForn', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number30_tablePedido_0"/>	
+									</t:template>
 								</t:Column>
 								<!-- VlrVendaMM -->
-								<t:Column width="5em" hAlign="End" id="column57">
+								<t:Column width="4em" hAlign="End" id="column57">
+                                  <Label class='labelPedido' text='{i18n>xped.Venda_Atual}'></Label>
+                                	<t:template>							
+									          <ObjectNumber class="textoLinhaPedido"
+                                            number="{= ${globalModel>/colVlrPedido} ? ${path: 'pedidoListModel>VlrVendaMm', formatter: '.formatter.fullNumberStr'} : ${path: 'pedidoListModel>QtdVendaMm', formatter: '.formatter.float2digStr'} }"
+                                            emphasized="false" textAlign="Right" id="number31_tablePedido_0"/>	
+									</t:template>
 								</t:Column>
 								<!-- VlrVendaM1 -->
-								<t:Column width="5em" hAlign="End" id="column58">
+								<t:Column width="4em" hAlign="End" id="column58">
+                                 <Label class='labelPedido' text='{i18n>xped.Venda_M1}'></Label>
+                                	<t:template>							
+										                          <ObjectNumber class="textoLinhaPedido"
+                                            number="{= ${globalModel>/colVlrPedido} ? ${path: 'pedidoListModel>VlrVendaM1', formatter: '.formatter.fullNumberStr'} : ${path: 'pedidoListModel>QtdVendaM1', formatter: '.formatter.float2digStr'} }"
+                                            emphasized="false" textAlign="Right" id="number32_tablePedido_0"/>
+									</t:template>
 								</t:Column>
 								<!-- VlrVendaM2 -->
-								<t:Column width="5em" hAlign="End" id="column59">
+								<t:Column width="4em" hAlign="End" id="column59">
+                                  <Label class='labelPedido' text='{i18n>xped.Venda_M2}'></Label>
+                                	<t:template>							
+									     <ObjectNumber class="textoLinhaPedido"
+                                            number="{= ${globalModel>/colVlrPedido} ? ${path: 'pedidoListModel>VlrVendaM2', formatter: '.formatter.fullNumberStr'} : ${path: 'pedidoListModel>QtdVendaM2', formatter: '.formatter.float2digStr'} }"
+                                            emphasized="false" textAlign="Right" id="number33_tablePedido_0"/>	
+									</t:template>
 								</t:Column>
 								<!-- Maabc -->
 								<t:Column width="2em" hAlign="End" visible="false" id="column60">
+                                	<t:template>							
+										        <Text class="textoLinhaPedido" text="{pedidoListModel>Maabc}" id="_column_maabc_copy_tablePedido_0" wrapping="false" visible="false"/>
+									</t:template>
+								</t:Column>
+                                		<t:Column width="2em" hAlign="End" visible="true" id="column61">
+                                	<t:template>							
+										      	<Button icon="sap-icon://navigation-right-arrow" type="Transparent" press="toDetail" ariaLabelledBy="editButtonLabel"/>
+									</t:template>
 								</t:Column>
 							</t:columns>
 						</t:TreeTable>
