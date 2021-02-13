@@ -13,7 +13,7 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
     ],
-    function(
+    function (
         BaseController,
         JSONModel,
         formatter,
@@ -36,387 +36,8 @@ sap.ui.define(
             _segPedido: null,
             _oTablePedido: null,
             formatter: formatter,
-            onInit: function() {
-                //this.initWSocket();
-                let json = {
-                    catalog: {
-                        clothing: {
-                            categories: [{
-                                    name: 'Women',
-                                    categories: [{
-                                            name: 'Clothing',
-                                            categories: [{
-                                                    name: 'Dresses',
-                                                    categories: [{
-                                                            name: 'Casual Red Dress',
-                                                            amount: 16.99,
-                                                            currency: 'EUR',
-                                                            size: 'S',
-                                                        },
-                                                        {
-                                                            name: 'Short Black Dress',
-                                                            amount: 47.99,
-                                                            currency: 'EUR',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Long Blue Dinner Dress',
-                                                            amount: 103.99,
-                                                            currency: 'USD',
-                                                            size: 'L',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Tops',
-                                                    categories: [{
-                                                            name: 'Printed Shirt',
-                                                            amount: 24.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Tank Top',
-                                                            amount: 14.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Pants',
-                                                    categories: [{
-                                                            name: 'Red Pant',
-                                                            amount: 32.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Skinny Jeans',
-                                                            amount: 44.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                        {
-                                                            name: 'Black Jeans',
-                                                            amount: 99.99,
-                                                            currency: 'USD',
-                                                            size: 'XS',
-                                                        },
-                                                        {
-                                                            name: 'Relaxed Fit Jeans',
-                                                            amount: 56.99,
-                                                            currency: 'USD',
-                                                            size: 'L',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Skirts',
-                                                    categories: [{
-                                                            name: 'Striped Skirt',
-                                                            amount: 24.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Black Skirt',
-                                                            amount: 44.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                    ],
-                                                },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Jewelry',
-                                            categories: [
-                                                { name: 'Necklace', amount: 16.99, currency: 'USD' },
-                                                { name: 'Bracelet', amount: 47.99, currency: 'USD' },
-                                                { name: 'Gold Ring', amount: 399.99, currency: 'USD' },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Handbags',
-                                            categories: [{
-                                                    name: 'Little Black Bag',
-                                                    amount: 16.99,
-                                                    currency: 'USD',
-                                                    size: 'S',
-                                                },
-                                                {
-                                                    name: 'Grey Shopper',
-                                                    amount: 47.99,
-                                                    currency: 'USD',
-                                                    size: 'M',
-                                                },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Shoes',
-                                            categories: [
-                                                { name: 'Pumps', amount: 89.99, currency: 'USD' },
-                                                { name: 'Sport Shoes', amount: 47.99, currency: 'USD' },
-                                                { name: 'Boots', amount: 103.99, currency: 'USD' },
-                                            ],
-                                        },
-                                    ],
-                                },
-                                {
-                                    name: 'Men',
-                                    categories: [{
-                                            name: 'Clothing',
-                                            categories: [{
-                                                    name: 'Shirts',
-                                                    categories: [{
-                                                            name: 'Black T-shirt',
-                                                            amount: 9.99,
-                                                            currency: 'USD',
-                                                            size: 'XL',
-                                                        },
-                                                        {
-                                                            name: 'Polo T-shirt',
-                                                            amount: 47.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'White Shirt',
-                                                            amount: 103.99,
-                                                            currency: 'USD',
-                                                            size: 'L',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Pants',
-                                                    categories: [{
-                                                            name: 'Blue Jeans',
-                                                            amount: 78.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Stretch Pant',
-                                                            amount: 54.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Shorts',
-                                                    categories: [{
-                                                            name: 'Trouser Short',
-                                                            amount: 62.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Slim Short',
-                                                            amount: 44.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                    ],
-                                                },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Accessories',
-                                            categories: [
-                                                { name: 'Tie', amount: 36.99, currency: 'USD' },
-                                                { name: 'Wallet', amount: 47.99, currency: 'USD' },
-                                                { name: 'Sunglasses', amount: 199.99, currency: 'USD' },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Shoes',
-                                            categories: [{
-                                                    name: 'Fashion Sneaker',
-                                                    amount: 89.99,
-                                                    currency: 'USD',
-                                                },
-                                                { name: 'Sport Shoe', amount: 47.99, currency: 'USD' },
-                                                { name: 'Boots', amount: 103.99, currency: 'USD' },
-                                            ],
-                                        },
-                                    ],
-                                },
-                                {
-                                    name: 'Girls',
-                                    categories: [{
-                                            name: 'Clothing',
-                                            categories: [{
-                                                    name: 'Shirts',
-                                                    categories: [{
-                                                            name: 'Red T-shirt',
-                                                            amount: 16.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                        {
-                                                            name: 'Tunic Top',
-                                                            amount: 47.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Fuzzy Sweater',
-                                                            amount: 103.99,
-                                                            currency: 'USD',
-                                                            size: 'L',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Pants',
-                                                    categories: [{
-                                                            name: 'Blue Jeans',
-                                                            amount: 24.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Red Pant',
-                                                            amount: 54.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Shorts',
-                                                    categories: [{
-                                                            name: 'Jeans Short',
-                                                            amount: 32.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Sport Short',
-                                                            amount: 14.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                    ],
-                                                },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Accessories',
-                                            categories: [
-                                                { name: 'Necklace', amount: 26.99, currency: 'USD' },
-                                                { name: 'Gloves', amount: 7.99, currency: 'USD' },
-                                                { name: 'Beanie', amount: 12.99, currency: 'USD' },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Shoes',
-                                            categories: [
-                                                { name: 'Sport Shoes', amount: 39.99, currency: 'USD' },
-                                                { name: 'Boots', amount: 87.99, currency: 'USD' },
-                                                { name: 'Sandals', amount: 63.99, currency: 'USD' },
-                                            ],
-                                        },
-                                    ],
-                                },
-                                {
-                                    name: 'Boys',
-                                    categories: [{
-                                            name: 'Clothing',
-                                            categories: [{
-                                                    name: 'Shirts',
-                                                    categories: [{
-                                                            name: 'Black T-shirt with Print',
-                                                            amount: 16.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                        {
-                                                            name: 'Blue Shirt',
-                                                            amount: 47.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Yellow Sweater',
-                                                            amount: 63.99,
-                                                            currency: 'USD',
-                                                            size: 'L',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Pants',
-                                                    categories: [{
-                                                            name: 'Blue Jeans',
-                                                            amount: 44.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Brown Pant',
-                                                            amount: 89.99,
-                                                            currency: 'USD',
-                                                            size: 'S',
-                                                        },
-                                                    ],
-                                                },
-                                                {
-                                                    name: 'Shorts',
-                                                    categories: [{
-                                                            name: 'Sport Short',
-                                                            amount: 32.99,
-                                                            currency: 'USD',
-                                                            size: 'M',
-                                                        },
-                                                        {
-                                                            name: 'Jeans Short',
-                                                            amount: 99.99,
-                                                            currency: 'USD',
-                                                            size: 'XS',
-                                                        },
-                                                        {
-                                                            name: 'Black Short',
-                                                            amount: 56.99,
-                                                            currency: 'USD',
-                                                            size: 'L',
-                                                        },
-                                                    ],
-                                                },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Accessories',
-                                            categories: [
-                                                { name: 'Sunglasses', amount: 36.99, currency: 'USD' },
-                                                { name: 'Beanie', amount: 17.99, currency: 'USD' },
-                                                { name: 'Scarf', amount: 15.99, currency: 'USD' },
-                                            ],
-                                        },
-                                        {
-                                            name: 'Shoes',
-                                            categories: [
-                                                { name: 'Sneaker', amount: 89.99, currency: 'USD' },
-                                                { name: 'Sport Shoe', amount: 47.99, currency: 'USD' },
-                                                { name: 'Boots', amount: 103.99, currency: 'USD' },
-                                            ],
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                    },
-                    sizes: [
-                        { key: 'XS', value: 'Extra Small' },
-                        { key: 'S', value: 'Small' },
-                        { key: 'M', value: 'Medium' },
-                        { key: 'L', value: 'Large' },
-                    ],
-                };
-                this.getView().setModel(new JSONModel(json), 'teste');
+            onInit: function () {
+                this.initWSocket();
 
                 this.getRouter()
                     .getRoute('pedido')
@@ -436,28 +57,28 @@ sap.ui.define(
                     this._oColumnFilterPopover.setModel(this.getView().getModel());
                 }
                 this._oTablePedidoHeader.addEventDelegate({
-                        onAfterRendering: () => {
-                            var oHeader = this._oTablePedidoHeader
-                                .$()
-                                .find('.sapMListTblHeaderCell');
-                            for (var i = 0; i < oHeader.length; i++) {
-                                var oID = oHeader[i].id;
-                                this.onClickColumnHeader(oID);
-                            }
-                        },
+                    onAfterRendering: () => {
+                        var oHeader = this._oTablePedidoHeader
+                            .$()
+                            .find('.sapMListTblHeaderCell');
+                        for (var i = 0; i < oHeader.length; i++) {
+                            var oID = oHeader[i].id;
+                            this.onClickColumnHeader(oID);
+                        }
                     },
+                },
                     this._oTablePedidoHeader
                 );
                 //FAFN - End
                 this.getView().byId('_i_pedido_0').setColor('#f00000');
             },
-            initModelView: function() {
+            initModelView: function () {
                 this.getView().setModel(
                     new JSONModel({ isNodeLevel: false, isProductLevel: false }),
                     'pedidoView'
                 );
             },
-            setTableLevelNode: function(bIsNode) {
+            setTableLevelNode: function (bIsNode) {
                 this.getView()
                     .getModel('pedidoView')
                     .setProperty('/isNodeLevel', bIsNode);
@@ -466,7 +87,7 @@ sap.ui.define(
                     .setProperty('/isNodeLevel', !bIsNode);
             },
             //FAFN - Begin
-            onClickColumnHeader: function(oID) {
+            onClickColumnHeader: function (oID) {
                 let sID = oID;
                 $('#' + oID).click((oEvent) => {
                     //Attach Table Header Element Event
@@ -484,7 +105,7 @@ sap.ui.define(
                     this.onClickOrder(oEvent, this._oTablePedido, sBinding);
                 });
             },
-            _getDialogLojaSum: function() {
+            _getDialogLojaSum: function () {
                 if (!this._oDialogLojaSum) {
                     this._oDialogLojaSum = sap.ui.xmlfragment(
                         'idLojasSum',
@@ -495,12 +116,12 @@ sap.ui.define(
                 }
                 return this._oDialogLojaSum;
             },
-            closeLojaSumDialog: function() {
+            closeLojaSumDialog: function () {
                 this._oDialogLojaSum.close();
                 this.updateTable();
                 this.updateTotal();
             },
-            onOpenDialogLojaSum: function() {
+            onOpenDialogLojaSum: function () {
                 let aFilters = [];
                 this._getDialogLojaSum().open();
                 var globalModel = this.getModel('globalModel');
@@ -524,7 +145,7 @@ sap.ui.define(
                 var oItems = oTable.getBinding('items');
                 oItems.filter(aFilters);
             },
-            onDeleteLojaSum: function(oEvent) {
+            onDeleteLojaSum: function (oEvent) {
                 let sBindContext = oEvent.getParameter('listItem').getBindingContext();
                 let oTable = sap.ui.getCore().byId('idLojasSum--idLojaSumTabela');
 
@@ -556,7 +177,7 @@ sap.ui.define(
                     },
                 });
             },
-            recoverSortConfig: function() {
+            recoverSortConfig: function () {
                 let oConfigSort = localStorage.getItem('sortConfig') ?
                     JSON.parse(localStorage.getItem('sortConfig')) :
                     null;
@@ -568,8 +189,8 @@ sap.ui.define(
                         oIcon.setColor('#f00000');
                         oIcon.setSrc(
                             oConfigSort.isAsc ?
-                            'sap-icon://sort-ascending' :
-                            'sap-icon://sort-descending'
+                                'sap-icon://sort-ascending' :
+                                'sap-icon://sort-descending'
                         );
                         let oSorter = new Sorter(oConfigSort.field);
                         oSorter.bDescending = !oConfigSort.isAsc;
@@ -577,7 +198,7 @@ sap.ui.define(
                     }
                 }
             },
-            setSortConfig: function(sField, bIsAsc, sId) {
+            setSortConfig: function (sField, bIsAsc, sId) {
                 let oConfigSort = localStorage.getItem('sortConfig') ?
                     JSON.parse(localStorage.getItem('sortConfig')) :
                     null;
@@ -595,7 +216,7 @@ sap.ui.define(
                 localStorage.setItem('sortConfig', JSON.stringify(oConfigSort));
                 //}
             },
-            onClickOrder: function(oEvent, oTable, oBinding) {
+            onClickOrder: function (oEvent, oTable, oBinding) {
                 let oIcon = sap.ui
                     .getCore()
                     .byId(
@@ -629,7 +250,7 @@ sap.ui.define(
                     }
                 }
             },
-            onFilterPress: function(oEvent) {
+            onFilterPress: function (oEvent) {
                 var aFilters = [];
                 var iMatnr = this.byId('_input_filter_matnr');
                 var iMaktx = this.byId('_input_filter_maktx');
@@ -658,7 +279,7 @@ sap.ui.define(
                 var oItems = this._oTablePedido.getBinding('items');
                 oItems.filter(aFilters);
             },
-            reiniciaIconesSort: function(oFirst) {
+            reiniciaIconesSort: function (oFirst) {
                 var oQtde = 19; //this._oTablePedido.getAggregation("columns").length;
                 for (var i = 0; i < oQtde; i++) {
                     let zIcon = this.byId('_i_pedido_' + i.toString());
@@ -705,10 +326,43 @@ sap.ui.define(
             //			// get swiped content from event
             //			oSwipeContent.setText("Delete").setType("Reject");
             //		},
-            onObjectMatched: function(oEvent) {
+            onObjectMatched: function (oEvent) {
+                debugger;
                 let oPedidoNav = JSON.parse(localStorage.getItem('pedidoNavList'));
+                let aPedidoModel = this.getView().getModel('pedidoListModel');
+                let aPOSet = aPedidoModel && aPedidoModel.getData ? aPedidoModel.getData().root.parentNode.POSet : [] ; ;
+                let pedidoList = [];
+                for (let i = 0; i < aPOSet.length; i++) {
+
+                    for (let indexChild = 0; indexChild < aPOSet[i].POSet.length; indexChild++) {
+                        for (let itemPO of aPOSet[i].POSet[indexChild].POSet) {
+
+                            pedidoList.push({
+                                ...itemPO
+                            });
+                        }
+                    }
+
+                }
+
+
                 if (oPedidoNav && oPedidoNav.current) {
-                    this.indexPressedItem = oPedidoNav.current - 1;
+                    //this.indexPressedItem = oPedidoNav.current - 1;
+                    let indexRowMaterial = 0;
+                    let itemSelected = pedidoList && pedidoList.length > 0 ? pedidoList[oPedidoNav.current - 1] : [] ;
+                    if (itemSelected && this._oTablePedido && this._oTablePedido.getRows) {
+                        for (let itemRowTable of this._oTablePedido.getRows()) {
+                            let rowData = itemRowTable.getBindingContext('pedidoListModel') ? this.getView().getModel('pedidoListModel').getProperty(itemRowTable.getBindingContext('pedidoListModel').sPath) : null;
+                            if (rowData && rowData.Matnr && itemSelected.Matnr === rowData.Matnr) {
+                                this.indexPressedItem = indexRowMaterial;
+                              
+                            }
+                              indexRowMaterial++;
+                        }
+
+
+
+                    }
                 }
 
                 localStorage.removeItem('pedidoNavList');
@@ -734,7 +388,7 @@ sap.ui.define(
                 this.recoverSortConfig();
                 this.getFornecedorInfo();
             },
-            getFornecedorInfo: function() {
+            getFornecedorInfo: function () {
                 var globalModel = this.getModel('globalModel');
                 this.getView()
                     .getModel()
@@ -756,7 +410,7 @@ sap.ui.define(
             // 	this._getDialog().close();
             // 	this.getRouter().navTo("home", true);
             // },
-            updateTable: function() {
+            updateTable: function () {
                 var localModel = this.getModel();
                 var globalModel = this.getModel('globalModel');
                 var sEkgrp = globalModel.getProperty('/Ekgrp');
@@ -780,34 +434,50 @@ sap.ui.define(
                             $expand: 'POHierarq6Set/POSet'
                         },
                         success: (res) => {
-                            debugger;
+
                             let pedidoList = { root: { parentNode: { POSet: [...res.results] } } };
+                            let aArrayIndices = [];
+                            let indice = 1;
+                            let indicePO = 0;
 
                             for (let index = 0; index < pedidoList.root.parentNode.POSet.length; index++) {
+                                pedidoList.root.parentNode.POSet[index].hasNav = false;
                                 pedidoList.root.parentNode.POSet[index].POSet = [...pedidoList.root.parentNode.POSet[index].POHierarq6Set.results];
 
-
                                 for (let indexChild = 0; indexChild < pedidoList.root.parentNode.POSet[index].POSet.length; indexChild++) {
+
+                                    aArrayIndices.push(indice);
+                                    indice++;
+
+                                    pedidoList.root.parentNode.POSet[index].POSet[indexChild].hasNav = false;
                                     pedidoList.root.parentNode.POSet[index].POSet[indexChild].POSet = [...pedidoList.root.parentNode.POSet[index].POSet[indexChild].POSet.results];
+                                    for (let itemPOIndex of pedidoList.root.parentNode.POSet[index].POSet[indexChild].POSet) {
+                                        itemPOIndex.index = indicePO;
+                                        indicePO++;
+                                    }
                                 }
 
                             }
 
-                            this.setPedidoTableModel(pedidoList);
+                            this.setPedidoTableModel(pedidoList, aArrayIndices);
                         },
                     });
 
                 //this._oTablePedido.getBinding("items").refresh();
                 //this._oTablePedido.getBinding("rows").refresh();
             },
-            setPedidoTableModel: function(oData) {
+            setPedidoTableModel: function (oData, aArrayIndices) {
                 this.getView().setModel(new JSONModel(oData), 'pedidoListModel');
-                debugger;
 
                 this._oTablePedido.getBinding('rows').refresh();
-                this._oTablePedido.expandToLevel(1);
+
+                this.checkSelectedRow();
+                for (let indexNode of aArrayIndices) {
+                    this._oTablePedido.expandToLevel(indexNode);
+                }
+
             },
-            updateTotal: function() {
+            updateTotal: function () {
                 var page = this.byId('fullPage');
                 var cabec = this.byId('headerCabecalho');
                 var globalModel = this.getModel('globalModel');
@@ -819,18 +489,18 @@ sap.ui.define(
 
                 localModel.read(sObjectPath, {
                     method: 'GET',
-                    success: function(oData2, oResponse) {
+                    success: function (oData2, oResponse) {
                         //cabec.setNumber({ path: oData2.Total, formatter: '.format.currencyValue' });
                         globalModel.setProperty('/Total', oData2.Total);
                         globalModel.setProperty('/Fornecedor', oData2.Mcod1);
                     },
-                    error: function(oError) {},
+                    error: function (oError) { },
                 });
             },
-            handleDialogFornecedorInfoCancelButton: function() {
+            handleDialogFornecedorInfoCancelButton: function () {
                 this._oPopoverFornecedorInfo.close();
             },
-            onShowSupplierAddtionalInfo: function(oEvent) {
+            onShowSupplierAddtionalInfo: function (oEvent) {
                 let globalModel = this.getModel('globalModel');
                 if (!this._oPopoverFornecedorInfo) {
                     this._oPopoverFornecedorInfo = sap.ui.xmlfragment(
@@ -841,7 +511,7 @@ sap.ui.define(
                 }
                 this._oPopoverFornecedorInfo.openBy(oEvent.getSource());
             },
-            onNavBack: function(oEvent) {
+            onNavBack: function (oEvent) {
                 var globalModel = this.getModel('globalModel');
 
                 delete this.indexPressedItem;
@@ -855,71 +525,92 @@ sap.ui.define(
                         if (oAction === MessageBox.Action.YES) {
                             this.getRouter().navTo(
                                 'busca', {
-                                    Ekgrp: globalModel.getProperty('/Ekgrp'),
-                                    Uname: globalModel.getProperty('/Uname'),
-                                    Lifnr: '',
-                                },
+                                Ekgrp: globalModel.getProperty('/Ekgrp'),
+                                Uname: globalModel.getProperty('/Uname'),
+                                Lifnr: '',
+                            },
                                 true
                             );
                         }
                     },
                 });
             },
-            onTitleSelectorPress: function(oEvent) {
+            onTitleSelectorPress: function (oEvent) {
                 var cabec = this.byId('headerCabecalho');
                 cabec.setCondensed(!cabec.getCondensed());
             },
-            toDetail: function(oEvent) {
+            toDetail: function (oEvent) {
                 //Prepare list for the next screen navigate between materials
                 let pedidoList = [];
                 let index = 0;
+                let aPOSet = this.getView().getModel('pedidoListModel').getData().root.parentNode.POSet;
+                let indexBinding = oEvent.oSource.getBindingContext('pedidoListModel').getModel('pedidoListModel').getProperty(oEvent.oSource.getBindingContext('pedidoListModel').sPath).index;
                 //for (let item of this._oTablePedido.getItems()) {
-                for (let item of this._oTablePedido.getRows()) {    
+                /*for (let item of this._oTablePedido.getRows()) {
                     index++;
                     pedidoList.push({
                         index: index,
                         ...this.getView()
-                        .getModel()
-                        .getProperty(item.getBindingContext().sPath),
+                            .getModel()
+                            .getProperty(item.getBindingContext().sPath),
                     });
+                }*/
+
+
+                for (let i = 0; i < aPOSet.length; i++) {
+
+                    for (let indexChild = 0; indexChild < aPOSet[i].POSet.length; indexChild++) {
+                        for (let itemPO of aPOSet[i].POSet[indexChild].POSet) {
+                            index++;
+                            pedidoList.push({
+                                index: index,
+                                ...itemPO
+                            });
+                        }
+                    }
+
                 }
-                 
-                //TODO
-                //this.getView().getModel('pedidoListModel').getData().root.parentNode
 
                 //highlight kinha pressionada
-                this.indexPressedItem = oEvent
+                /*this.indexPressedItem = oEvent
                     .getSource()
                     .getParent()
                     //.getItems()
                     .getRows()
                     .findIndex((item) => {
                         return item.sId === oEvent.mParameters.id;
+                    });*/
+                this.indexPressedItem = this._oTablePedido.getRows()
+                    .findIndex((item) => {
+                        return item.sId === oEvent.oSource.getParent().sId;
                     });
 
                 let pedidoNavList = {
-                    current: this.indexPressedItem + 1,
+                    current: indexBinding + 1,//this.indexPressedItem + 1,
                     list: pedidoList,
+                    currentRow: this.indexPressedItem + 1,
                     size: pedidoList.length,
                 };
                 localStorage.setItem('pedidoNavList', JSON.stringify(pedidoNavList));
 
                 var globalModel = this.getModel('globalModel');
-                var sMatnr = oEvent.getSource().getAggregation('cells')[0].getTitle();
+                //var sMatnr = oEvent.getSource().getAggregation('cells')[0].getTitle();
+                var sMatnr = pedidoList[indexBinding].Matnr;
                 globalModel.setProperty('/Matnr', sMatnr);
-                var sMaabc = oEvent.getSource().getAggregation('cells')[19].getText();
+                //var sMaabc = oEvent.getSource().getAggregation('cells')[19].getText();
+                var sMaabc = pedidoList[indexBinding].Maabc;
                 globalModel.setProperty('/codABC', sMaabc);
                 this.getRouter().navTo(
                     'detail', {
-                        Ekgrp: globalModel.getProperty('/Ekgrp'),
-                        Lifnr: globalModel.getProperty('/Lifnr'),
-                        Matnr: sMatnr,
-                        Werks: globalModel.getProperty('/Werks'),
-                    },
+                    Ekgrp: globalModel.getProperty('/Ekgrp'),
+                    Lifnr: globalModel.getProperty('/Lifnr'),
+                    Matnr: sMatnr,
+                    Werks: globalModel.getProperty('/Werks'),
+                },
                     true
                 );
             },
-            onUpdateFinished: function(oEvt) {
+            onUpdateFinished: function (oEvt) {
                 if (!oEvt.getSource().sId.includes('tablePedido')) {
                     return;
                 }
@@ -935,7 +626,24 @@ sap.ui.define(
                     }
                 }
             },
-            onDeletePress: function(oEvent) {
+            checkSelectedRow: function (oEvt) {
+
+                for (
+                    let index = 0; index < this._oTablePedido.getRows().length; index++
+                ) {
+                    const element = this._oTablePedido.getRows()[index];
+                    const elementRow = $(`#${element.sId}`);
+
+                    elementRow.removeClass('selectMaterial');
+
+                    if (this.indexPressedItem >= 0 && this.indexPressedItem === index) {
+                        elementRow.addClass('selectMaterial');
+                        // oEvt.getSource().setFirstVisibleRow(index);
+                        //element.getDomRef().scrollIntoView();
+                    }
+                }
+            },
+            onDeletePress: function (oEvent) {
                 var oTable = oEvent.getSource(),
                     oItem = oEvent.getParameter('listItem'),
                     sPath = oItem.getBindingContext().getPath();
@@ -951,7 +659,7 @@ sap.ui.define(
                 });
                 this.updateTotal();
             },
-            onResetPedido: function(oEvent) {
+            onResetPedido: function (oEvent) {
                 var globalModel = this.getModel('globalModel');
                 var localModel = this.getModel();
                 var sObjectPath = localModel.createKey('/Fornecedor', {
@@ -961,15 +669,15 @@ sap.ui.define(
                 });
                 localModel.read(sObjectPath + '/POReset', {
                     method: 'GET',
-                    success: function(oData2, oResponse) {
+                    success: function (oData2, oResponse) {
                         this.updateTotal();
                         localModel.setRefreshAfterChange(true);
                         this._oTablePedido.getBinding('items').refresh();
                     },
-                    error: function(oError) {},
+                    error: function (oError) { },
                 });
             },
-            onSelValorPedido: function(oEvent) {
+            onSelValorPedido: function (oEvent) {
                 var globalModel = this.getModel('globalModel');
                 globalModel.setProperty(
                     '/colVlrPedido',
@@ -977,7 +685,7 @@ sap.ui.define(
                 );
                 //this._VendaMM
             },
-            onOpenPedidoProgressDialog: function(oEvent) {
+            onOpenPedidoProgressDialog: function (oEvent) {
                 this.getView().setModel(
                     new sap.ui.model.json.JSONModel({ text: '' }),
                     'pedidoProgress'
@@ -1004,11 +712,11 @@ sap.ui.define(
                         this._pedidoBusyDialog.close();
                     });*/
             },
-            setMessagePedidoProgressDialog: function(sText) {
+            setMessagePedidoProgressDialog: function (sText) {
                 this.getView().getModel('pedidoProgress').setProperty('/text', sText);
             },
-            onPedidoProgressDialogClosed: function(oEvent) {},
-            initWSocket: function() {
+            onPedidoProgressDialogClosed: function (oEvent) { },
+            initWSocket: function () {
                 let hostLocation = window.location,
                     socket,
                     socketHostURI,
@@ -1044,11 +752,11 @@ sap.ui.define(
                         ) {
                             sap.m.MessageBox.error(
                                 this.getText('erro_criacao_pedido') + '\n' + oMessage.message, {
-                                    title: this.getText('pedido_nao_criado'),
-                                    actions: [MessageBox.Action.OK],
-                                    initialFocus: MessageBox.Action.OK,
-                                    styleClass: sResponsivePaddingClasses,
-                                }
+                                title: this.getText('pedido_nao_criado'),
+                                actions: [MessageBox.Action.OK],
+                                initialFocus: MessageBox.Action.OK,
+                                styleClass: sResponsivePaddingClasses,
+                            }
                             );
                             return;
                         }
@@ -1068,9 +776,9 @@ sap.ui.define(
                     socket.onclose = (e) => {
                         console.log('Closed');
                     };
-                } catch (exception) {}
+                } catch (exception) { }
             },
-            onCriaPedido: function(oEvent) {
+            onCriaPedido: function (oEvent) {
                 var oView = this.getView();
                 //sap.ui.core.BusyIndicator.show();
                 this.onOpenPedidoProgressDialog();
@@ -1111,12 +819,12 @@ sap.ui.define(
                         } else {
                             sap.m.MessageBox.error(
                                 this.getText('erro_criacao_pedido') + '\n' + oData2.Mensagem, {
-                                    title: this.getText('pedido_nao_criado'),
-                                    actions: [MessageBox.Action.OK],
-                                    initialFocus: MessageBox.Action.OK,
-                                    //details: oData2.Mensagem,
-                                    styleClass: sResponsivePaddingClasses,
-                                }
+                                title: this.getText('pedido_nao_criado'),
+                                actions: [MessageBox.Action.OK],
+                                initialFocus: MessageBox.Action.OK,
+                                //details: oData2.Mensagem,
+                                styleClass: sResponsivePaddingClasses,
+                            }
                             );
                         }
                     },
@@ -1131,7 +839,7 @@ sap.ui.define(
                 });
             },
             /* Diálogo Pedidos Criados */
-            dialogoCriaPedido: function(oData2, pNroSeq) {
+            dialogoCriaPedido: function (oData2, pNroSeq) {
                 this.getView().setModel(
                     new sap.ui.model.json.JSONModel(oData2),
                     'PedCriado'
@@ -1152,7 +860,7 @@ sap.ui.define(
                     this._PedCriadoDialog.getContent()[0].getBinding("items").filter(aFilters);*/
                 this._PedCriadoDialog.open();
             },
-            _handlePedCriadoPrint: function(oEvent) {
+            _handlePedCriadoPrint: function (oEvent) {
                 var globalModel = this.getModel('globalModel');
                 var localModel = this.getModel();
 
@@ -1172,7 +880,7 @@ sap.ui.define(
                 var sURL = localModel.sServiceUrl + sObjectPath + '/$value';
                 window.open(sURL, '_blank');
             },
-            _handlePedCriadoEmail: function(oEvent) {
+            _handlePedCriadoEmail: function (oEvent) {
                 var globalModel = this.getModel('globalModel');
                 var localModel = this.getModel();
                 var aFilters = [];
@@ -1233,7 +941,7 @@ sap.ui.define(
                 localModel.read('/MailPedidoSend', {
                     method: 'GET',
                     filters: aFilters,
-                    success: function(oData2, oResponse) {
+                    success: function (oData2, oResponse) {
                         sap.ui.core.BusyIndicator.hide();
                         sap.m.MessageBox.success(this.getText('email_sucesso'), {
                             title: 'Email',
@@ -1242,10 +950,10 @@ sap.ui.define(
                             styleClass: sResponsivePaddingClasses,
                         });
                     },
-                    error: function(oError) {},
+                    error: function (oError) { },
                 });
             },
-            _openPedCriadoEmail: function(oEvent) {
+            _openPedCriadoEmail: function (oEvent) {
                 var oButton = oEvent.getSource();
                 if (!this._popoverEmail) {
                     this._popoverEmail = sap.ui.xmlfragment(
@@ -1265,7 +973,7 @@ sap.ui.define(
 
                 localModel.read(sObjectPath, {
                     method: 'GET',
-                    success: function(oData2, oResponse) {
+                    success: function (oData2, oResponse) {
                         //cabec.setNumber({ path: oData2.Total, formatter: '.format.currencyValue' });
                         sap.ui
                             .getCore()
@@ -1276,12 +984,12 @@ sap.ui.define(
                             .byId('idPopoverEmail--emailFornecedor')
                             .setValue(oData2.Fornecedor);
                     },
-                    error: function(oError) {},
+                    error: function (oError) { },
                 });
 
                 this._popoverEmail.openBy(oButton);
             },
-            _handlePedCriadoClose: function(oEvent) {
+            _handlePedCriadoClose: function (oEvent) {
                 var globalModel = this.getModel('globalModel');
                 this.getRouter().navTo('busca', {
                     Ekgrp: globalModel.getProperty('/Ekgrp'),
@@ -1289,7 +997,7 @@ sap.ui.define(
                     Lifnr: '',
                 });
             },
-            toPrint: function(oEvent) {
+            toPrint: function (oEvent) {
                 var globalModel = this.getModel('globalModel');
                 var localModel = this.getModel();
                 var sEkgrp = globalModel.getProperty('/Ekgrp');

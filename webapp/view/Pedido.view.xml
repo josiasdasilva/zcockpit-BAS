@@ -541,7 +541,7 @@
 								</t:Column>
                                 		<t:Column width="2em" hAlign="End" visible="true" id="column61">
                                 	<t:template>							
-										      	<Button icon="sap-icon://navigation-right-arrow" type="Transparent" press="toDetail" ariaLabelledBy="editButtonLabel"/>
+										      	<Button visible="{pedidoListModel>hasNav}" icon="sap-icon://navigation-right-arrow" type="Transparent" press="toDetail" ariaLabelledBy="editButtonLabel"/>
 									</t:template>
 								</t:Column>
 							</t:columns>
