@@ -355,7 +355,7 @@
 						</Table>
 						</ScrollContainer> -->
 						<!--TreeTable Begin-->
-						<t:TreeTable visibleRowCount="14" rowHeight="25" columnHeaderHeight="25"  class="tableTelaPedido" selectionMode="MultiToggle" id="tablePedido" rows="{path:'pedidoListModel>/root/parentNode', parameters: {arrayNames:['POSet']}}" enableSelectAll="false" ariaLabelledBy="title">
+						<t:TreeTable visibleRowCount="14" rowHeight="25" columnHeaderHeight="25"  class="tableTelaPedido" selectionMode="MultiToggle" id="tablePedido" rows="{path:'pedidoListModel>/root/parentNode', parameters: {arrayNames:['POSet']}}" enableSelectAll="false" ariaLabelledBy="title" >
 							<!--<t:toolbar>
                             <Toolbar>
                                 <Title id="title" text="Clothing"/>
@@ -366,14 +366,14 @@
                         </t:toolbar>-->
 							<t:columns>
 								<!-- Node -->
-								<t:Column width="7em" id="column411">
+								<t:Column width="7em" id="column411" visible="false">
 									<Label class='labelPedido' text='{i18n>node3}'></Label>
 									<t:template>	
 									<Text class="textoLinhaPedido"  text="{pedidoListModel>Node3} {pedidoListModel>Node3Text}"/>								
 									<!-- 	<ObjectIdentifier class="textoLinhaPedido" title="{Node}" id="_column_matnr_copy_tablePedido_00" /> -->
 									</t:template>
 								</t:Column>
-                                		<t:Column width="7em" id="column4111">
+                                		<t:Column width="7em" id="column4111" visible="false">
 									<Label class='labelPedido' text='{i18n>node6}'></Label>
 									<t:template>	
 									<Text class="textoLinhaPedido"  text="{pedidoListModel>Node6} {pedidoListModel>Node6Text}"/>								
@@ -381,7 +381,7 @@
 									</t:template>
 								</t:Column>
 								<!-- Matnr -->
-								<t:Column width="4em" id="column41">
+								<t:Column width="7em" id="column41">
 								<Label class='labelPedido' text='{i18n>xped.codigo}'></Label>
 									<t:template>							
 										<ObjectIdentifier class="textoLinhaPedido" title="{pedidoListModel>Matnr}" id="_column_matnr_copy_tablePedido_0" />
@@ -419,19 +419,23 @@
 									</t:template>
 								</t:Column>
 								<!-- Sugestao -->
-								<t:Column width="3em" hAlign="Center" id="column46">
+								<t:Column id='idPedSugestao' width="3em" hAlign="Center" >
                                  <Label class='labelPedido' text='{i18n>xped.requis}'></Label>
                                 	<t:template>							
-										           <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Sugestao', formatter: '.formatter.toIntReqSugStr' }" emphasized="false"
+										           <ObjectNumber class="textoLinhaPedido sugestao" number="{path: 'pedidoListModel>Sugestao', formatter: '.formatter.toIntReqSugStr' }" emphasized="false"
                                             textAlign="End" visible="{= ${pedidoListModel>Sugestao} &gt; 0 }" id="number20_tablePedido_0"/>
 									</t:template>
 								</t:Column>
 								<!-- Requisicao -->
-								<t:Column width="3em" hAlign="Center" id="column47">
+								<t:Column width="3em" id='idPedAjuste'  hAlign="Center" class='requisicao' >
                                  <Label class='labelPedido' text='{i18n>xped.ajuste}'></Label>
-                                	<t:template>							
-										               <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Requisicao', formatter: '.formatter.toIntReqSugStr' }" emphasized="true"
-                                            textAlign="Right" visible="{= ${pedidoListModel>Requisicao} &gt;0}" id="number21_tablePedido_0"/>
+                                	<t:template >							
+										<ObjectNumber  class="textoLinhaPedido requisicao" number="{path: 'pedidoListModel>Requisicao', formatter: '.formatter.toIntReqSugStr' }" emphasized="true"
+                                            textAlign="Right" visible="{= ${pedidoListModel>Requisicao} &gt;0}" id="number21_tablePedido_0">
+                                             <customData>
+                                                <sap.ui.core:CustomData key="mydata" value="ajuste" writeToDom="true" />
+                                            </customData>
+                                            </ObjectNumber>
 									</t:template>
 								</t:Column>
 								<!-- Valor -->
@@ -544,6 +548,20 @@
 										      	<Button visible="{pedidoListModel>hasNav}" icon="sap-icon://navigation-right-arrow" type="Transparent" press="toDetail" ariaLabelledBy="editButtonLabel"/>
 									</t:template>
 								</t:Column>
+
+                                		<t:Column width="2em" hAlign="End" visible="true" id="column62">
+                                	<t:template>	
+                                     <sap.ui.core:Icon
+                                            src="sap-icon://sys-cancel"
+                                            color='red'
+                                            visible="{pedidoListModel>hasNav}" 
+                                            press='onDeletePress'/>
+
+										      	<!--<Button class='redFont' visible="{pedidoListModel>hasNav}" icon="sap-icon://sys-cancel"  type="Transparent" press="onDeletePress" ariaLabelledBy="editButtonLabel"/>-->
+									</t:template>
+								</t:Column>
+
+                                
 							</t:columns>
 						</t:TreeTable>
 						<!--TreeTable End-->

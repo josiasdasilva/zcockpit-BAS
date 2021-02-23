@@ -94,6 +94,22 @@ html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
 	height: 2.5em;
 }  */
 
+td[headers*='tablePedido_col8'] {
+  background: #f0808040 !important;
+}
+
+
+div[id*='number21_tablePedido_0'] {
+  background: #f0808040;
+}
+
+td[data-mydata="ajuste"] { 
+    background: #f0808040; }
+
+#idPedRequisicao{
+       background: #f0808040;
+}
+
 .requisicao {
     background: #f0808040;
     /*border: 2px solid black;*/

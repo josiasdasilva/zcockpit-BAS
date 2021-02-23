@@ -442,13 +442,16 @@ sap.ui.define(
 
                             for (let index = 0; index < pedidoList.root.parentNode.POSet.length; index++) {
                                 pedidoList.root.parentNode.POSet[index].hasNav = false;
+                                pedidoList.root.parentNode.POSet[index].Matnr = pedidoList.root.parentNode.POSet[index].Node3;
+                                pedidoList.root.parentNode.POSet[index].Maktx = pedidoList.root.parentNode.POSet[index].Node3Text;
                                 pedidoList.root.parentNode.POSet[index].POSet = [...pedidoList.root.parentNode.POSet[index].POHierarq6Set.results];
 
                                 for (let indexChild = 0; indexChild < pedidoList.root.parentNode.POSet[index].POSet.length; indexChild++) {
 
                                     aArrayIndices.push(indice);
                                     indice++;
-
+                                pedidoList.root.parentNode.POSet[index].POSet[indexChild].Matnr = pedidoList.root.parentNode.POSet[index].POSet[indexChild].Node6;
+                                pedidoList.root.parentNode.POSet[index].POSet[indexChild].Maktx = pedidoList.root.parentNode.POSet[index].POSet[indexChild].Node6Text;
                                     pedidoList.root.parentNode.POSet[index].POSet[indexChild].hasNav = false;
                                     pedidoList.root.parentNode.POSet[index].POSet[indexChild].POSet = [...pedidoList.root.parentNode.POSet[index].POSet[indexChild].POSet.results];
                                     for (let itemPOIndex of pedidoList.root.parentNode.POSet[index].POSet[indexChild].POSet) {
@@ -644,18 +647,23 @@ sap.ui.define(
                 }
             },
             onDeletePress: function (oEvent) {
-                var oTable = oEvent.getSource(),
+                var //oTable = oEvent.getSource(),
+                    oTable = this.getView().byId('tablePedido'),
                     oItem = oEvent.getParameter('listItem'),
-                    sPath = oItem.getBindingContext().getPath();
+                    sPath = oEvent.oSource.getBindingContext('pedidoListModel').sPath;
                 //oTable.attachEventOnce("updateFinished", oTable.focus, oTable);
-                var oModel = oTable.getModel();
-                oModel.remove(sPath);
+                var oModel = this.getView().getModel('pedidoListModel');
+                //oModel.remove(sPath);
+                //oModel.remove(sPath);
                 /* update tela */
+                oModel.oData.root.parentNode.POSet[sPath.split('/')[4]].POSet[sPath.split('/')[6]].POSet.splice(sPath.split('/')[8],1);
+                oModel.refresh();
+
                 var globalModel = this.getModel('globalModel');
                 var localModel = this.getModel();
                 var sObjectPath = localModel.createKey('/Fornecedor', {
-                    Ekgrp: oItem.getBindingContext().getProperty('Ekgrp'),
-                    Lifnr: oItem.getBindingContext().getProperty('Lifnr'),
+                    Ekgrp: oModel.getProperty(sPath+'/Ekgrp'),
+                    Lifnr: oModel.getProperty(sPath+'/Lifnr'),
                 });
                 this.updateTotal();
             },
