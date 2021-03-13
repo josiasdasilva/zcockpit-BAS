@@ -315,9 +315,11 @@ sap.ui.define([
             this.oPopoverContact.ebeln = oData.Ebeln;
         },
         previousMaterial: function (oEvt) {
+            this.gravaValores(oEvt);
             this.navDetail(false);
         },
         nextMaterial: function (oEvt) {
+            this.gravaValores(oEvt);
             this.navDetail(true);
         },
         navDetail: function (isForward) {
@@ -343,7 +345,9 @@ sap.ui.define([
         onObjectMatched: function (oEvent) {
             //var oViewModel = this.getModel("detailView ");
             this.pedidoNavList = JSON.parse(localStorage.getItem("pedidoNavList"));
+            if(this.pedidoNavList && this.pedidoNavList.current){
             this.getView().setModel(new JSONModel({ current: this.pedidoNavList.current, size: this.pedidoNavList.size }), "pedidoListNav");
+            }
 
             var globalModel = this.getModel("globalModel");
 
@@ -692,7 +696,7 @@ sap.ui.define([
             var qtdeTotal = 0,
                 qtdeRequisicao = 0;
             var hasChanges = false;
-            var btnNavBack = (oEvent.getId() !== 'press');
+            var btnNavBack = ( oEvent.getId() !== 'press');
             var globalModel = this.getModel("globalModel");
             var sEkgrp = globalModel.getProperty("/Ekgrp");
             var sLifnr = globalModel.getProperty("/Lifnr");

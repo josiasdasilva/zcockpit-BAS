@@ -366,9 +366,16 @@ sap.ui.define([
                                     filters: aFilters,
                                     success: (oData2, oResponse) => {
                                         sap.ui.core.BusyIndicator.hide();
+
+                                        let orNodes = [];
+                                        for (let item of this._hieraquiaInput.getTokens()) {
+                                            orNodes.push(item.mProperties.key);
+                                        }
+
                                         this.getRouter().navTo("pedido", {
                                             Ekgrp: sEkgrp,
-                                            Lifnr: sLifnr
+                                            Lifnr: sLifnr,
+                                            Node6 : orNodes && orNodes.length > 0 ? orNodes.toString() : ''
                                         }, true);
                                     },
                                     error: (oError) => {
@@ -782,7 +789,7 @@ sap.ui.define([
             this.clearContrato(oEvent);
             this.habilitaBotaoPedido();*/
         },
-        onUpdateTokenHierarquia: function(oEvt){
+        onUpdateTokenHierarquia: function (oEvt) {
             this.habilitaBotaoPedido();
             console.log(this._hieraquiaInput.getTokens().length);
         },

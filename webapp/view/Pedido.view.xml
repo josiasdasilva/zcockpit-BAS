@@ -17,10 +17,16 @@
 						xmlns:semantic="sap.m.semantic"
 						xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 						xmlns:sap.ui.core="sap.ui.core"
-						xmlns="sap.m" title="Data da Remessa: { path: 'globalModel>/DtRemessa', formatter: '.formatter.dateFormat' }" number="{ path: 'globalModel>/Total', formatter: '.formatter.fullNumberStr' }" numberUnit="R$" titleActive="true" id="headerCabecalho" fullScreenOptimized="true" condensed="true">
+						xmlns="sap.m" title="Data da Remessa: { path: 'globalModel>/DtRemessa', formatter: '.formatter.dateFormat' }" number="{ path: 'globalModel>/Total', formatter: '.formatter.fullNumberStr' }" numberUnit="R$" titleActive="true" id="headerCabecalho" fullScreenOptimized="true" condensed="false">
+
+
 						<attributes>
-							<ObjectAttribute text="{ path: 'globalModel>/TpPedido' }" id="attribute19" title="Tipo de Pedido" />
+						<ObjectAttribute text="{ path: 'globalModel>/TpPedido' }" id="attribute19" title="Tipo de Pedido" />
+                        <ObjectAttribute visible="false" title="{i18n>total_vencido}" text="{path: 'fornecedorInfo>/Total', formatter: '.formatter.float2digStr'}"   />
 						</attributes>
+                        <statuses>
+			                <ObjectStatus title="{i18n>total_vencido}" text="{path: 'fornecedorInfo>/Total', formatter: '.formatter.float2digStr'}" state=""/>
+		                </statuses>
 					</ObjectHeader>
 					<Bar xmlns:mvc="sap.ui.core.mvc"
 						xmlns:table="sap.ui"
@@ -355,7 +361,7 @@
 						</Table>
 						</ScrollContainer> -->
 						<!--TreeTable Begin-->
-						<t:TreeTable visibleRowCount="14" rowHeight="25" columnHeaderHeight="25"  class="tableTelaPedido" selectionMode="MultiToggle" id="tablePedido" rows="{path:'pedidoListModel>/root/parentNode', parameters: {arrayNames:['POSet']}}" enableSelectAll="false" ariaLabelledBy="title" >
+						<t:TreeTable visibleRowCount="20" rowHeight="25" columnHeaderHeight="25"  class="tableTelaPedido" selectionMode="MultiToggle" id="tablePedido" rows="{path:'pedidoListModel>/root/parentNode', parameters: {arrayNames:['POSet']}}" enableSelectAll="false" ariaLabelledBy="title" >
 							<!--<t:toolbar>
                             <Toolbar>
                                 <Title id="title" text="Clothing"/>
@@ -384,7 +390,7 @@
 								<t:Column width="7em" id="column41">
 								<Label class='labelPedido' text='{i18n>xped.codigo}'></Label>
 									<t:template>							
-										<ObjectIdentifier class="textoLinhaPedido" title="{pedidoListModel>Matnr}" id="_column_matnr_copy_tablePedido_0" />
+										<ObjectIdentifier  class="{pedidoListModel>sClass}" title="{pedidoListModel>sClass} {pedidoListModel>Matnr}" id="_column_matnr_copy_tablePedido_0" />
 									</t:template>
 								</t:Column>
 								<!-- Maktx -->

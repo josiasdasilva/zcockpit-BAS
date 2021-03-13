@@ -9,6 +9,11 @@
     }
 }
 
+.label_h3{
+font-size: 1.25rem !important;
+}
+
+
 html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
     width: 100%;
     left: 0px;
@@ -98,10 +103,10 @@ td[headers*='tablePedido_col8'] {
   background: #f0808040 !important;
 }
 
-
+/*
 div[id*='number21_tablePedido_0'] {
   background: #f0808040;
-}
+}*/
 
 td[data-mydata="ajuste"] { 
     background: #f0808040; }
@@ -111,8 +116,8 @@ td[data-mydata="ajuste"] {
 }
 
 .requisicao {
-    background: #f0808040;
-    /*border: 2px solid black;*/
+    /*background: #f0808040;
+    border: 2px solid black;*/
 }
 
 

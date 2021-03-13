@@ -69,6 +69,24 @@ sap.ui.define(
                 },
                     this._oTablePedidoHeader
                 );
+            
+              $(`#${this._oTablePedido.sId}`).scroll(()=> { 
+                    this.checkSelectedRow(null) 
+              });
+
+              $(`#content`).scroll(()=> { 
+                    this.checkSelectedRow(null) 
+              });
+
+               this._oTablePedido.addEventDelegate({
+                    onAfterRendering: () => {
+                   
+                       this.checkSelectedRow(null) 
+                    },
+                },
+                    this._oTablePedido
+                );
+
                 //FAFN - End
                 this.getView().byId('_i_pedido_0').setColor('#f00000');
             },
@@ -327,7 +345,8 @@ sap.ui.define(
             //			oSwipeContent.setText("Delete").setType("Reject");
             //		},
             onObjectMatched: function (oEvent) {
-                debugger;
+                
+                
                 let oPedidoNav = JSON.parse(localStorage.getItem('pedidoNavList'));
                 let aPedidoModel = this.getView().getModel('pedidoListModel');
                 let aPOSet = aPedidoModel && aPedidoModel.getData ? aPedidoModel.getData().root.parentNode.POSet : [] ; ;
@@ -382,6 +401,13 @@ sap.ui.define(
                     oEvent.getParameter('arguments').Lifnr
                 );
 
+                globalModel.setProperty(
+                    '/Node6',
+                    oEvent.getParameter('arguments').Node6
+                );
+
+                
+
                 this.updateTable();
                 this.updateTotal();
                 // this.reiniciaIconesSort();
@@ -414,7 +440,10 @@ sap.ui.define(
                 var localModel = this.getModel();
                 var globalModel = this.getModel('globalModel');
                 var sEkgrp = globalModel.getProperty('/Ekgrp');
-                var sLifnr = globalModel.getProperty('/Lifnr');
+                var sLifnr = globalModel.getProperty('/Lifnr'); 
+                var sNode6 = globalModel.getProperty('/Node6');
+
+                let aNode6 = sNode6 && sNode6.length > 0 ? sNode6.split(',') : null;
 
                 var sObjectPath = localModel.createKey('/Fornecedor', {
                     Ekgrp: sEkgrp,
@@ -448,6 +477,12 @@ sap.ui.define(
 
                                 for (let indexChild = 0; indexChild < pedidoList.root.parentNode.POSet[index].POSet.length; indexChild++) {
 
+                                    /*if(aNode6 && aNode6.length >0){
+                                       if(!aNode6.includes(pedidoList.root.parentNode.POSet[index].POSet[indexChild].Node6)){
+                                        continue;
+                                       }
+                                    }*/
+
                                     aArrayIndices.push(indice);
                                     indice++;
                                 pedidoList.root.parentNode.POSet[index].POSet[indexChild].Matnr = pedidoList.root.parentNode.POSet[index].POSet[indexChild].Node6;
@@ -471,7 +506,11 @@ sap.ui.define(
             },
             setPedidoTableModel: function (oData, aArrayIndices) {
                 this.getView().setModel(new JSONModel(oData), 'pedidoListModel');
-
+               // if(this.pathSelectedItem){
+                 //this.getView().getModel('pedidoListModel').setProperty(`${this.pathSelectedItem}/isSelected`,true);
+                 //this.getView().getModel('pedidoListModel').setProperty(`${this.pathSelectedItem}/sClass`,'selectMaterial');
+                 
+                //}
                 this._oTablePedido.getBinding('rows').refresh();
 
                 this.checkSelectedRow();
@@ -518,6 +557,7 @@ sap.ui.define(
                 var globalModel = this.getModel('globalModel');
 
                 delete this.indexPressedItem;
+                delete this.pathSelectedItem;
 
                 MessageBox.confirm(this.getText('sairPedido'), {
                     title: this.getText('sairPedidoTitulo'),
@@ -546,8 +586,11 @@ sap.ui.define(
                 //Prepare list for the next screen navigate between materials
                 let pedidoList = [];
                 let index = 0;
+                this.pathSelectedItem = oEvent.oSource.getBindingContext('pedidoListModel').sPath;
                 let aPOSet = this.getView().getModel('pedidoListModel').getData().root.parentNode.POSet;
                 let indexBinding = oEvent.oSource.getBindingContext('pedidoListModel').getModel('pedidoListModel').getProperty(oEvent.oSource.getBindingContext('pedidoListModel').sPath).index;
+                
+                this.getView().getModel('pedidoListModel').setProperty(`${this.pathSelectedItem}/isSelected` ,true);
                 //for (let item of this._oTablePedido.getItems()) {
                 /*for (let item of this._oTablePedido.getRows()) {
                     index++;
@@ -625,22 +668,25 @@ sap.ui.define(
                     if (this.indexPressedItem >= 0 && this.indexPressedItem === index) {
                         element.addStyleClass('selecetMaterial');
                         // oEvt.getSource().setFirstVisibleRow(index);
-                        element.getDomRef().scrollIntoView();
+                        //element.getDomRef().scrollIntoView();
                     }
                 }
             },
             checkSelectedRow: function (oEvt) {
+                return;
+                //this.pathSelectedItem = oEvent.oSource.getBindingContext('pedidoListModel').sPath;
 
                 for (
                     let index = 0; index < this._oTablePedido.getRows().length; index++
                 ) {
                     const element = this._oTablePedido.getRows()[index];
                     const elementRow = $(`#${element.sId}`);
-
+                     element.getCells()[0].removeStyleClass('selectMaterial');
                     elementRow.removeClass('selectMaterial');
-
-                    if (this.indexPressedItem >= 0 && this.indexPressedItem === index) {
+                    if (this.pathSelectedItem && this.pathSelectedItem === element.getBindingContext('pedidoListModel').sPath) {
+                    //if (this.indexPressedItem >= 0 && this.indexPressedItem === index) {
                         elementRow.addClass('selectMaterial');
+                          element.getCells()[0].addStyleClass('selectMaterial');   
                         // oEvt.getSource().setFirstVisibleRow(index);
                         //element.getDomRef().scrollIntoView();
                     }

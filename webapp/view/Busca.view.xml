@@ -50,7 +50,8 @@
 										<items>
 											<FlexBox width="8rem" fitContainer="true" alignItems="Center" alignContent="Start">
 												<items>
-													<Title text="{i18n>comprador}" width="8rem" id="__title0" titleStyle="H3"/>
+                                                <Label text="{i18n>comprador}" class='label_h3' required="true" width="8rem" id="__title0"/>
+													<!--<Title text="{i18n>comprador}" width="8rem" id="__title0" titleStyle="H3"/>-->
 												</items>
 											</FlexBox>
 											<FlexBox width="100%" alignItems="Center">
@@ -77,8 +78,9 @@
 											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
 												width="8rem" id="__box13" alignItems="Center" alignContent="Start">
 												<items>
-													<Title xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
-														text="{i18n>fornecedor}" width="8rem" titleStyle="H3"/>
+                                                  <Label text="{i18n>fornecedor}" class='label_h3' required="true" width="8rem" />
+													<!--<Title xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
+														text="{i18n>fornecedor}" width="8rem" titleStyle="H3"/>-->
 												</items>
 											</FlexBox>
 											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"

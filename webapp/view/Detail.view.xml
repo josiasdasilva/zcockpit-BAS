@@ -8,7 +8,7 @@
 			<!--	busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}" showSubHeader="false">-->
 			<!--	<semantic:content>-->
 			<ObjectHeader id="headerDetail" title="{Matnr} - {Maktx}" number="{ path: 'globalModel>/Count', formatter: '.formatter.toInteger' }"
-				numberUnit="{Purchunit}" intro="{Matnr}" backgroundDesign="Solid" titleSelectorPress="onTitleSelectorPress" titleLevel="Auto"
+				numberUnit="{i18n>sugestao_compra}" intro="{Matnr}" backgroundDesign="Solid" titleSelectorPress="onTitleSelectorPress" titleLevel="Auto"
 				condensed="true">
 				<attributes>
 					<ObjectAttribute text="{globalModel>/codABC}" id="__attribute4" title="{i18n>xmat.codabc}"/>
@@ -53,46 +53,25 @@
 										</Bar>
 										<Table xmlns="sap.m" noDataText="Sem dados para exibir" id="compraTableHeader" showNoData="false" class="tableTelaPedido">
 											<columns>
-												<Column class="columnLoja" hAlign="Begin" width="2.5em" id="column91" minScreenWidth="2.5rem">
+												<Column class="columnLoja" hAlign="End" width="2.4em" id="column91" minScreenWidth="2.5rem">
 													<header>
 														<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween" id="hbox45">
 															<items>
 																<Text text="{i18n>tbl_compra.loja}" app:binding="Werks" width="auto" id="text51"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_0" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
 												</Column>
-												<!--<Column hAlign="Center" width="2em">-->
-												<!--	<header>-->
-												<!--		<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween">-->
-												<!--			<items>-->
-												<!--				<Text text="{i18n>tbl_compra.uf}" app:binding="Uf" width="auto"/>-->
-												<!--				<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_1" useIconTooltip="false" color="#808080" visible="true"-->
-												<!--					width="30%"/>-->
-												<!--			</items>-->
-												<!--		</HBox>-->
-												<!--	</header>-->
-												<!--</Column>-->
-												<!--<Column hAlign="Center" width="3.8em">-->
-												<!--	<header>-->
-												<!--		<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween">-->
-												<!--			<items>-->
-												<!--				<Text text="{i18n>tbl_compra.bandeira}" app:binding="Bandeira" width="auto"/>-->
-												<!--				<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_2" useIconTooltip="false" color="#808080" visible="true"-->
-												<!--					width="30%"/>-->
-												<!--			</items>-->
-												<!--		</HBox>-->
-												<!--	</header>-->
-												<!--</Column>-->
+									
 												<Column width="3em" hAlign="End" id="column92">
 													<header>
-														<HBox width="100%" justifyContent="SpaceAround" id="hbox46">
+														<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween" id="hbox46">
 															<items>
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" app:binding="Pmz" text="{i18n>tbl_venda.pmz}" id="text52"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_1" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -104,7 +83,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.preco_compra_var}"
 																	app:binding="PrVarej" id="text53"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_2" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -116,7 +95,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.preco_compra_ata}"
 																	app:binding="PrAtaca" id="text54"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_3" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -128,7 +107,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" app:binding="MrgVar" text="{i18n>tbl_venda.mg_var}"
 																	id="text55"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_4" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -140,55 +119,55 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" app:binding="MrgAta" text="{i18n>tbl_venda.mg_ata}"
 																	id="text56"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_5" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
 												</Column>
-												<Column width="5em" hAlign="End" id="column97">
+												<Column width="2.2em" hAlign="End" id="column97">
 													<header>
 														<HBox width="100%" justifyContent="SpaceBetween" alignContent="SpaceBetween" id="hbox51">
 															<items>
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.venda_atual}"
 																	app:binding="{= ${globalModel>/colVlrCompra} ? 'VlrVendaMm' : 'QtdVendaMm'}" width="auto" id="text57"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_6" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
 												</Column>
-												<Column width="5em" hAlign="End" id="column98">
+												<Column width="2.4em" hAlign="End" id="column98">
 													<header>
 														<HBox width="100%" justifyContent="SpaceAround" alignContent="SpaceBetween" id="hbox52">
 															<items>
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.venda_m1}"
 																	app:binding="{= ${globalModel>/colVlrCompra} ? 'VlrVendaM1' : 'QtdVendaM1'}" width="auto" id="text58"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_7" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
 												</Column>
-												<Column width="5em" hAlign="End" id="column99">
+												<Column width="2.4em" hAlign="End" id="column99">
 													<header>
 														<HBox width="100%" justifyContent="SpaceAround" alignContent="SpaceBetween" id="hbox53">
 															<items>
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.venda_m2}"
 																	app:binding="{= ${globalModel>/colVlrCompra} ? 'VlrVendaM2' : 'QtdVendaM2'}" width="auto" id="text59"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_8" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
 												</Column>
-												<Column width="5em" hAlign="End" id="column100">
+												<Column width="2.4em" hAlign="End" id="column100">
 													<header>
 														<HBox width="100%" justifyContent="SpaceAround" alignContent="SpaceBetween" id="hbox54">
 															<items>
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.venda_m3}"
 																	app:binding="{= ${globalModel>/colVlrCompra} ? 'VlrVendaM3' : 'QtdVendaM3'}" id="text60"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_9" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -200,7 +179,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.dt_ultima_compra}"
 																	app:binding="Dtultcp" id="text61"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_10" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -212,7 +191,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.dt_ultima_venda}"
 																	app:binding="Dtultvd" id="text62"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_11" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -224,7 +203,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.estoque_loja}"
 																	app:binding="Estloja" id="text63"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_12" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -235,7 +214,7 @@
 												<!--			<items>-->
 												<!--				<Text text="{i18n>tbl_compra.estoque_troca}" app:binding="Esttrf"/>-->
 												<!--				<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_10_copy" useIconTooltip="false" color="#808080" visible="true"-->
-												<!--					width="30%"/>-->
+												<!--					/>-->
 												<!--			</items>-->
 												<!--		</HBox>-->
 												<!--	</header>-->
@@ -246,7 +225,7 @@
 												<!--			<items>-->
 												<!--				<Text text="{i18n>tbl_compra.ped_pend_central}" app:binding="QtppendCent"/>-->
 												<!--				<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_11_copy" useIconTooltip="false" color="#808080" visible="true"-->
-												<!--					width="30%"/>-->
+												<!--					/>-->
 												<!--			</items>-->
 												<!--		</HBox>-->
 												<!--	</header>-->
@@ -258,7 +237,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.ped_pend_forn}"
 																	app:binding="QtppendForn" id="text64"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_13" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -270,7 +249,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.dias_estoque}"
 																	app:binding="Estdia" id="text65"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_14" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -282,7 +261,7 @@
 																<Text xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.sugestao_ultima}"
 																	app:binding="Sugestao" id="text66"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_15" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
 													</header>
@@ -294,28 +273,28 @@
 													</header>
 												</Column>
 												<Column width="3em" hAlign="End" id="column108">
-													<header>
+												
 														<HBox width="100%" justifyContent="SpaceAround" id="hbox61">
 															<items>
 																<Label xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.unidade}" app:binding="UnidadeCp"
 																	id="label2"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_16" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
-													</header>
+													
 												</Column>
-												<Column width="2em" hAlign="Center" id="column109">
-													<header>
+												<Column width="2em" hAlign="End" id="column109">
+												
 														<HBox width="100%" justifyContent="SpaceAround" id="hbox62">
 															<items>
 																<Label xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="{i18n>tbl_compra.umrez}" app:binding="Umrez"
 																	id="label3"/>
 																<sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sort-ascending" size="0.96em" id="_i_compra_17" useIconTooltip="false"
-																	color="#808080" visible="true" width="30%"/>
+																	color="#808080" visible="true" />
 															</items>
 														</HBox>
-													</header>
+												
 												</Column>
 											</columns>
 										</Table>
@@ -386,17 +365,17 @@
 													<!--MrgAta-->
 													<Column width="3em" hAlign="End"/>
 													<!-- VlrVendaMm -->
-													<Column width="5em" hAlign="End"/>
+													<Column width="2.2em" hAlign="End"/>
 													<!-- VlrVendaM1 -->
-													<Column width="5em" hAlign="End"/>
+													<Column width="2.4em" hAlign="End"/>
 													<!-- VlrVendaM2 -->
-													<Column width="5em" hAlign="End"/>
+													<Column width="2.4em" hAlign="End"/>
 													<!-- VlrVendaM3 -->
-													<Column width="5em" hAlign="End"/>
+													<Column width="2.4em" hAlign="End"/>
 													<!-- Dtultcp    -->
-													<Column width="4.7em" hAlign="Center"/>
+													<Column width="4.7em" hAlign="End"/>
 													<!-- Dtultvd    -->
-													<Column width="4.1em" hAlign="Center"/>
+													<Column width="4.1em" hAlign="End"/>
 													<!-- Estloja    -->
 													<Column width="3em" hAlign="End"/>
 													<!-- Esttrf    -->
@@ -410,11 +389,11 @@
 													<!-- Sugestao    -->
 													<Column width="4em" hAlign="End"/>
 													<!-- Requisicao    -->
-													<Column id="_colinputSugestao" width="4em" hAlign="Center"/>
+													<Column id="_colinputSugestao" width="4em" hAlign="End"/>
 													<!-- Unidade Compra  -->
-													<Column width="3em" hAlign="Center"/>
+													<Column width="3em" hAlign="End"/>
 													<!-- Umrez    -->
-													<Column width="2em" hAlign="Center"/>
+													<Column width="2em" hAlign="End"/>
 												</columns>
 											</Table>
 										</ScrollContainer>
@@ -436,7 +415,7 @@
 														<items>
 															<Text app:binding="Werks" text="{i18n>tbl_venda.loja}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_0" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -447,7 +426,7 @@
 														<items>
 															<Text app:binding="Uf" text="{i18n>tbl_venda.uf}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_1" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -458,7 +437,7 @@
 														<items>
 															<Text app:binding="Bandeira" text="{i18n>tbl_venda.bandeira}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_2" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -469,7 +448,7 @@
 														<items>
 															<Text app:binding="Cmm" text="{i18n>tbl_venda.cmm}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_3" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -480,7 +459,7 @@
 														<items>
 															<Text app:binding="Pmz" text="{i18n>tbl_venda.pmz}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_4" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -491,7 +470,7 @@
 														<items>
 															<Text app:binding="Mkp" text="{i18n>tbl_venda.mkp}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_5" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -502,7 +481,7 @@
 														<items>
 															<Text app:binding="PrultvdVar" text="{i18n>tbl_venda.preco_var}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_6" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -513,7 +492,7 @@
 														<items>
 															<Text app:binding="PrultvdAta" text="{i18n>tbl_venda.preco_ata}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_7" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -524,7 +503,7 @@
 														<items>
 															<Text app:binding="MrgVar" text="{i18n>tbl_venda.mg_var}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_8" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -535,7 +514,7 @@
 														<items>
 															<Text app:binding="MrgAta" text="{i18n>tbl_venda.mg_ata}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_9" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -546,7 +525,7 @@
 														<items>
 															<Text app:binding="QtdTransMm" text="{i18n>tbl_venda.qtr_mat}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_10" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -557,7 +536,7 @@
 														<items>
 															<Text app:binding="QtdVendaMm" text="{i18n>tbl_venda.qvd_mat_tot}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_11" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -568,7 +547,7 @@
 														<items>
 															<Text app:binding="VlrVendaMm" text="{i18n>tbl_venda.vlr_venda_tot}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_12" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -579,7 +558,7 @@
 														<items>
 															<Text app:binding="MrgVendaMm" text="{i18n>tbl_venda.mrg}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_13" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -590,7 +569,7 @@
 														<items>
 															<Text app:binding="QtdTransM1" text="{i18n>tbl_venda.1_qtr_mat}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_14" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -601,7 +580,7 @@
 														<items>
 															<Text app:binding="QtdVendaM1" text="{i18n>tbl_venda.1_qvd_mat_tot}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_15" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -612,7 +591,7 @@
 														<items>
 															<Text app:binding="VlrVendaM1" text="{i18n>tbl_venda.1_vlr_venda_tot}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_16" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -623,7 +602,7 @@
 														<items>
 															<Text app:binding="MrgVendaM1" text="{i18n>tbl_venda.1_mrg}"/>
 															<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_venda_17" useIconTooltip="false" color="#808080" visible="true"
-																width="30%"/>
+																/>
 														</items>
 													</HBox>
 												</header>
@@ -717,7 +696,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.loja}" app:binding="Werks"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_0" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
@@ -728,7 +707,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.uf}" app:binding="Uf"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_1" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
@@ -739,7 +718,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.bandeira}" app:binding="Bandeira"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_2" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
@@ -750,7 +729,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.estloja}" app:binding="Estloja"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_3" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
@@ -761,7 +740,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.minbe}" app:binding="Minbe"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_4" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
@@ -772,7 +751,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.eisbe}" app:binding="Eisbe"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_5" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
@@ -783,7 +762,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.mabst}" app:binding="Mabst"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_6" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
@@ -794,7 +773,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.bstrf}" app:binding="Bstrf"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_7" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
@@ -805,7 +784,7 @@
 												<items>
 													<Text text="{i18n>tbl_faceamento.gwert}" app:binding="Gwert"/>
 													<sap.ui.core:Icon src="sap-icon://sort-ascending" size="0.96em" id="_i_faceamento_8" useIconTooltip="false" color="#808080" visible="true"
-														width="30%"/>
+														/>
 												</items>
 											</HBox>
 										</header>
