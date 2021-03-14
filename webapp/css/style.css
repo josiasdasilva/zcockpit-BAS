@@ -129,14 +129,27 @@ td[data-mydata="ajuste"] {
 }
 */
 
+.scroll-compras-header {
+
+    overflow-y: scroll !important;
+    height: 1em !important;
+}
+
 .scroll-compras {
   /*  height: 55vh !important;*/
     height: 47vh !important;
+    overflow-y: scroll !important;
 }
 
 .scroll-venda-faceamento {
   /*  height: 55vh !important;*/
+   overflow-y: scroll !important;
     height: 51vh !important;
+}
+
+.scroll-venda-faceamento-header{
+      overflow-y: scroll !important;
+    height: 1em !important;
 }
 
 .panel_produto {
@@ -200,7 +213,7 @@ td[data-mydata="ajuste"] {
 
 .linkContrato {
     font-size: 0.700rem !important;
-    text-align: left !important;
+    text-align: right !important;
 }
 
 .columnLoja {
