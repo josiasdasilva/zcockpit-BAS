@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+specVersion: "2.4"
+metadata:
+  name: 'zcockpit'
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: DMA_310
+          url: http://devsapecc02.grupodma.intra:8000
+        credentials:
+          username: env:UI5_USERNAME
+          password: env:UI5_PASSWORD
+        app:
+          name: ZCOCKPIT
+          description: Cockpit Comercial
+          package: ZDEV
+          transport: ECDK9A0CRK

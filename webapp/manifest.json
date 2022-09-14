@@ -1,4 +1,5 @@
 {
+    "name": "zedlloja",
     "_version": "1.8.0",
     "sap.app": {
         "id": "dma.zcockpit",
@@ -18,7 +19,7 @@
                 "uri": "/sap/opu/odata/sap/ZCOCKPIT_COMERCIAL_SRV/",
                 "type": "OData",
                 "settings": {
-                    "localUri": "localService/metadata.xml"
+                    "localUri": "localService/ZCOCKPIT_COMERCIAL_SRV/metadata.xml"
                 }
             }
         }
@@ -46,10 +47,11 @@
     "sap.ui5": {
         "rootView": {
             "viewName": "dma.zcockpit.view.Home",
-            "type": "XML"
+            "type": "XML",
+            "async": true
         },
         "dependencies": {
-            "minUI5Version": "1.38.0",
+            "minUI5Version": "1.71.46",
             "libs": {
                 "sap.ui.layout": {},
                 "sap.ui.core": {},
@@ -131,12 +133,12 @@
                 {
                     "pattern": "PO/{Ekgrp}/{Lifnr}/:Node6:",
                     "name": "pedido",
-                    "target": "pedido",
-                    "subroutes": [{
-                        "name": "detail",
-                        "pattern": "POdet/{Ekgrp}/{Lifnr}/{Matnr}",
-                        "target": "detail"
-                    }]
+                    "target": "pedido"
+                },
+                {
+                    "pattern": "POdet/{Ekgrp}/{Lifnr}/{Matnr}",
+                    "name": "detail",
+                    "target": "detail"
                 }
             ],
             "targets": {

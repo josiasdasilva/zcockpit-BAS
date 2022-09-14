@@ -12,7 +12,7 @@
 				condensed="true">
 				<attributes>
 					<ObjectAttribute text="{globalModel>/codABC}" id="__attribute4" title="{i18n>xmat.codabc}"/>
-				</attributes>
+				</attributes> 
 			</ObjectHeader>
             <Toolbar>
 				<Button text="{i18n>materialAnterior}" press="previousMaterial" icon="sap-icon://navigation-left-arrow" enabled="{= ${pedidoListNav>/current} > 1}"/>
@@ -29,7 +29,7 @@
 					showAll="true"
 					text="materiais" />
 				<IconTabSeparator />-->
-					<!-- Tabela Compras   ***********************************************  -->
+					<!-- Tabela Compras   ***********************************************  --> 
 					<IconTabFilter text="Compra" icon="sap-icon://cart-3" id="__filter1">
 						<content>
 							<FlexBox width="100%" id="box0" height="100%" renderType="Bare" direction="Column">
@@ -37,7 +37,7 @@
 									<l:fixContent>
 										<Bar xmlns="sap.m" id="bar1">
 											<contentRight>
-												<SegmentedButton id="_segCompra" selectedKey="unidade" select="onSelValorCompra">
+												<SegmentedButton id="_segCompra" selectedKey="unidade" selectionChange="onSelValorCompra">
 													<items>
 														<SegmentedButtonItem icon="sap-icon://product" key="unidade" id="item4"/>
 														<SegmentedButtonItem icon="sap-icon://money-bills" key="real" id="item5"/>

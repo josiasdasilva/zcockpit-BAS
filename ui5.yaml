@@ -1,18 +1,32 @@
-specVersion: '1.0'
+specVersion: '2.6'
 metadata:
   name: zcockpit
 type: application
 resources:
   configuration:
     propertiesFileSourceEncoding: UTF-8
-builder:
-  customTasks:
-    - name: webide-extension-task-updateManifestJson
-      afterTask: generateVersionInfo
-      configuration:
-        appFolder: webapp
-        destDir: dist
-    - name: webide-extension-task-resources
-      afterTask: webide-extension-task-updateManifestJson
-      configuration:
-        nameSpace: dma
+framework:
+  name: SAPUI5
+  version: "1.76.0"
+server:
+  customMiddleware:
+  - name: fiori-tools-proxy
+    afterMiddleware: compression
+    configuration:
+      ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+      backend:
+      - path: /sap
+        url: http://devsapecc02.grupodma.intra:8000
+        client: '410'
+        destination: DMA_410
+      ui5:
+        path: 
+        - /resources
+        - /test-resources
+        url: https://ui5.sap.com
+        version: "1.71.46" # The UI5 version, for instance, 1.78.1. Empty means latest version
+  - name: fiori-tools-appreload
+    afterMiddleware: compression
+    configuration:
+     port: 35729
+     path: webapp

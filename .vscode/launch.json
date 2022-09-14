@@ -2,24 +2,32 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run zcockpit-bas",
+      "name": "dma-zcockpit-bas",
+      "cwd": "${workspaceFolder}",
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/@sap/html5-repo-mock/index.js",
-      "cwd": "${workspaceFolder}",
-      "env": {
-        "PORT": "6004",
-        "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
-        "run.config": "{\"handlerId\":\"ui5_flat_run_config_handler_id\",\"runnableId\":\"/home/user/projects/zcockpit-bas\"}"
-      },
+      "runtimeExecutable": "npx",
       "args": [
-        "--standalone",
-        "/dmazcockpit/index.html",
-        "--ui5",
-        "{\"version\":\"1.38.48\"}"
+        "--open",
+        "index.html"
       ],
-      "envFile": "${workspaceFolder}/.env6",
-      "preLaunchTask": "Build zcockpit-bas"
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "outputCapture": "std",
+      "env": {
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/dma-zcockpit-bas\"}",
+        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"destination\":\"DMA_410\",\"path\":\"/sap\"}]",
+        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
+        "FIORI_TOOLS_UI5_VERSION": "1.71.33",
+        "FIORI_TOOLS_UI5_URI": "https://ui5.sap.com"
+      }
     }
   ]
 }

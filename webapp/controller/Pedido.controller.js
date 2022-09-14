@@ -786,10 +786,10 @@ sap.ui.define(
                 try {
                     socket = new WebSocket(webSocketURI);
                     socket.onopen = (e) => {
-                        console.log('Connected');
+                        console.log('Socket Connected');
                     };
                     socket.onerror = (e) => {
-                        console.log('Erro');
+                        console.log('Socket Erro');
                     };
 
                     //Create function for handling websocket messages
@@ -828,7 +828,7 @@ sap.ui.define(
                         }
                     };
                     socket.onclose = (e) => {
-                        console.log('Closed');
+                        console.log('Socket Closed');
                     };
                 } catch (exception) { }
             },

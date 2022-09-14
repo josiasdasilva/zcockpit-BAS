@@ -41,10 +41,6 @@ html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
     padding: 0rem;
 }
 
-
-
-
-
 .sapUiTableColRowHdr{
     background: #acbcde;
 }
@@ -63,7 +59,7 @@ html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
 }
 .labelPedido {
     color: black;
-    font-size: 0.8rem;
+    font-size: 0.620rem !important;
     font-family: Arial,Helvetica,sans-serif;
     font-weight: normal;
 }
@@ -71,10 +67,6 @@ html.sap-desktop .sapMShellAppWidthLimited .sapMShellCentralBox {
     vertical-align: middle;
     padding: 0.3em;
 }
-
-
-
-
 
 
 .campoObrigatorio {
@@ -115,13 +107,12 @@ td[data-mydata="ajuste"] {
        background: #f0808040;
 }
 
+/*
 .requisicao {
-    /*background: #f0808040;
-    border: 2px solid black;*/
+    background: #f0808040;
+    border: 2px solid black;
 }
 
-
-/*
 .sugestao {
 	background: #c4c4c4;
 	border: 2px solid black;
@@ -132,7 +123,7 @@ td[data-mydata="ajuste"] {
 .scroll-compras-header {
 
     overflow-y: scroll !important;
-    height: 1em !important;
+    height: 2em !important;
 }
 
 .scroll-compras {
@@ -149,7 +140,7 @@ td[data-mydata="ajuste"] {
 
 .scroll-venda-faceamento-header{
       overflow-y: scroll !important;
-    height: 1em !important;
+    height: 2em !important;
 }
 
 .panel_produto {
@@ -192,14 +183,14 @@ td[data-mydata="ajuste"] {
 }
 
 ._cl_idProdutos {
-    height: 2.5rem;
+    height: 2.5rem !important;
 }
 
 .inputCompras .sapMInputBaseInner {
-    font-size: 0.70em;
+    font-size: 0.90em;
     font-family: Arial, Helvetica, sans-serif;
     line-height: normal;
-    margin-top: -0.5em;
+    margin-top: 0.2em;
     height: 1.2rem;
     padding: 0 0.55rem;
     text-align: right;

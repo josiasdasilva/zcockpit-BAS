@@ -4,7 +4,7 @@
         {
             "authenticationType": "none",
             "csrfProtection": false,
-            "source": "^/sap/opu/odata/",
+            "source": "^/sap/opu/odata/sap/ZCOCKPIT_COMERCIAL_SRV",
             "destination": "DMA"
         },
         {

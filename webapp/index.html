@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>zcockpit</title>
-		<script id="sap-ui-bootstrap"
-			src="https://sapui5.hana.ondemand.com/1.38.40/resources/sap-ui-core.js"
-			data-sap-ui-theme="sap_bluecrystal"
-			data-sap-ui-resourceroots='{"dma.zcockpit": "./"}'
-			data-sap-ui-compatVersion="edge"
-			data-sap-ui-preload="async"
-			data-sap-ui-libs="sap.m">
-		</script>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script>
-			sap.ui.getCore().attachInit(function() {
-				new sap.m.Shell({
-					app: new sap.ui.core.ComponentContainer({
-						height : "100%",
-						name : "dma.zcockpit"
-					})
-				}).placeAt("content");
-			});
-		</script>
-	</head>
-	<body class="sapUiBody" id="content">
-	</body>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<style>
+		html, body, body > div, #container, #container-uiarea {
+			height: 100%;
+		}
+	</style>
+	<script
+        id="sap-ui-bootstrap"
+        src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_bluecrystal"
+        data-sap-ui-resourceroots='{ "dma.zcockpit": "." }'
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true"
+        data-sap-ui-preload="async"
+        data-sap-ui-libs="sap.m">
+	</script>
+	<script 
+        id="locate-reuse-libs" 
+        src="./utils/locate-reuse-libs.js"
+		data-sap-ui-manifest-uri="../manifest.json"
+		data-sap-ui-componentName="dma.zcockpit">
+	</script>
+</head>
+<body class="sapUiBody sapUiSizeCompact" id="content">
+<div 
+    data-sap-ui-component data-name="dma.zcockpit" 
+    data-id="container" 
+    data-settings='{"id" : "dma.zcockpit"}' 
+    data-handle-validation="true"></div>
+</body>
 </html>

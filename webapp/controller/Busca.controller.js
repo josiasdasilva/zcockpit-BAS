@@ -494,7 +494,6 @@ sap.ui.define([
             //this.habilitaBotaoPedido();
         },
         _handleF4UFCancel: function (oEvent) {
-            //console.log('ação cancelada');
         },
         onF4UFTokenUpdate: function (oEvent) {
             this.cleargrupoLojas(oEvent);
@@ -596,7 +595,6 @@ sap.ui.define([
             //this.habilitaBotaoPedido();
         },
         _handleF4grupoLojasCancel: function (oEvent) {
-            //console.log('Ação cancelada');
         },
         onF4grupoLojasTokenUpdate: function (oEvent) {
             this.clearLojas(oEvent);
@@ -696,7 +694,6 @@ sap.ui.define([
             this.habilitaBotaoPedido();
         },
         _handleF4LojasCancel: function (oEvent) {
-            //console.log('Ação cancelada');
         },
         onF4LojasTokenUpdate: function (oEvent) {
             this.habilitaBotaoPedido();
@@ -783,15 +780,9 @@ sap.ui.define([
         clearHierarquia: function (oEvent) {
             this._hieraquiaInput.removeAllTokens();
             this.habilitaBotaoPedido();
-            console.log('Remove hierarquia tokens')
-            /*fornecedorInput.setValue("");
-            fornecedorInput.setDescription("");
-            this.clearContrato(oEvent);
-            this.habilitaBotaoPedido();*/
         },
         onUpdateTokenHierarquia: function (oEvt) {
             this.habilitaBotaoPedido();
-            console.log(this._hieraquiaInput.getTokens().length);
         },
         _handleF4fornecedorSearch: function (oEvent) {
             var aFilters = [];

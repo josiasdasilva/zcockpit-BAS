@@ -100,26 +100,25 @@ sap.ui.define([
 			sap.ui.core.BusyIndicator.show(0);
 			return new Promise((resolve, reject) => {
 				var globalModel = this.getModel("globalModel");
-				var localModel = this.getModel();
-				var sUname = window.location.href.includes("localhost") || window.location.href.includes("studio") ? "9066004" : sap.ushell.Container
-					.getUser().getId();
-				var sObjectPath = localModel.createKey("/Usuario", {
-					Uname: sUname
-				});
-				localModel.read(sObjectPath, {
-					method: "GET",
-					success: function (oData2, oResponse) {
-						globalModel.setProperty("/Ekgrp", oData2.Ekgrp);
-						globalModel.setProperty("/Uname", oData2.Uname);
-						globalModel.setProperty("/Nome", oData2.Nome);
-						sap.ui.core.BusyIndicator.hide();
-						resolve([oData2.Ekgrp, oData2.Uname, oData2.Nome]);
-					},
-					error: function (oError) {
-						sap.ui.core.BusyIndicator.hide();
-						reject(oError);
-					}
-				});
+                const localModel = this.getView().getModel();
+                const sUname = this.sUname = window.location.href.includes("trial") ? "9067001" : sap.ushell.Container.getUser().getId();
+                var sObjectPath = localModel.createKey("/Usuario", {
+                    Uname: this.sUname
+                });
+                localModel.read(sObjectPath, {
+                    method: "GET",
+                    success: function (oData2, oResponse) {
+                        globalModel.setProperty("/Ekgrp", oData2.Ekgrp);
+                        globalModel.setProperty("/Uname", oData2.Uname);
+                        globalModel.setProperty("/Nome", oData2.Nome);
+                        sap.ui.core.BusyIndicator.hide();
+                        resolve([oData2.Ekgrp, oData2.Uname, oData2.Nome]);
+                    },
+                    error: function (oError) {
+                        sap.ui.core.BusyIndicator.hide();
+                        reject(oError);
+                    }
+                });
 			});
 		},
 		onBtnHistoricoPress: function (oEvent) {

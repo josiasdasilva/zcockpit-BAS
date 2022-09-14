@@ -25,8 +25,6 @@ sap.ui.define([
 				},
 				error: function (oError) {}
 			});
-
-			// oHtml.setContent("<iframe src='https://www.trainning.com.br/download/sap4_basic.pdf' height='700' width='1300'></iframe>");
 		},
 		_getAvailableHeight: function () {
 			// get height from window or dialog whatever the iframe is put in
@@ -54,8 +52,6 @@ sap.ui.define([
 			// 	},
 			// 	error: function (oError) {}
 			// });
-
-			// oHtml.setContent("<iframe src='https://www.trainning.com.br/download/sap4_basic.pdf' height='700' width='1300'></iframe>");
 
 		}
 	});

@@ -25,7 +25,7 @@
                         <ObjectAttribute visible="false" title="{i18n>total_vencido}" text="{path: 'fornecedorInfo>/Total', formatter: '.formatter.float2digStr'}"   />
 						</attributes>
                         <statuses>
-			                <ObjectStatus title="{i18n>total_vencido}" text="{path: 'fornecedorInfo>/Total', formatter: '.formatter.float2digStr'}" state=""/>
+			                <ObjectStatus title="{i18n>total_vencido}" text="{path: 'fornecedorInfo>/Total', formatter: '.formatter.float2digStr'}" state="Error"/>
 		                </statuses>
 					</ObjectHeader>
 					<Bar xmlns:mvc="sap.ui.core.mvc"
@@ -37,7 +37,7 @@
 						<contentRight>
 							<Button text="Total por Loja" icon="sap-icon://retail-store" press=".onOpenDialogLojaSum" type="Emphasized" />
 							<Button enabled="false"/>
-							<SegmentedButton id="_segPedido" selectedKey="embcmp" select="onSelValorPedido">
+							<SegmentedButton id="_segPedido" selectedKey="embcmp" selectionChange="onSelValorPedido">
 								<items>
 									<!--<SegmentedButtonItem id="_sbtnLojaSum" icon="sap-icon://retail-store" key="lojaSum" press=".onOpenDialogLojaSum"/>-->
 									<SegmentedButtonItem id="_sbtnEmbCmp" icon="sap-icon://product" key="embcmp" />
@@ -387,14 +387,14 @@
 									</t:template>
 								</t:Column>
 								<!-- Matnr -->
-								<t:Column width="7em" id="column41">
+								<t:Column width="9em" id="column41">
 								<Label class='labelPedido' text='{i18n>xped.codigo}'></Label>
 									<t:template>							
 										<ObjectIdentifier  class="{pedidoListModel>sClass}" title="{pedidoListModel>sClass} {pedidoListModel>Matnr}" id="_column_matnr_copy_tablePedido_0" />
 									</t:template>
 								</t:Column>
 								<!-- Maktx -->
-								<t:Column width="7em" id="column42">
+								<t:Column width="17em" id="column42">
                                 <Label class='labelPedido' text='{i18n>xped.material}'></Label>
                                 		<t:template>							
 										<Text class="textoLinhaPedido" text="{pedidoListModel>Maktx}" id="_column_maktx_copy_tablePedido_0" wrapping="false" tooltip="{pedidoListModel>Maktx}"/>
@@ -445,7 +445,7 @@
 									</t:template>
 								</t:Column>
 								<!-- Valor -->
-								<t:Column width="3em" hAlign="End" id="column48">
+								<t:Column width="5em" hAlign="End" id="column48">
                                  <Label class='labelPedido' text='{i18n>xped.valor}'></Label>
                                 	<t:template>							
 										     <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Valor', formatter: '.formatter.fullNumberStr' }" emphasized="false" textAlign="Right"
@@ -453,7 +453,7 @@
 									</t:template>
 								</t:Column>
 								<!-- Prultvd -->
-								<t:Column width="2.8em" hAlign="End" id="column49">
+								<t:Column width="3.4em" hAlign="End" id="column49">
                                     <Label class='labelPedido' text='{i18n>xped.preco_venda}'></Label>
                                 	<t:template>							
 									       <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Prultvd', formatter: '.formatter.fullNumberStr' }" emphasized="false"
@@ -461,7 +461,7 @@
 									</t:template>
 								</t:Column>
 								<!-- MrgAta -->
-								<t:Column width="4em" hAlign="End" id="column50">
+								<t:Column width="3.4em" hAlign="End" id="column50">
                                  <Label class='labelPedido' text='{i18n>xped.margem_ata}'></Label>
                                 	<t:template>							
 										             <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>MrgAta', formatter: '.formatter.percentage1dig' }" emphasized="false"
@@ -469,7 +469,7 @@
 									</t:template>
 								</t:Column>
 								<!-- MrgVar -->
-								<t:Column width="4.5em" hAlign="End" id="column51">
+								<t:Column width="3.4em" hAlign="End" id="column51">
                                 <Label class='labelPedido' text='{i18n>xped.margem_var}'></Label>
                                 	<t:template>							
 										           <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>MrgVar', formatter: '.formatter.percentage1dig' }" emphasized="false"
@@ -477,7 +477,7 @@
 									</t:template>
 								</t:Column>
 								<!-- EstCd -->
-								<t:Column width="3.7em" hAlign="End" id="column52">
+								<t:Column width="3.4em" hAlign="End" id="column52">
                                    <Label class='labelPedido' text='{i18n>xped.estoque_cd}'></Label>
                                 	<t:template>							
 									              <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstCd', formatter: '.formatter.fullNumberStr' }" emphasized="false"
@@ -485,7 +485,7 @@
 									</t:template>
 								</t:Column>
 								<!-- EstLoja -->
-								<t:Column width="3.7em" hAlign="End" id="column53">
+								<t:Column width="4em" hAlign="End" id="column53">
                                 <Label class='labelPedido' text='{i18n>xped.estoque_loj}'></Label>
                                 	<t:template>							
 										       <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstLoja', formatter: '.formatter.fullNumberStr' }" emphasized="false"
@@ -493,7 +493,7 @@
 									</t:template>
 								</t:Column>
 								<!-- EstTroca -->
-								<t:Column width="3em" hAlign="End" id="column54">
+								<t:Column width="4em" hAlign="End" id="column54">
                                   <Label class='labelPedido' text='{i18n>xped.estoque_tra}'></Label>
                                 	<t:template>							
 										  <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstTroca', formatter: '.formatter.fullNumberStr' }" emphasized="false"
@@ -501,7 +501,7 @@
 									</t:template>
 								</t:Column>
 								<!-- QtppendCent -->
-								<t:Column width="3.4em" hAlign="End" id="column55">
+								<t:Column width="3em" hAlign="End" id="column55">
                                  <Label class='labelPedido' text='{i18n>xped.estoque_ppc}'></Label>
                                 	<t:template>							
 										             <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>QtppendCent', formatter: '.formatter.toIntegerStr' }" emphasized="false"
@@ -509,7 +509,7 @@
 									</t:template>
 								</t:Column>
 								<!-- QtppendLoja -->
-								<t:Column width="3.5em" hAlign="End" id="column56">
+								<t:Column width="3em" hAlign="End" id="column56">
                                  <Label class='labelPedido' text='{i18n>xped.estoque_ppf}'></Label>
                                 	<t:template>							
 									                         <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>QtppendForn', formatter: '.formatter.toIntegerStr' }" emphasized="false"
@@ -517,7 +517,7 @@
 									</t:template>
 								</t:Column>
 								<!-- VlrVendaMM -->
-								<t:Column width="4em" hAlign="End" id="column57">
+								<t:Column width="5em" hAlign="End" id="column57">
                                   <Label class='labelPedido' text='{i18n>xped.Venda_Atual}'></Label>
                                 	<t:template>							
 									          <ObjectNumber class="textoLinhaPedido"
@@ -526,7 +526,7 @@
 									</t:template>
 								</t:Column>
 								<!-- VlrVendaM1 -->
-								<t:Column width="4em" hAlign="End" id="column58">
+								<t:Column width="5em" hAlign="End" id="column58">
                                  <Label class='labelPedido' text='{i18n>xped.Venda_M1}'></Label>
                                 	<t:template>							
 										                          <ObjectNumber class="textoLinhaPedido"
@@ -535,7 +535,7 @@
 									</t:template>
 								</t:Column>
 								<!-- VlrVendaM2 -->
-								<t:Column width="4em" hAlign="End" id="column59">
+								<t:Column width="5em" hAlign="End" id="column59">
                                   <Label class='labelPedido' text='{i18n>xped.Venda_M2}'></Label>
                                 	<t:template>							
 									     <ObjectNumber class="textoLinhaPedido"
