@@ -1,13 +1,10 @@
-specVersion: '2.6'
+specVersion: '2.4'
 metadata:
   name: zcockpit
 type: application
 resources:
   configuration:
     propertiesFileSourceEncoding: UTF-8
-framework:
-  name: SAPUI5
-  version: "1.76.0"
 server:
   customMiddleware:
   - name: fiori-tools-proxy

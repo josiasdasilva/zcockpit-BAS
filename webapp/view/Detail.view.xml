@@ -9,7 +9,7 @@
 			<!--	<semantic:content>-->
 			<ObjectHeader id="headerDetail" title="{Matnr} - {Maktx}" number="{ path: 'globalModel>/Count', formatter: '.formatter.toInteger' }"
 				numberUnit="{i18n>sugestao_compra}" intro="{Matnr}" backgroundDesign="Solid" titleSelectorPress="onTitleSelectorPress" titleLevel="Auto"
-				condensed="true">
+				condensed="true"> 
 				<attributes>
 					<ObjectAttribute text="{globalModel>/codABC}" id="__attribute4" title="{i18n>xmat.codabc}"/>
 				</attributes> 

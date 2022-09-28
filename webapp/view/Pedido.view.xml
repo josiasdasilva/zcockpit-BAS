@@ -9,7 +9,7 @@
 	xmlns:l="sap.ui.layout" controllerName="dma.zcockpit.controller.Pedido" height="100%">
 	<Page id="fullPage" navButtonPress="onNavBack" title="{globalModel>/Lifnr} - {globalModel>/Fornecedor}" floatingFooter="false" showNavButton="true" enableScrolling="false" showFooter="false" showSubHeader="false">
 		<content>
-			<l:FixFlex id="flex0" minFlexSize="500">
+			<l:FixFlex id="flex1" minFlexSize="500">
 				<l:fixContent>
 					<ObjectHeader xmlns:l="sap.ui.layout"
 						xmlns:mvc="sap.ui.core.mvc"

@@ -8,7 +8,7 @@
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
         "applicationVersion": {
-            "version": "1.0.0"
+            "version": "1.0.2"
         },
         "sourceTemplate": {
             "id": "servicecatalog.connectivityComponentForManifest",
@@ -73,8 +73,8 @@
                 "type": "sap.ui.model.odata.v2.ODataModel",
                 "settings": {
                     "defaultOperationMode": "Server",
-                    "defaultBindingMode": "OneWay",
-                    "defaultCountMode": "Request",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
                     "defaultUpdateMethod": "PUT"
                 },
                 "dataSource": "ZCOCKPIT_COMERCIAL_SRV",

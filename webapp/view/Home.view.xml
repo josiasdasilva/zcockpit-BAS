@@ -12,7 +12,7 @@
 									</items>
 								</FlexBox>
 							</items>
-						</FlexBox>
+						</FlexBox> 
 						<!-- <FlexBox width="100%" direction="Column" fitContainer="true" alignContent="Center" alignItems="Center" justifyContent="End" height="15em">
 							<items>
 								<MessageStrip id="idAppntOverSeven" visible="false" text="{i18n>msg_appointment_over_sevenpm}" type="Warning" showIcon="true"

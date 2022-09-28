@@ -335,6 +335,7 @@ sap.ui.define([
             let sMaabc = itemMaterial.Maabc;
             globalModel.setProperty("/Matnr", sMatnr);
             globalModel.setProperty("/codABC", sMaabc);
+
             this.getRouter().navTo("detail", {
                 Ekgrp: globalModel.getProperty("/Ekgrp"),
                 Lifnr: globalModel.getProperty("/Lifnr"),
@@ -367,6 +368,7 @@ sap.ui.define([
             });
             var sHeader = this.byId("headerDetail");
             sHeader.bindElement(sObjectPath);
+            
             // Tabela Compra
             this._compraTable.bindItems({
                 path: sObjectPath + "/POCompra",
@@ -648,6 +650,7 @@ sap.ui.define([
             var globalModel = this.getModel("globalModel");
             var sEkgrp = globalModel.getProperty("/Ekgrp");
             var sLifnr = globalModel.getProperty("/Lifnr");
+
             this.getRouter().navTo("pedido", {
                 Ekgrp: sEkgrp,
                 Lifnr: sLifnr
@@ -677,6 +680,7 @@ sap.ui.define([
                             this.gravaValores(oEvent);
                         }
                         if (oAction === MessageBox.Action.NO) {
+
                             this.getRouter().navTo("pedido", {
                                 Ekgrp: sEkgrp,
                                 Lifnr: sLifnr
@@ -685,7 +689,7 @@ sap.ui.define([
                     }
                 });
             } else {
-                this.getRouter().navTo("pedido", {
+                    this.getRouter().navTo("pedido", {
                     Ekgrp: sEkgrp,
                     Lifnr: sLifnr
                 }, true);
