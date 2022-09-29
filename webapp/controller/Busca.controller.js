@@ -8,7 +8,7 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel" 
 ], function (BaseController, Device, History, Fragment, Token, formatter, MessageBox, JSONModel, Filter, FilterOperator) {
     "use strict";
     return BaseController.extend("dma.zcockpit.controller.Busca", {
