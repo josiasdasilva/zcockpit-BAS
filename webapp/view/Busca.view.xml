@@ -101,7 +101,7 @@
 									</FlexBox>
 								</content>
 							</Panel>
-                            							<Panel xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
+                            <Panel xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
 								id="__panel21" width="auto">
 								<content>
 									<FlexBox width="auto" id="__box121" fitContainer="true">
@@ -201,14 +201,14 @@
 											<FlexBox width="8rem" id="__box17" alignContent="Start" alignItems="Center">
 												<items>
 													<Title xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
-														text="{i18n>contrato}" width="8rem" id="__title0_copy2" titleStyle="H3"/>
+														text="{i18n>contrato}" width="8rem" id="__title0_copy2" titleStyle="H4"/>
 												</items>
 											</FlexBox>
 											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
 												width="100%" id="__box17_copy" alignItems="Center">
 												<items>
 													<Input xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
-														width="100%" id="contratoInput" showValueHelp="true" valueHelpRequest="onF4Contrato" placeholder="{i18n>esc_contrato}"/>
+														 width="100%" id="contratoInput" showValueHelp="true" valueHelpRequest="onF4Contrato" placeholder="{i18n>esc_contrato}"/>
 												</items>
 											</FlexBox>
 											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
@@ -218,6 +218,29 @@
 														width="3rem" id="contratoDelete" icon="sap-icon://delete" press="clearContrato"/>
 												</items>
 											</FlexBox>
+                                        </items>
+                                    </FlexBox>
+                                    <FlexBox width="auto" id="__box18">
+                                        <items>
+											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+												width="8rem" id="__box19" alignItems="Center" alignContent="Start">
+												<items>
+													<Title xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
+														text="{i18n>fsuprimentos}" width="8rem" required="true" id="__title4" titleStyle="H4"/>
+                                                </items>
+											</FlexBox>
+											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+												width="100%" id="__box20" alignItems="Center">
+												<items>
+													<ComboBox showSecondaryValues="true" items="{path: '/FSuprimentos', sorter: { path: 'Sobsl' } }" width="100%" required="true" id="idFsuprimentos" selectionChange="onFsuprimentos">
+														<items>
+															<core:ListItem xmlns:core="sap.ui.core" key="{Sobsl}" text="{Sobsl}" additionalText="{Ltext}"
+																id="idCbFsuprimentos"/>
+														</items>
+													</ComboBox>
+                                                        
+												</items>
+											</FlexBox>                                         
 										</items>
 									</FlexBox>
 								</content>

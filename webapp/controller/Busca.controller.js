@@ -311,6 +311,7 @@ sap.ui.define([
             var sEkgrp = this.byId("compradorInput").getValue();
             var sLifnr = this.byId("fornecedorInput").getValue();
             var sLifnrName = this.byId("fornecedorInput").getDescription();
+            var sSobsl = this.byId("idFsuprimentos").getValue();
 
             // agrupa todos os filtros da tela
             var aFilters = [];
@@ -429,6 +430,9 @@ sap.ui.define([
             this.clearUF(oEvent);
         },
         onTipoPedido: function (oEvent) {
+            this.habilitaBotaoPedido();
+        },
+        onFsuprimentos: function (oEvent) {
             this.habilitaBotaoPedido();
         },
         onDtRemessa: function (oEvent) {
@@ -946,6 +950,18 @@ sap.ui.define([
                     });
                     aFilters.push(fEbeln);
                 }
+
+                // Filtro Fonte de suprimentos
+                var sSobsl = this.byId("idFsuprimentos").getValue();
+                if (sSobsl !== "") {
+                   var fSobsl = new sap.ui.model.Filter({
+                       path: "Sobsl",
+                       operator: sap.ui.model.FilterOperator.EQ,
+                       value1: sSobsl.toUpperCase()
+                   });
+                   aFilters.push(fSobsl);
+                }
+                
                 // Filtro Produtos 
                 if (sPedido) {
                     var sMatnr = this.byId("idProdutos").getSelectedContexts(true);
