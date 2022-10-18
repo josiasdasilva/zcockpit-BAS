@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Fonte de suprimentos"
+		class="sapUiPopupWithPadding"
+		items="{/FSuprimentos}"
+		liveChange="_handleF4FsuprimentosSearch"
+		search="_handleF4FsuprimentosSearch"
+		confirm="_handleF4FsuprimentosClose"
+		cancel="_handleF4FsuprimentosCancel"
+		multiSelect="true">
+		<StandardListItem
+			icon=""
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Sobsl}"
+			description="{Ltext}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

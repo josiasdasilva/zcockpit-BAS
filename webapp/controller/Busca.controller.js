@@ -311,8 +311,7 @@ sap.ui.define([
             var sEkgrp = this.byId("compradorInput").getValue();
             var sLifnr = this.byId("fornecedorInput").getValue();
             var sLifnrName = this.byId("fornecedorInput").getDescription();
-            var sSobsl = this.byId("idFsuprimentos").getValue();
-
+ 
             // agrupa todos os filtros da tela
             var aFilters = [];
             this.montaFiltros(aFilters, true);
@@ -870,6 +869,80 @@ sap.ui.define([
             oEvent.getSource().getBinding("items").filter([]);
             this.habilitaBotaoPedido();
         },
+        /* Value Help Fonte Suprimentos */
+        onF4Fsuprimentos: function (oEvent) {
+            // create value help dialog
+            if (!this._F4FsuprimentosDialog) {
+                this._F4FsuprimentosDialog = sap.ui.xmlfragment("dma.zcockpit.view.fragment.Fsuprimentos", this);
+                this.getView().addDependent(this._F4FsuprimentosDialog);
+            }
+
+            var aInput = this.byId("FsuprimentosInput").getTokens();
+            var aFsuprimentosItems = this._F4FsuprimentosDialog._oList.getItems();
+            for (var iTk = 0; iTk < aInput.length; iTk++) {
+                for (var type = 0; type < aFsuprimentosItems.length; type++) {
+                    if (aFsuprimentosItems[type].getTitle() === aInput[iTk].getKey()) {
+                        aFsuprimentosItems[type].setSelected(true);
+                    }
+                }
+            }
+            this._openF4FsuprimentosDialog(oEvent);
+        },
+        _openF4FsuprimentosDialog: function (oEvent) {
+            var aFilters = [];
+            var sInputValue = oEvent.getSource().getDescription();
+            // this._filtroF4Fsuprimentos(aFilters);
+            // // create a filter for the binding
+            // aFilters.push(new sap.ui.model.Filter(
+            //     "Ltext",
+            //    sap.ui.model.FilterOperator.Contains,
+            //    sInputValue
+            //));
+            // open value help dialog filtered by the input value
+            this._F4FsuprimentosDialog.getBinding("items").filter(aFilters);
+            this._F4FsuprimentosDialog.open(sInputValue);
+        },
+        _handleF4FsuprimentosSearch: function (oEvent) {
+            var aFilters = [];
+            //this._filtroF4Fsuprimentos(aFilters);
+
+            //Filtro Nome
+            var sDescFSupr = oEvent.getParameter("value");
+            aFilters.push(new sap.ui.model.Filter(
+                "Ltext",
+                sap.ui.model.FilterOperator.Contains,
+                sDescFSupr.toUpperCase()
+            ));
+            // Grava todos filtros
+            oEvent.getSource().getBinding("items").filter(aFilters);
+
+        },
+        _handleF4FsuprimentosClose: function (oEvent) {
+            var aSelectedItems = oEvent.getParameter("selectedItems"),
+                oMultiInput = this.byId("FsuprimentosInput");
+
+            oMultiInput.removeAllTokens();
+            if (aSelectedItems && aSelectedItems.length > 0) {
+                aSelectedItems.forEach(function (oItem) {
+                    oMultiInput.addToken(new Token({
+                        key: oItem.getDescription(),
+                        text: oItem.getTitle()
+                    }));
+                });
+            }
+            this.habilitaBotaoPedido();
+        },
+        _handleF4FsuprimentosCancel: function (oEvent) {
+        },
+        onF4FsuprimentosTokenUpdate: function (oEvent) {
+            this.habilitaBotaoPedido();
+        },
+        clearFsuprimentos: function (oEvent) {
+            var FsuprimentosInput = this.byId("FsuprimentosInput");
+            FsuprimentosInput.removeAllTokens();
+            this.habilitaBotaoPedido();
+        },
+
         montaFiltros: function (aFilters, sPedido) {
             // Filtro Comprador
             var sEkgrp = this.byId("compradorInput").getValue();
@@ -952,15 +1025,26 @@ sap.ui.define([
                 }
 
                 // Filtro Fonte de suprimentos
-                var sSobsl = this.byId("idFsuprimentos").getValue();
-                if (sSobsl !== "") {
-                   var fSobsl = new sap.ui.model.Filter({
-                       path: "Sobsl",
-                       operator: sap.ui.model.FilterOperator.EQ,
-                       value1: sSobsl.toUpperCase()
-                   });
-                   aFilters.push(fSobsl);
+                var sSobsl = this.byId("FsuprimentosInput");
+                if (sSobsl.getTokens().length > 0) {
+                    for (var iFsuprimentos = 0; iFsuprimentos < sSobsl.getTokens().length; iFsuprimentos++) {
+                        aFilters.push(new sap.ui.model.Filter(
+                            "Sobsl",
+                            sap.ui.model.FilterOperator.EQ,
+                            sSobsl.getTokens()[iFsuprimentos].getText()
+                        ));
+                    }
                 }
+                // ComboBOX Fsuprimentos
+                // var sSobsl = this.byId("idFsuprimentos").getValue();
+                // if (sSobsl !== "") {
+                //    var fSobsl = new sap.ui.model.Filter({
+                //        path: "Sobsl",
+                //        operator: sap.ui.model.FilterOperator.EQ,
+                //        value1: sSobsl.toUpperCase()
+                //    });
+                //    aFilters.push(fSobsl);
+                //}
                 
                 // Filtro Produtos 
                 if (sPedido) {

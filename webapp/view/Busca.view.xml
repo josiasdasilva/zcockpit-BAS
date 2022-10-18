@@ -63,7 +63,8 @@
 											</FlexBox>
 											<FlexBox width="3rem" justifyContent="Center" fitContainer="true" alignContent="End" alignItems="Center">
 												<items>
-													<Button width="auto" id="compradorDelete" icon="sap-icon://delete" press="clearComprador"/>
+													<Button xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
+														width="3rem" id="compradorDelete" icon="sap-icon://delete" press="clearComprador"/>
 												</items>
 											</FlexBox>
 										</items>
@@ -222,7 +223,7 @@
                                     </FlexBox>
                                     <FlexBox width="auto" id="__box18">
                                         <items>
-											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+										<!-- <FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
 												width="8rem" id="__box19" alignItems="Center" alignContent="Start">
 												<items>
 													<Title xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
@@ -240,7 +241,29 @@
 													</ComboBox>
                                                         
 												</items>
-											</FlexBox>                                         
+											</FlexBox> -->
+											<FlexBox width="8rem" alignItems="Center">
+												<items>
+													<Title xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns="sap.m"
+														text="{i18n>fsuprimentos}" width="8rem" required="true" id="__title4" titleStyle="H4"/>
+												</items>
+											</FlexBox>
+											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+												width="100%" id="__box20" alignItems="Center">
+												<items>
+													<MultiInput width="20rem" id="FsuprimentosInput" placeholder="{i18n>esc_fsuprimentos}" suggestionItems="{ path: '/FSuprimentos', sorter: { path: 'Sobsl' }}"
+														valueHelpRequest="onF4Fsuprimentos" tokenChange="onF4FsuprimentosTokenUpdate" valueHelpOnly="true">
+														<core:Item key="{Sobsl}" text="{Ltext}"/>
+                                                    </MultiInput>
+												</items>
+											</FlexBox>
+											<FlexBox xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+												width="3rem" id="__box17_copy3" alignContent="End" alignItems="Center">
+												<items>
+													<Button xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
+														width="3rem" id="FsuprimentosDelete" icon="sap-icon://delete" press="clearFsuprimentos"/>
+												</items>
+											</FlexBox>                                            
 										</items>
 									</FlexBox>
 								</content>
