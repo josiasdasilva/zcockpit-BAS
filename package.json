@@ -1,52 +1,52 @@
 {
-  "name": "zcockpit",
-  "version": "0.0.1",
-  "private": true,
-  "description": "Compras EDL",
-  "keywords": [
-    "ui5",
-    "openui5",
-    "sapui5"
-  ],
-  "main": "webapp/index.html",
-  "scripts": {
-    "start": "fiori run --http --open 'index.html?sap-client=410'",
-    "start-local": "fiori run --http --config ./ui5-local.yaml --open 'index.html?sap-client=410'",
-    "start-noflp": "fiori run --open 'index.html?sap-client=410'",
-    "build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
-    "deploy": "npm run build && fiori deploy --config ui5-deploy.yaml && rimraf archive.zip",
-    "deploy-config": "fiori add deploy-config",
-    "unit-tests": "fiori run --open test/unit/unitTests.qunit.html",
-    "int-tests": "fiori run --open test/integration/opaTests.qunit.html",
-    "undeploy": "fiori undeploy --config ui5-deploy.yaml",
-    "deploy-test": "npm run build && fiori deploy --config ui5-deploy.yaml --testMode true"
-  },
-  "devDependencies": {
-    "@sap/ux-ui5-tooling": "^1.7.4",
-    "@ui5/cli": "^2.14.11",
-    "@ui5/fs": "^2.0.6",
-    "@ui5/logger": "^2.0.1",
-    "rimraf": "3.0.2",
-    "ui5-task-flatten-library": "0.2.5"
-  },
-  "ui5": {
-    "dependencies": [
-      "@sap/ux-ui5-tooling",
-      "fiori-tools",
-      "ui5-task-flatten-library"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/josiasdasilva/dma-zcockpit-bas.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/josiasdasilva/dma-zcockpit-bas/issues"
-  },
-  "homepage": "https://github.com/josiasdasilva/dma-zcockpit-bas#readme",
-  "dependencies": {
-    "fiori-tools": "^1.3.0"
-  }
+    "name": "zcockpit",
+    "version": "0.0.1",
+    "private": true,
+    "description": "Compras EDL",
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "main": "webapp/index.html",
+    "scripts": {
+        "start": "fiori run --http --open 'index.html?sap-client=410'",
+        "start-local": "fiori run --http --config ./ui5-local.yaml --open 'index.html?sap-client=410'",
+        "start-noflp": "fiori run --open 'index.html?sap-client=410'",
+        "build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
+        "deploy": "npm run build && fiori deploy --config ui5-deploy.yaml && rimraf archive.zip",
+        "deploy-config": "fiori add deploy-config",
+        "unit-tests": "fiori run --open test/unit/unitTests.qunit.html",
+        "int-tests": "fiori run --open test/integration/opaTests.qunit.html",
+        "undeploy": "fiori undeploy --config ui5-deploy.yaml",
+        "deploy-test": "npm run build && fiori deploy --config ui5-deploy.yaml --testMode true"
+    },
+    "devDependencies": {
+        "@sap/ux-ui5-tooling": "^1.7.4",
+        "@ui5/cli": "^2.14.20",
+        "@ui5/fs": "^2.0.6",
+        "@ui5/logger": "^2.0.1",
+        "rimraf": "3.0.2",
+        "ui5-task-flatten-library": "0.2.5"
+    },
+    "ui5": {
+        "dependencies": [
+            "@sap/ux-ui5-tooling",
+            "fiori-tools",
+            "ui5-task-flatten-library"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/josiasdasilva/dma-zcockpit-bas.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/josiasdasilva/dma-zcockpit-bas/issues"
+    },
+    "homepage": "https://github.com/josiasdasilva/dma-zcockpit-bas#readme",
+    "dependencies": {
+        "fiori-tools": "^1.3.0"
+    }
 }

@@ -413,18 +413,20 @@ sap.ui.define([
             let sID = oID;
             let oTabela = oTable;
             $('#' + oID).click((oEvent) => { //Attach Table Header Element Event
-                let sBinding = sap.ui.getCore().byId(oEvent.currentTarget.childNodes[0].childNodes[0].childNodes[0].id).data('binding');
+                //let sBinding = sap.ui.getCore().byId(oEvent.currentTarget.childNodes[0].childNodes[0].childNodes[0].id).data('binding');
+                let sBinding = sap.ui.getCore().byId(oEvent.currentTarget.childNodes[0].childNodes[0].childNodes[0].childNodes[0].id).data('binding');
                 this.onClickSort(oEvent, oTable, sBinding);
             });
         },
         onClickSort: function (oEvent, oTable, oBinding) {
-            let oIcon = sap.ui.getCore().byId(oEvent.currentTarget.childNodes[0].childNodes[1].childNodes[0].id);
+            //let oIcon = sap.ui.getCore().byId(oEvent.currentTarget.childNodes[0].childNodes[1].childNodes[0].id);
+            let oIcon = sap.ui.getCore().byId(oEvent.currentTarget.childNodes[0].childNodes[0].childNodes[1].childNodes[0].id);
             let oItems = oTable.getBinding("items");
             let oSorter = new Sorter(oBinding);
             let oColor = oIcon.getColor();
             let oSrc = oIcon.getSrc();
-            let sId = oEvent.currentTarget.childNodes[0].childNodes[1].childNodes[0].id;
-
+            //let sId = oEvent.currentTarget.childNodes[0].childNodes[1].childNodes[0].id;
+            let sId = oEvent.currentTarget.childNodes[0].childNodes[0].childNodes[1].childNodes[0].id;
             this.resetSortIcons(oTable, false);
             if (oColor === "#808080") {
                 oIcon.setColor("#f00000");
