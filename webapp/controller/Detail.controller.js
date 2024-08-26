@@ -13,9 +13,11 @@ sap.ui.define([
         _compraTable: null,
         _vendaTable: null,
         _faceamentoTable: null,
+        _pesquisaTable: null,
         _compraTableHeader: null,
         _vendaTableHeader: null,
         _faceamentoTableHeader: null,
+        _pesquisaTableHeader: null,
         _segCompra: null,
         _colInput: null,
         onInit: function () {
@@ -31,9 +33,11 @@ sap.ui.define([
             this._compraTable = this.getView().byId('compraTable');
             this._vendaTable = this.getView().byId('vendaTable');
             this._faceamentoTable = this.getView().byId('faceamentoTable');
+            this._pesquisaTable = this.getView().byId('pesquisaTable');
             this._compraTableHeader = this.getView().byId('compraTableHeader');
             this._vendaTableHeader = this.getView().byId('vendaTableHeader');
             this._faceamentoTableHeader = this.getView().byId('faceamentoTableHeader');
+            this._pesquisaTableHeader = this.getView().byId('pesquisaTableHeader');
 
             // if (!this._oColumnFilterPopover) {
             // 	this._oColumnFilterPopover = sap.ui.xmlfragment("dma.zcockpit.view.fragment.FilterColumn", this);
@@ -67,6 +71,15 @@ sap.ui.define([
                     }
                 }
             }, this._faceamentoTableHeader);
+            this._pesquisaTableHeader.addEventDelegate({
+                onAfterRendering: () => {
+                    var oHeader = this._pesquisaTableHeader.$().find('.sapMListTblHeaderCell');
+                    for (var i = 0; i < oHeader.length; i++) {
+                        var oID = oHeader[i].id;
+                        this.onClickColumnHeader(oID, this._pesquisaTable);
+                    }
+                }
+            }, this._pesquisaTableHeader);
             //FAFN - End
             this.configTabKeyFocus(this._compraTable);
         },
@@ -393,6 +406,13 @@ sap.ui.define([
                 template: this._faceamentoTable.getBindingInfo("items").template
             });
             this.resetSortIcons(this._faceamentoTable, true);
+            // Tabela Pesquisa
+            this._pesquisaTable.bindItems({
+                path: sObjectPath + "/POPesquisaSet",
+                template: this._pesquisaTable.getBindingInfo("items").template
+            });
+            this.resetSortIcons(this._pesquisaTable, true);
+
             globalModel.setProperty("/Alterado", false);
             this.byId('botaoGravarSugestao').setEnabled(false);
             this.updateTotalTelaLocal();
@@ -407,6 +427,7 @@ sap.ui.define([
             this.recoverSortConfig('compraTable');
             this.recoverSortConfig('vendaTable');
             this.recoverSortConfig('faceamentoTable');
+            this.recoverSortConfig('pesquisaTable');
         },
         //FAFN - Begin
         onClickColumnHeader: function (oID, oTable) {
@@ -458,6 +479,9 @@ sap.ui.define([
             if (sId.includes('faceamentoTable')) {
                 return 'faceamentoTable';
             }
+            if (sId.includes('pesquisaTable')) {
+                return 'pesquisaTable';
+            }            
         },
         recoverSortConfig: function (sTable) {
 
@@ -474,6 +498,9 @@ sap.ui.define([
                     }
                     if (sTable.includes('faceamento')) {
                         this.getView().byId('_i_faceamento_0').setColor('#808080');
+                    }
+                    if (sTable.includes('pesquisa')) {
+                        this.getView().byId('_i_pesquisa_0').setColor('#808080');
                     }
                     if (sTable.includes('venda')) {
                         this.getView().byId('_i_venda_0').setColor('#808080');
@@ -526,6 +553,8 @@ sap.ui.define([
             oItemsPedido.filter(aFilters);
             var oItemsFaceamento = this._faceamentoTable.getBinding("items");
             oItemsFaceamento.filter(aFilters);
+            var oItemspesquisa = this._pesquisaTable.getBinding("items");
+            oItemspesquisa.filter(aFilters);
         },
         onFilter: function (oEvent, oTable, oPrefix) {
             // var aFilters = [];
@@ -566,6 +595,9 @@ sap.ui.define([
             }
             if (oTable === this._faceamentoTable) {
                 prefIcone = "_i_faceamento_"
+            }
+            if (oTable === this._pesquisaTable) {
+                prefIcone = "_i_pesquisa_"
             }
             for (var i = 0; i < oQtde; i++) {
                 let zIcon = this.byId(prefIcone + i.toString());
@@ -836,6 +868,19 @@ sap.ui.define([
             });
             var sURL = localModel.sServiceUrl + sObjectPath + "/$value";
             window.open(sURL);
-        }
+        },
+
+        onPressShowAnexo: function (oEvent) {
+            var localModel = this.getModel();
+            if (oEvent.getSource().getBindingContext().getObject().Anexo) {
+                var sWerks = oEvent.getSource().getBindingContext().getObject().Werks;
+                var sData = oEvent.getSource().getBindingContext().getObject().DataPesquisa;
+                var sMatnr = oEvent.getSource().getBindingContext().getObject().Matnr;
+
+                var sObjectPath = "/POPesqImagemSet(Werks='"+ sWerks + "',Matnr='" + sMatnr + "',DataPesquisa='" + sData + "')";
+                var sURL = localModel.sServiceUrl + sObjectPath + "/$value";
+                window.open(sURL);         
+            }
+        }        
     });
 });

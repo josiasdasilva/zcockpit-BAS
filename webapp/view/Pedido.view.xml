@@ -405,7 +405,7 @@
                                 <Label class='labelPedido' text='{i18n>xped.estoque_teorico}'></Label>
                                 		<t:template>							
 										            <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstTeor', formatter: '.formatter.toIntegerStr' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>EstTeor', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number17_tablePedido_0"/>
+                                            tooltip="{path: 'pedidoListModel>EstTeor'}" textAlign="Right" id="number17_tablePedido_0"/>
 									</t:template>
 								</t:Column>
 								<!-- Mvd -->
@@ -413,7 +413,7 @@
                                 <Label class='labelPedido' text='{i18n>xped.mdv}'></Label>
                                 	<t:template>							
 							                         <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Mvd', formatter: '.formatter.toIntegerStr' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>Mvd', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number18_tablePedido_0"/>			
+                                            tooltip="{path: 'pedidoListModel>Mvd'}" textAlign="Right" id="number18_tablePedido_0"/>			
 									</t:template>
 								</t:Column>
 								<!-- Prultcp -->
@@ -421,7 +421,7 @@
                                   <Label class='labelPedido' text='{i18n>xped.preco_compra}'></Label>
                                 	<t:template>							
 									 <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>Prultcp', formatter: '.formatter.fullNumberStr' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>PrUltCp', formatter: '.formatter.fullNumberStr' }" textAlign="Right" id="number19_tablePedido_0"/>	
+                                            tooltip="{path: 'pedidoListModel>PrUltCp' }" textAlign="Right" id="number19_tablePedido_0"/>	
 									</t:template>
 								</t:Column>
 								<!-- Sugestao -->
@@ -465,7 +465,7 @@
                                  <Label class='labelPedido' text='{i18n>xped.margem_ata}'></Label>
                                 	<t:template>							
 										             <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>MrgAta', formatter: '.formatter.percentage1dig' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>MargemAta', formatter: '.formatter.fullNumberStr' }" textAlign="Right" id="number24_tablePedido_0"/>
+                                            tooltip="{path: 'pedidoListModel>MargemAta' }" textAlign="Right" id="number24_tablePedido_0"/>
 									</t:template>
 								</t:Column>
 								<!-- MrgVar -->
@@ -473,7 +473,7 @@
                                 <Label class='labelPedido' text='{i18n>xped.margem_var}'></Label>
                                 	<t:template>							
 										           <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>MrgVar', formatter: '.formatter.percentage1dig' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>MargemVar', formatter: '.formatter.fullNumberStr' }" textAlign="Right" id="number25_tablePedido_0"/>
+                                            tooltip="{path: 'pedidoListModel>MargemVar' }" textAlign="Right" id="number25_tablePedido_0"/>
 									</t:template>
 								</t:Column>
 								<!-- EstCd -->
@@ -481,7 +481,7 @@
                                    <Label class='labelPedido' text='{i18n>xped.estoque_cd}'></Label>
                                 	<t:template>							
 									              <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstCd', formatter: '.formatter.fullNumberStr' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>EstCd', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number26_tablePedido_0"/>	
+                                            tooltip="{path: 'pedidoListModel>EstCd' }" textAlign="Right" id="number26_tablePedido_0"/>	
 									</t:template>
 								</t:Column>
 								<!-- EstLoja -->
@@ -489,7 +489,7 @@
                                 <Label class='labelPedido' text='{i18n>xped.estoque_loj}'></Label>
                                 	<t:template>							
 										       <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstLoja', formatter: '.formatter.fullNumberStr' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>EstLoja', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number27_tablePedido_0"/>
+                                            tooltip="{path: 'pedidoListModel>EstLoja' }" textAlign="Right" id="number27_tablePedido_0"/>
 									</t:template>
 								</t:Column>
 								<!-- EstTroca -->
@@ -497,7 +497,7 @@
                                   <Label class='labelPedido' text='{i18n>xped.estoque_tra}'></Label>
                                 	<t:template>							
 										  <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>EstTroca', formatter: '.formatter.fullNumberStr' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>EstTroca', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number28_tablePedido_0"/>
+                                            tooltip="{path: 'pedidoListModel>EstTroca' }" textAlign="Right" id="number28_tablePedido_0"/>
 									</t:template>
 								</t:Column>
 								<!-- QtppendCent -->
@@ -505,15 +505,15 @@
                                  <Label class='labelPedido' text='{i18n>xped.estoque_ppc}'></Label>
                                 	<t:template>							
 										             <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>QtppendCent', formatter: '.formatter.toIntegerStr' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>QtppendCent', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number29_tablePedido_0"/>
+                                            tooltip="{path: 'pedidoListModel>QtppendCent' }" textAlign="Right" id="number29_tablePedido_0"/>
 									</t:template>
 								</t:Column>
 								<!-- QtppendLoja -->
 								<t:Column width="3em" hAlign="End" id="column56">
                                  <Label class='labelPedido' text='{i18n>xped.estoque_ppf}'></Label>
                                 	<t:template>							
-									                         <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>QtppendForn', formatter: '.formatter.toIntegerStr' }" emphasized="false"
-                                            tooltip="{path: 'pedidoListModel>QtppendForn', formatter: '.formatter.toIntegerStr' }" textAlign="Right" id="number30_tablePedido_0"/>	
+									    <ObjectNumber class="textoLinhaPedido" number="{path: 'pedidoListModel>QtppendForn', formatter: '.formatter.toIntegerStr' }" emphasized="false"
+                                            tooltip="{path: 'pedidoListModel>QtppendForn' }" textAlign="Right" id="number30_tablePedido_0"/>	
 									</t:template>
 								</t:Column>
 								<!-- VlrVendaMM -->

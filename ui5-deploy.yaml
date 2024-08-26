@@ -23,6 +23,6 @@ builder:
           name: ZCOCKPIT
           description: Cockpit Comercial
           package: ZDEV
-          transport: ECDK9A0MFH
+          transport: ECDK9A0NN8
         exclude:
           - /test/

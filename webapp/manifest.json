@@ -19,7 +19,9 @@
                 "uri": "/sap/opu/odata/sap/ZCOCKPIT_COMERCIAL_SRV/",
                 "type": "OData",
                 "settings": {
-                    "localUri": "localService/ZCOCKPIT_COMERCIAL_SRV/metadata.xml"
+                    "annotations": [],
+                    "localUri": "localService/ZCOCKPIT_COMERCIAL_SRV/metadata.xml",
+                    "odataVersion": "2.0"
                 }
             }
         }
@@ -82,12 +84,16 @@
             }
         },
         "resources": {
-            "css": [{
-                "uri": "css/style.css"
-            }],
-            "js": [{
-                "uri": "model/jspdf.min.js"
-            }]
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ],
+            "js": [
+                {
+                    "uri": "model/jspdf.min.js"
+                }
+            ]
         },
         "routing": {
             "config": {
@@ -100,7 +106,8 @@
                 "clearControlAggregation": false,
                 "transition": "slide"
             },
-            "routes": [{
+            "routes": [
+                {
                     "pattern": "",
                     "name": "home",
                     "target": "home"

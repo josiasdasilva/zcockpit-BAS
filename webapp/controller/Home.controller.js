@@ -66,6 +66,7 @@ sap.ui.define([
 			localStorage.removeItem('sortConfigcompraTableHeader');
 			localStorage.removeItem('sortConfigvendaTableHeader');
 			localStorage.removeItem('sortConfigfaceamentoTableHeader');
+			localStorage.removeItem('sortConfigpesquisaTableHeader');
 		},
 		handleNavDate: function (oEvt) {
 			this._validateAppointmentOver18(oEvt.getSource().mProperties.startDate);
